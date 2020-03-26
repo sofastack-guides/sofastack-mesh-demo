@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sofa-echo-api" />
+        <module name="springcloud-turbine" />
+        <module name="springcloud-reservation-service" />
+        <module name="springcloud-eureka-server" />
+        <module name="dubbo-echo-client" />
+        <module name="springcloud-hystrix-dashboard" />
+        <module name="spring-cloud-reservation-gateway" />
+        <module name="dubbo-echo-server" />
+        <module name="springcloud-config-server" />
+        <module name="dubbo-echo-api" />
+        <module name="springcloud-reservation-client" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo-echo-api" target="8" />
+      <module name="dubbo-echo-client" target="8" />
+      <module name="dubbo-echo-server" target="8" />
+      <module name="dubbo-samples-springboot2" target="8" />
+      <module name="sofa-echo-api" target="8" />
+      <module name="sofa-samples-springboot2" target="8" />
+      <module name="sofastack-mesh-demo" target="8" />
+      <module name="spring-cloud-reservation-gateway" target="8" />
+      <module name="springcloud-config-server" target="8" />
+      <module name="springcloud-eureka-server" target="8" />
+      <module name="springcloud-hystrix-dashboard" target="8" />
+      <module name="springcloud-reservation-client" target="8" />
+      <module name="springcloud-reservation-service" target="8" />
+      <module name="springcloud-samples-springboot2" target="8" />
+      <module name="springcloud-turbine" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
