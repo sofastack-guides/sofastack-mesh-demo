@@ -2,7 +2,7 @@
 
 version="$1"
 
-if [ -z "$version" ]
+if [[ -z "$version" ]]
 then
     echo "Usage: build.sh image-version"
     exit 1;
