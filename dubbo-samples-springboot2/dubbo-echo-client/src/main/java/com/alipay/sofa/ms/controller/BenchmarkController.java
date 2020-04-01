@@ -7,6 +7,7 @@ package com.alipay.sofa.ms.controller;
 import com.alipay.sofa.ms.service.BenchmarkService;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -44,6 +45,19 @@ public class BenchmarkController {
     @GetMapping("/send_8k")
     public String send_8k() {
         return benchmarkService.send_512_byte(randomString(1024 * 8));
+    }
+
+    @GetMapping("/warm_up_random")
+    public String warm_up_random(@RequestParam(name = "loop", required = false) Integer loops,
+                                 @RequestParam(name = "bytes", required = false) Integer bytes) {
+        int len = bytes == null || bytes <= 0 ? 512 : bytes;
+        int loop = loops == null || loops <= 0 ? 10000 : loops;
+        String lastLoop = "null";
+        for (int i = 0; i <= loop; i++) {
+            lastLoop = randomString(len);
+        }
+
+        return lastLoop;
     }
 
     static char[] chars = new char[] {
