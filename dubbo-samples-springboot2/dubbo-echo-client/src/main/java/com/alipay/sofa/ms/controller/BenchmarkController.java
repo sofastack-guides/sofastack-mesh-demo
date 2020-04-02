@@ -6,6 +6,8 @@ package com.alipay.sofa.ms.controller;
 
 import com.alipay.sofa.ms.service.BenchmarkService;
 import org.apache.commons.lang.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,32 +21,59 @@ import javax.annotation.Resource;
 @RestController
 public class BenchmarkController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BenchmarkController.class);
+
     @Resource
     private BenchmarkService benchmarkService;
 
     @GetMapping("/send_512_byte")
     public String send_512_byte() {
-        return benchmarkService.send_512_byte(randomString(512));
+        try {
+            return benchmarkService.send_512_byte(randomString(512));
+        } catch (Exception e) {
+            LOGGER.error("Failed to invoke send_512_byte, cause: " + e);
+            return "ERROR:" + e.getMessage();
+        }
     }
 
     @GetMapping("/send_1k")
     public String send_1k() {
-        return benchmarkService.send_1k(randomString(1024));
+        try {
+            return benchmarkService.send_1k(randomString(1024));
+        } catch (Exception e) {
+            LOGGER.error("Failed to invoke send_1k, cause: " + e);
+            return "ERROR:" + e.getMessage();
+        }
     }
 
     @GetMapping("/send_2k")
     public String send_2k() {
-        return benchmarkService.send_512_byte(randomString(1024 * 2));
+        try {
+            return benchmarkService.send_2k(randomString(1024 * 2));
+        } catch (Exception e) {
+            LOGGER.error("Failed to invoke send_2k, cause: " + e);
+            return "ERROR:" + e.getMessage();
+        }
     }
 
     @GetMapping("/send_4k")
     public String send_4k() {
-        return benchmarkService.send_512_byte(randomString(1024 * 4));
+        try {
+            return benchmarkService.send_4k(randomString(1024 * 4));
+        } catch (Exception e) {
+            LOGGER.error("Failed to invoke send_4k, cause: " + e);
+            return "ERROR:" + e.getMessage();
+        }
     }
 
     @GetMapping("/send_8k")
     public String send_8k() {
-        return benchmarkService.send_512_byte(randomString(1024 * 8));
+        try {
+            return benchmarkService.send_8k(randomString(1024 * 8));
+        } catch (Exception e) {
+            LOGGER.error("Failed to invoke send_8k, cause: " + e);
+            return "ERROR:" + e.getMessage();
+        }
     }
 
     @GetMapping("/warm_up_random")
