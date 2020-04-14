@@ -21,36 +21,36 @@ public class BenchmarkServiceImpl implements BenchmarkService {
 
     @Override
     public String send_512_byte(String content) {
-        String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] send_512_byte, request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        //String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+        //LOGGER.info("[" + now + "] send_512_byte, request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return content;
     }
 
     @Override
     public String send_1k(String content) {
-        String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] send_1k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        //String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+        //LOGGER.info("[" + now + "] send_1k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return content;
     }
 
     @Override
     public String send_2k(String content) {
-        String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] send_2k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        //String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+        //LOGGER.info("[" + now + "] send_2k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return content;
     }
 
     @Override
     public String send_4k(String content) {
-        String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] send_4k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        //String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+        //LOGGER.info("[" + now + "] send_4k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return content;
     }
 
     @Override
     public String send_8k(String content) {
-        String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] send_8k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        //String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+        //LOGGER.info("[" + now + "] send_8k, request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return content;
     }
 
