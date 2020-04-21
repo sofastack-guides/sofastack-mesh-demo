@@ -28,7 +28,7 @@
     <dubbo:application name="benchmark-provider"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="N/A"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
