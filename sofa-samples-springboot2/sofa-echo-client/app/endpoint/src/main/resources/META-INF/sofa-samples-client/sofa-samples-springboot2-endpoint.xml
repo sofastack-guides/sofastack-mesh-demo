@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://schema.alipay.com/sofa/schema/slite"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://schema.alipay.com/sofa/schema/slite   http://schema.alipay.com/sofa/slite.xsd"
+       default-autowire="byName">
+
+    <!-- sofa rpc reference -->
+    <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+
+    <bean class="com.alipay.sofa.ms.endpoint.reference.SofaEchoConsumer" />
+</beans>
