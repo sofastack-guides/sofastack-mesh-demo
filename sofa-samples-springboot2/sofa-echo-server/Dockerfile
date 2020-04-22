@@ -1,4 +1,5 @@
-FROM openjdk:8-jre-alpine
+FROM centos:7
+FROM maven:3.5-jdk-8-alpine
 MAINTAINER yiji <yiji@apache.org>
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
@@ -10,4 +11,4 @@ ADD start.sh /home/admin/release/start.sh
 
 RUN chmod a+x /home/admin/release/start.sh
 
-ENTRYPOINT ["/bin/sh", "/home/admin/release/start.sh"]
+ENTRYPOINT ["/bin/bash", "/home/admin/release/start.sh"]

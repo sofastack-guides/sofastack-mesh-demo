@@ -21,8 +21,8 @@ echo "building sofa-echo-server with image-version: $version"
 docker build -t sofa-echo-server:${version} .
 docker tag sofa-echo-server:${version} reg-cnsh-nf.cloud.alipay.com/library/sofa-echo-server:${version}
 
-cd ../sofa-echo-client/
-echo "building sofa-echo-client with image-version: $version"
-docker build -t sofa-echo-client:${version} .
-
-docker tag sofa-echo-client:${version} reg-cnsh-nf.cloud.alipay.com/library/sofa-echo-client:${version}
+#cd ../sofa-echo-client/
+#echo "building sofa-echo-client with image-version: $version"
+#docker build -t sofa-echo-client:${version} .
+#
+#docker tag sofa-echo-client:${version} reg-cnsh-nf.cloud.alipay.com/library/sofa-echo-client:${version}
