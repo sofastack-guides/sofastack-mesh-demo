@@ -11,5 +11,27 @@
 
     <artifactId>dubbo-echo-api</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+            <version>1.0.2.Final</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.6.3.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-netty4</artifactId>
+            <version>3.6.3.Final</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
