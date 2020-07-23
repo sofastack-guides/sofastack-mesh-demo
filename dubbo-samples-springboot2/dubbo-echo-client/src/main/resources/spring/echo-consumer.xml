@@ -33,9 +33,9 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
 
     <!-- 指定要消费的服务 -->
-<!--    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" group="group-A" version="version-1.0"/>-->
+    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" group="group-A" version="version-1.0"/>
 
-    <dubbo:reference id="restService" interface="com.alipay.sofa.ms.service.RestService" group="group-A" version="version-1.0"/>
+<!--    <dubbo:reference id="restService" interface="com.alipay.sofa.ms.service.RestService" group="group-A" version="version-1.0"/>-->
 
 
 </beans>

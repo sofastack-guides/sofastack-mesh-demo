@@ -28,13 +28,15 @@ public class EchoConsumer implements ApplicationContextAware {
     private static final Logger LOGGER = LoggerFactory.getLogger(EchoConsumer.class);
 
     public static void main(String[] args) {
+        //System.out.println(Integer.toHexString("xml-rpc".hashCode()));
         SpringApplication.run(EchoConsumer.class, args);
     }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        //testDubboInvoke(applicationContext);
-        testDubboRestInvoke(applicationContext);
+        //System.out.println(Integer.toHexString("xml-rpc".hashCode()));
+        testDubboInvoke(applicationContext);
+        //testDubboRestInvoke(applicationContext);
     }
 
     public static void testDubboInvoke(ApplicationContext applicationContext) {

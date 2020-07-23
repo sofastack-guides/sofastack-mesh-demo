@@ -33,16 +33,16 @@
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
-    <dubbo:protocol name="rest" port="8080" server="netty" default="false"/>
+<!--    <dubbo:protocol name="rest" port="8080" server="netty" default="false"/>-->
 
     <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
     <bean id="echoService" class="com.alipay.sofa.ms.service.EchoServiceImpl"/>
 
-    <bean id="restService" class="com.alipay.sofa.ms.service.RestServiceImpl" />
+<!--    <bean id="restService" class="com.alipay.sofa.ms.service.RestServiceImpl" />-->
 
     <!-- 声明服务暴露的接口，并暴露服务 -->
-<!--    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoService" group="group-A" version="version-1.0"/>-->
+    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoService" group="group-A" version="version-1.0"/>
 
-    <dubbo:service interface="com.alipay.sofa.ms.service.RestService" ref="restService" group="group-A" version="version-1.0"  protocol="rest"/>
+<!--    <dubbo:service interface="com.alipay.sofa.ms.service.RestService" ref="restService" group="group-A" version="version-1.0"  protocol="rest"/>-->
 
 </beans>
