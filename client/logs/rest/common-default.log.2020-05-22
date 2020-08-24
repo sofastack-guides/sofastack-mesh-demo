@@ -1,0 +1,16 @@
+2020-05-22 17:13:04.990 [main] INFO  c.a.b.s.s.i.RestApplicationContextInitializer - sofa rest starting!
+2020-05-22 17:13:06.350 [main] WARN  c.a.s.rest.spring.RestComponentsIndentifyProcessor - sofa rest can not resolve this bean class[you can ignore this warning]!
+2020-05-22 17:13:06.350 [main] WARN  c.a.s.rest.spring.RestComponentsIndentifyProcessor - sofa rest can not resolve this bean class[you can ignore this warning]!
+2020-05-22 17:13:06.350 [main] WARN  c.a.s.rest.spring.RestComponentsIndentifyProcessor - sofa rest can not resolve this bean class[you can ignore this warning]!
+2020-05-22 17:13:08.713 [main] INFO  com.alipay.sofa.rest.bootstrap.RestBootstrap - ClientConfig{connections=10, connectTimeout=-1, socketTimeout=-1, threadPoolSize=10, retries=0}
+2020-05-22 17:13:08.870 [main] INFO  com.alipay.sofa.rest.bootstrap.RestBootstrap -  rest client started.
+2020-05-22 17:13:08.882 [main] INFO  c.a.sofa.rest.server.netty.SofaRestNettyServer - server connector works,Connector{port=8341, hostname='null',maxRequestSize =10485760, isKeepAlive=true, exposed=true, sslContext=null}. Configured min.pool.size=100,max.pool.size=200,queue.pool.size=500,prestart=false
+2020-05-22 17:13:08.883 [main] INFO  com.alipay.sofa.rest.bootstrap.RestBootstrap -  rest server is started.
+2020-05-22 17:13:08.883 [main] INFO  c.a.sofa.rest.spring.support.RestComponentsLog - 
+====== rest resources and providers ======
+providers:
+  class org.jboss.resteasy.plugins.providers.ServerFormUrlEncodedProvider
+
+resources:
+
+2020-05-22 17:13:08.883 [main] INFO  com.alipay.sofa.rest.bootstrap.RestBootstrap - sofa rest started.

@@ -1,0 +1,47 @@
+2020-05-22 17:13:04,815 INFO  [server] change server from null to ServerInfo{url='100.88.165.156:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000}
+2020-05-22 17:13:04,817 INFO  [connection] connection open, remote: 100.88.165.156:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000 , conn: L=10.15.233.118:54088, R=100.88.165.156:9880, S=Connected
+2020-05-22 17:13:04,915 INFO  Query data from zdrmdata: version = 0, dataId = Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.publishConfig,version=3.0@DRM, value = 
+2020-05-22 17:13:04,932 INFO  Receive drm zone name from configserver: GZ00B
+2020-05-22 17:13:04,932 INFO  Receive drm zone name from configserver: GZ00B
+2020-05-22 17:13:04,936 INFO  Receive zdrmdata rest url pool from configserver:
+  >>> http://11.159.194.127
+  >>> http://100.88.165.156
+  >>> http://100.88.165.174
+  >>> http://100.88.165.165
+  >>> http://100.88.165.143
+  >>> http://100.88.165.10
+  >>> http://100.88.165.188
+  >>> http://100.83.127.103
+  >>> http://11.166.189.58
+  >>> http://100.88.165.116
+
+2020-05-22 17:13:04,936 INFO  [register] try regist to server, zone: GZ00B dataId: Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.publishConfig,version=3.0@DRM instanceId:
+2020-05-22 17:13:04,944 INFO  Receive zdrmdata heartbeat url pool from confreg:
+  >>> 100.88.165.156:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.83.127.103:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.143:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.174:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.165:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 11.159.194.127:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 11.166.189.58:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.10:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.116:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.188:9870?_SERIALIZETYPE=4&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+
+2020-05-22 17:13:04,949 INFO  Query data from zdrmdata: version = 0, dataId = Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.routeConfig,version=3.0@DRM, value = 
+2020-05-22 17:13:04,949 INFO  [register] try regist to server, zone: GZ00B dataId: Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.routeConfig,version=3.0@DRM instanceId:
+2020-05-22 17:13:04,967 INFO  [server] change server from ServerInfo{url='100.88.165.156:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000} to ServerInfo{url='100.88.165.156:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000}
+2020-05-22 17:13:04,967 INFO  Receive zdrmdata server url pool from confreg:
+  >>> 100.88.165.143:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.165:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.83.127.103:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.116:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.10:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 11.166.189.58:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 11.159.194.127:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.156:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.188:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+  >>> 100.88.165.174:9880?_SERIALIZETYPE=hessian2&_CONNECTTIMEOUT=5000&_TIMEOUT=10000
+
+2020-05-22 17:13:04,971 INFO  [RegisterResult] register success, dataId: Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.publishConfig,version=3.0@DRM remoteAddress: 100.88.165.156:9880
+2020-05-22 17:13:04,972 INFO  [RegisterResult] register success, dataId: Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.routeConfig,version=3.0@DRM remoteAddress: 100.88.165.156:9880

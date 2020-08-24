@@ -1,0 +1,2 @@
+2020-05-22 17:13:04,915 INFO  00;20ms;GZ00B;http://11.159.194.127;Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.publishConfig,version=3.0@DRM;;-1;0;GBK;200;0;Backend
+2020-05-22 17:13:04,949 INFO  00;12ms;GZ00B;http://100.88.165.143;Alipay.sofa-echo-client:name=com.alipay.sofa.rpc.ldc.route.drm.config.routeConfig,version=3.0@DRM;;-1;0;GBK;200;0;RocksDB
