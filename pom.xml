@@ -12,9 +12,6 @@
         <module>dubbo-samples-springboot2</module>
         <module>springcloud-samples-springboot2</module>
         <module>sofa-samples-springboot2</module>
-        <module>dubbo-echo-reply</module>
-        <module>dubbo-echo-reply</module>
-        <module>dubbo-samples-springboot2/dubbo-echo-reply</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 

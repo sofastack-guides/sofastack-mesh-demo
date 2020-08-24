@@ -1,6 +1,0 @@
-2020-05-22 17:13:05,002 INFO  main                             - SOFABoot Runtime Starting!
-2020-05-22 17:13:07,554 INFO  main                             - Registering component: reference:com.alipay.sofa.ms.service.SofaEchoService:#-1797692586
-2020-05-22 17:13:07,555 INFO  main                             -  >>In Binding [bolt] Begins - com.alipay.sofa.ms.service.SofaEchoService.
-2020-05-22 17:13:07,895 INFO  main                             -  >>In Binding [bolt] Ends - com.alipay.sofa.ms.service.SofaEchoService.
-2020-05-22 17:13:07,895 INFO  main                             -  >>In Binding [jvm] Begins - com.alipay.sofa.ms.service.SofaEchoService.
-2020-05-22 17:13:07,897 INFO  main                             -  >>In Binding [jvm] Ends - com.alipay.sofa.ms.service.SofaEchoService.

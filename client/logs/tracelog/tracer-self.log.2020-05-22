@@ -1,5 +1,0 @@
-2020-05-22 17:13:07.655[INFO]  LOG_FILE_DIR is ./client/logs/tracelog
-2020-05-22 17:13:07.659[WARN]  rpc-client-stat.log configured stat_log_interval=60 second and default cycle=60
-2020-05-22 17:13:07.663[WARN]  rpc-server-stat.log configured stat_log_interval=60 second and default cycle=60
-2020-05-22 17:13:07.665[WARN]  rpc-client-stat.log configured stat_log_interval=60 second and default cycle=60
-2020-05-22 17:13:07.665[WARN]  rpc-server-stat.log configured stat_log_interval=60 second and default cycle=60

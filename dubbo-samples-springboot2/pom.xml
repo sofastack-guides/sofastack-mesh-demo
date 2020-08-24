@@ -22,6 +22,7 @@
         <module>dubbo-echo-api</module>
         <module>dubbo-echo-client</module>
         <module>dubbo-echo-server</module>
+        <module>dubbo-echo-reply</module>
     </modules>
 
     <dependencyManagement>
@@ -38,6 +39,12 @@
                 <version>2.0.8.RELEASE</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>2.0.8.RELEASE</version>
             </dependency>
 
             <dependency>

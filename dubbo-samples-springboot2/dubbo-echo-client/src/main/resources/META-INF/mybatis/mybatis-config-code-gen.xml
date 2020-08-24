@@ -18,10 +18,10 @@
                 userId="root"
                 password="123456"/>
 
-        <javaModelGenerator targetPackage="com.alipay.sofa.ms.entity" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.alipay.sofa.ms.client.entity" targetProject="src/main/java"/>
         <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src/main/resources/META-INF"/>
 
-        <javaClientGenerator targetPackage="com.alipay.sofa.ms.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.alipay.sofa.ms.client.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <table tableName="jdp_tb_trade" domainObjectName="JdpTbTradeDO">
             <generatedKey column="tid" sqlStatement="MySql" identity="true"/>
