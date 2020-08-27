@@ -4,7 +4,6 @@
  */
 package com.alipay.sofa.ms;
 
-import com.alipay.sofa.ms.service.EchoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -13,8 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.ImportResource;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author yiji@apache.org
@@ -32,17 +29,17 @@ public class EchoConsumer implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
-        new Thread(() -> {
-            for (; ; ) {
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                    String status1 = echoService.echo("Hello world!");
-                    LOGGER.info(">>>>>>>> echo result: " + status1);
-                } catch (Exception e) {
-                    LOGGER.error(">>>>>>>> echo result: " + e.getMessage());
-                }
-            }
-        }).start();
+        //EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
+        //new Thread(() -> {
+        //    for (; ; ) {
+        //        try {
+        //            TimeUnit.SECONDS.sleep(1L);
+        //            String status1 = echoService.echo("Hello world!");
+        //            LOGGER.info(">>>>>>>> echo result: " + status1);
+        //        } catch (Exception e) {
+        //            LOGGER.error(">>>>>>>> echo result: " + e.getMessage());
+        //        }
+        //    }
+        //}).start();
     }
 }
