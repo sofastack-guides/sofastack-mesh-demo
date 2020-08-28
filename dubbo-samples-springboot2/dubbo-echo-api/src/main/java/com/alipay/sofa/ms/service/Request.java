@@ -1,6 +1,6 @@
 package com.alipay.sofa.ms.service;
 
-import com.alibaba.acs.pressure.jst.JstConstants;
+import com.alibaba.acs.pressure.jst.Field;
 import com.alipay.sofa.pressure.annotation.PressureField;
 
 import java.io.Serializable;
@@ -46,13 +46,13 @@ public class Request implements Serializable {
      *
      * @mbg.generated
      */
-    @PressureField(name = JstConstants.PRESSURE_FIELD_SELLER_NICK)
+    @PressureField(name = Field.SellerNick)
     private String sellerNick;
 
-    @PressureField(name = JstConstants.PRESSURE_FIELD_SKU_ID)
+    @PressureField(name = Field.SkuId)
     private String skuId;
 
-    @PressureField(name = JstConstants.PRESSURE_FIELD_TRADE_ID)
+    @PressureField(name = Field.TradeId)
     private String tradeId;
 
     private String pressureId;
