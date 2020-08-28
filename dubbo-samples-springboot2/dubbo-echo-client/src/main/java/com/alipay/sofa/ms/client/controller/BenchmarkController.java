@@ -49,25 +49,31 @@ public class BenchmarkController {
 
         request.pressureId = UUID.randomUUID().toString();
 
-        Integer loop = count;
-        new Thread(() -> {
-            Random random = new Random();
-            for (int i = 0; i < loop; i++) {
+        if (running.compareAndSet(false, true)) {
+            Integer loop = count;
+            new Thread(() -> {
+                Random random = new Random();
                 try {
-                    request.sent++;
-                    Thread.sleep(random.nextInt(50)); // random sleep [0-49] ms
-                    Response response = benchmark.request(
-                            new Request(request.pressureId, sellerNick, skuId, tradeId));
-                    logger.info("received response: " + response + ", id: " + i);
-                    if (response.getThrowable() != null) {
-                        request.throwable = response.getThrowable();
+                    for (int i = 0; i < loop; i++) {
+                        try {
+                            request.sent++;
+                            Thread.sleep(random.nextInt(50)); // random sleep [0-49] ms
+                            Response response = benchmark.request(
+                                    new Request(request.pressureId, sellerNick, skuId, tradeId));
+                            logger.info("received response: " + response + ", id: " + i);
+                            if (response.getThrowable() != null) {
+                                request.throwable = response.getThrowable();
+                            }
+                        } catch (Exception e) {
+                            request.failed++;
+                            request.throwable = e;
+                        }
                     }
-                } catch (Exception e) {
-                    request.failed++;
-                    request.throwable = e;
+                } finally {
+                    running.compareAndSet(true, false);
                 }
-            }
-        }).start();
+            }).start();
+        }
 
         buffer.append("Start request success.").append("\n");
         return buffer.append(request).toString();

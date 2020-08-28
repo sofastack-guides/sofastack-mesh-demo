@@ -47,13 +47,16 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
 
         try {
 
-            if (isTest()) {
+            boolean isTest = isTest();
+            if (isTest) {
                 //使用影子库
                 DynamicDataSourceContext.setDataSourceKey(DataSourceKey.TEST_DATABASE);
             } else {
                 //使用生产库
                 DynamicDataSourceContext.setDataSourceKey(DataSourceKey.PROD_DATABASE);
             }
+
+            logger.info("received request " + request + ", isTest: " + isTest);
 
             jdpTbTradeDOMapperExt.insert(tradeDO);
             response.setSuccess(true);

@@ -23,6 +23,12 @@
                 <artifactId>sofa-registry-cloud-all</artifactId>
                 <version>1.3.0</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.acs</groupId>
+                <artifactId>jstqa-pressure-test-rule</artifactId>
+                <version>0.1.0</version>
+            </dependency>
+
             <!-- 支持tracer -->
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
