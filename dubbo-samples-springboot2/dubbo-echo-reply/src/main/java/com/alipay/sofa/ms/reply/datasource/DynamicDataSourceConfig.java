@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@PropertySource("classpath:config/jdbc-${spring.profiles.active:dev}.properties")
+@PropertySource("classpath:config/jdbc-${spring.profiles.active:prod}.properties")
 @MapperScan(basePackages = "com.alipay.sofa.ms.reply.mapper")
 public class DynamicDataSourceConfig {
 
