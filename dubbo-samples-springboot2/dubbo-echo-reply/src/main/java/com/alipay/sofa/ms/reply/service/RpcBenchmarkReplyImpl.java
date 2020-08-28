@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
 
@@ -27,11 +28,23 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
         JdpTbTradeDO tradeDO = new JdpTbTradeDO();
         tradeDO.setJdpResponse(message);
         tradeDO.setSellerNick(request.getSellerNick());
+        tradeDO.setStatus(request.getPressureId());
+        tradeDO.setTid(request.getTid());
+
+        Date now = new Date();
+        tradeDO.setCreated(now);
+        tradeDO.setModified(now);
+        tradeDO.setJdpCreated(now);
+        tradeDO.setJdpModified(now);
+        tradeDO.setJdpHashcode(String.valueOf(message.hashCode()));
+        tradeDO.setBuyerNick("yiji");
+
+        tradeDO.setType(request.getType());
 
         Response response = new Response();
 
         try {
-            jdpTbTradeDOMapperExt.insertSelective(tradeDO);
+            jdpTbTradeDOMapperExt.insert(tradeDO);
             response.setSuccess(true);
         } catch (Exception e) {
             response.setSuccess(false);

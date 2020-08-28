@@ -1,8 +1,11 @@
 package com.alipay.sofa.ms.service;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Request implements Serializable {
+
+    private transient static AtomicLong id = new AtomicLong();
 
     public Request() {
     }
@@ -12,6 +15,8 @@ public class Request implements Serializable {
         this.skuId = skuId;
         this.tradeId = tradeId;
         this.pressureId = pressureId;
+        this.tid = id.incrementAndGet();
+        this.type = "mock";
     }
 
     private Long tid;

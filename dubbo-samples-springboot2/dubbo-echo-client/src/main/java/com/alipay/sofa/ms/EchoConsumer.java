@@ -4,8 +4,8 @@
  */
 package com.alipay.sofa.ms;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.dubbo.common.logger.Logger;
+import org.apache.dubbo.common.logger.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

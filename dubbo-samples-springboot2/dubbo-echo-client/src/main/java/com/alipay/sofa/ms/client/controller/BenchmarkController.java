@@ -3,7 +3,6 @@ package com.alipay.sofa.ms.client.controller;
 import com.alipay.sofa.ms.service.Request;
 import com.alipay.sofa.ms.service.Response;
 import com.alipay.sofa.ms.service.RpcBenchmark;
-import org.apache.tomcat.jni.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +29,10 @@ public class BenchmarkController {
     private RpcBenchmark benchmark;
 
     @RequestMapping(value = "/request")
-    public String request(@RequestParam(name = "sellerNick") String sellerNick,
-                          @RequestParam(name = "skuId") String skuId,
-                          @RequestParam(name = "tradeId") String tradeId,
-                          @RequestParam(name = "count") Integer count) {
+    public String request(@RequestParam(name = "sellerNick", required = false) String sellerNick,
+                          @RequestParam(name = "skuId", required = false) String skuId,
+                          @RequestParam(name = "tradeId", required = false) String tradeId,
+                          @RequestParam(name = "count", required = false) Integer count) {
 
         StringBuffer buffer = new StringBuffer();
 
@@ -56,10 +55,13 @@ public class BenchmarkController {
             for (int i = 0; i < loop; i++) {
                 try {
                     request.sent++;
-                    Time.sleep(random.nextInt(50)); // random sleep [0-49] ms
+                    Thread.sleep(random.nextInt(50)); // random sleep [0-49] ms
                     Response response = benchmark.request(
                             new Request(request.pressureId, sellerNick, skuId, tradeId));
                     logger.info("received response: " + response + ", id: " + i);
+                    if (response.getThrowable() != null) {
+                        request.throwable = response.getThrowable();
+                    }
                 } catch (Exception e) {
                     request.failed++;
                     request.throwable = e;
@@ -97,12 +99,12 @@ public class BenchmarkController {
 
     static class RequestHolder {
 
-        volatile String  sellerNick;
-        volatile String  skuId;
-        volatile String  tradeId;
-        volatile Integer count;
-        volatile Integer sent;
-        volatile Integer failed;
+        volatile String sellerNick;
+        volatile String skuId;
+        volatile String tradeId;
+        volatile int    count;
+        volatile int    sent;
+        volatile int    failed;
 
         volatile String pressureId;
 

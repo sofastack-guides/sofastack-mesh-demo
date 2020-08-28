@@ -24,7 +24,7 @@
         <javaClientGenerator targetPackage="com.alipay.sofa.ms.reply.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <table tableName="jdp_tb_trade" domainObjectName="JdpTbTradeDO">
-            <generatedKey column="tid" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="tid" sqlStatement="MySql"/>
             <columnOverride column="created" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
             <columnOverride column="modified" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
             <columnOverride column="jdp_created" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
