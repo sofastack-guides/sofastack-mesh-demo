@@ -2,7 +2,6 @@ mybatis:
   mapper-locations: classpath:META-INF/mybatis/mapper/*.xml
   type-aliases-package: com.alipay.sofa.ms.reply.entity
 
-
 spring:
   application:
     name: dubbo-echo-reply
