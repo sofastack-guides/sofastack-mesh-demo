@@ -1,8 +1,12 @@
 package com.alipay.sofa.ms.service;
 
+import com.alipay.sofa.pressure.annotation.PressureField;
+import com.alipay.sofa.pressure.annotation.PressureTest;
+
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 
+@PressureTest
 public class Request implements Serializable {
 
     private transient static AtomicLong id = new AtomicLong();
@@ -43,9 +47,13 @@ public class Request implements Serializable {
      *
      * @mbg.generated
      */
+    @PressureField(name = "sellerNick")
     private String sellerNick;
 
+    @PressureField(name = "skuId")
     private String skuId;
+
+    @PressureField(name = "tradeId")
     private String tradeId;
 
     private String pressureId;

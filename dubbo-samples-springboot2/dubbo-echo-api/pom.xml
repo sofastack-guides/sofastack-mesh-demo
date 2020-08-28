@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dubbo-echo-api</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>sofa-registry-cloud-all</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>

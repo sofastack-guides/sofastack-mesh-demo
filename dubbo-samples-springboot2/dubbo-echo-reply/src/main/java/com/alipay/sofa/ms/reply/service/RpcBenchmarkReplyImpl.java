@@ -7,6 +7,8 @@ import com.alipay.sofa.ms.reply.mapper.JdpTbTradeDOMapperExt;
 import com.alipay.sofa.ms.service.Request;
 import com.alipay.sofa.ms.service.Response;
 import com.alipay.sofa.ms.service.RpcBenchmarkReply;
+import com.alipay.sofa.pressure.PressureConstants;
+import com.alipay.sofa.pressure.context.PressureContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,6 +46,15 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
         Response response = new Response();
 
         try {
+
+            if (isTest()) {
+                //使用影子库
+                DynamicDataSourceContext.setDataSourceKey(DataSourceKey.TEST_DATABASE);
+            } else {
+                //使用生产库
+                DynamicDataSourceContext.setDataSourceKey(DataSourceKey.PROD_DATABASE);
+            }
+
             jdpTbTradeDOMapperExt.insert(tradeDO);
             response.setSuccess(true);
         } catch (Exception e) {
@@ -61,6 +72,7 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
         response.setSuccess(true);
 
         try {
+            // 清除生产库
             DynamicDataSourceContext.setDataSourceKey(DataSourceKey.PROD_DATABASE);
             jdpTbTradeDOMapperExt.removeAll();
         } catch (Exception e) {
@@ -71,6 +83,7 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
         }
 
         try {
+            // 清除影子库
             DynamicDataSourceContext.setDataSourceKey(DataSourceKey.TEST_DATABASE);
             jdpTbTradeDOMapperExt.removeAll();
         } catch (Exception e) {
@@ -82,5 +95,13 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
         }
 
         return response;
+    }
+
+    public boolean isTest() {
+        PressureContext pressureContext = PressureContext.getContext();
+        boolean isPressureTraffic = pressureContext != null &&
+                PressureConstants.PRESSURE_TAG_VALUE.equalsIgnoreCase(
+                        (String) pressureContext.getValue(PressureConstants.PRESSURE_TRAFFIC_TAG_KEY));
+        return isPressureTraffic;
     }
 }
