@@ -43,23 +43,4 @@ public class DynamicDataSourceConfig {
         return dynamicDataSource;
     }
 
-    //@Bean
-    //public DataSourceTransactionManager transactionManager() {
-    //    return new DataSourceTransactionManager(dynamicDataSource());
-    //}
-    //
-    //@Bean
-    //public SqlSessionFactoryBean sqlSessionFactoryBean(ResourceLoader resourceLoader) throws IOException {
-    //
-    //    ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-    //    Resource[] resources = resolver.getResources("classpath:META-INF/mybatis/mapper/*.xml");
-    //
-    //    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-    //    sqlSessionFactoryBean.setDataSource(dynamicDataSource());
-    //    sqlSessionFactoryBean.setConfigLocation(resourceLoader.getResource("classpath:META-INF/mybatis/mybatis-config.xml"));
-    //    sqlSessionFactoryBean.setMapperLocations(resources);
-    //
-    //    return sqlSessionFactoryBean;
-    //}
-
 }
