@@ -1,7 +1,7 @@
 package com.alipay.sofa.ms.service;
 
-import com.alibaba.acs.pressure.jst.Field;
 import com.alipay.sofa.pressure.annotation.PressureField;
+import com.alipay.sofa.pressure.jst.Field;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;

@@ -15,11 +15,6 @@
             <groupId>com.alipay.sofa</groupId>
             <artifactId>sofa-registry-cloud-all</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.acs</groupId>
-            <artifactId>jstqa-pressure-test-rule</artifactId>
-        </dependency>
     </dependencies>
 
 
