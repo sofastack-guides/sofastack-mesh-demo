@@ -28,6 +28,8 @@ public class BenchmarkController {
     @Resource
     private RpcBenchmark benchmark;
 
+    private static Thread thread;
+
     @RequestMapping(value = "/request")
     public String request(@RequestParam(name = "sellerNick", required = false) String sellerNick,
                           @RequestParam(name = "skuId", required = false) String skuId,
@@ -43,15 +45,15 @@ public class BenchmarkController {
             return buffer.toString();
         }
 
-        if (count == null) {
-            count = Integer.MAX_VALUE;
+        if (count == null || count <= 0) {
+            count = 1000;
         }
 
         request.pressureId = UUID.randomUUID().toString();
 
         if (running.compareAndSet(false, true)) {
             Integer loop = count;
-            new Thread(() -> {
+            thread = new Thread(() -> {
                 Random random = new Random();
                 try {
                     for (int i = 0; i < loop; i++) {
@@ -72,7 +74,8 @@ public class BenchmarkController {
                 } finally {
                     running.compareAndSet(true, false);
                 }
-            }).start();
+            });
+            thread.start();
         }
 
         buffer.append("Start request success.").append("\n");
@@ -83,6 +86,17 @@ public class BenchmarkController {
     public String query() {
         StringBuffer buffer = new StringBuffer();
         return buffer.append(request).toString();
+    }
+
+    @RequestMapping(value = "/stop")
+    public String stop() {
+        if (running.get() && thread != null) {
+            thread.interrupt();
+            thread = null;
+            return "stopped";
+        }
+
+        return "not start yet.";
     }
 
     @RequestMapping(value = "/clear")

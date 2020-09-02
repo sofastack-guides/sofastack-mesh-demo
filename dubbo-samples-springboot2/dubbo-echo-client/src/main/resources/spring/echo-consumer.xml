@@ -33,7 +33,7 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
 
     <!-- 指定要消费的服务 -->
-    <dubbo:reference id="rpcBenchmark" interface="com.alipay.sofa.ms.service.RpcBenchmark" timeout="3000"/>
+    <dubbo:reference id="rpcBenchmark" interface="com.alipay.sofa.ms.service.RpcBenchmark" timeout="3000" retries="0"/>
 
 
 </beans>
