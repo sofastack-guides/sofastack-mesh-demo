@@ -2,6 +2,8 @@ package com.alipay.sofa.ms.service;
 
 import com.alipay.sofa.pressure.annotation.PressureField;
 import com.alipay.sofa.pressure.jst.Field;
+import org.apache.dubbo.common.utils.NetUtils;
+import org.apache.dubbo.rpc.RpcContext;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
@@ -21,6 +23,8 @@ public class Request implements Serializable {
         this.tid = id.incrementAndGet();
         this.type = "mock";
     }
+
+    private String route;
 
     private Long tid;
 
@@ -97,6 +101,28 @@ public class Request implements Serializable {
         this.pressureId = pressureId;
     }
 
+    public String getRoute() {
+        return route;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
+    }
+
+    // only invoke on server side.
+    public void updateRouteRecord() {
+        StringBuffer route = new StringBuffer();
+        route.append(this.getRoute() == null
+                // 请求没有携带，获取channel的remote host
+                ? RpcContext.getContext().getRemoteHost()
+                : getRoute());
+
+        // append server ip
+        route.append("->").append(NetUtils.getLocalHost());
+        // 更新链路的route record.
+        this.setRoute(route.toString());
+    }
+
     @Override
     public String toString() {
 
@@ -115,6 +141,10 @@ public class Request implements Serializable {
 
         if (this.tid != null) {
             buffer.append(", tid=").append(this.tid);
+        }
+
+        if (this.route != null) {
+            buffer.append(", route=").append(this.route);
         }
 
         return buffer.toString();

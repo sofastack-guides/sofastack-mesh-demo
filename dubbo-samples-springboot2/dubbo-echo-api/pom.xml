@@ -15,6 +15,12 @@
             <groupId>com.alipay.sofa</groupId>
             <artifactId>sofa-registry-cloud-all</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
     </dependencies>
 
 

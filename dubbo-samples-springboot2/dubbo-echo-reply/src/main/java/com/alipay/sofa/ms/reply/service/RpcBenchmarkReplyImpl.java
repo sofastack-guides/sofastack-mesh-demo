@@ -24,8 +24,9 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
     @Override
     public Response request(Request request) {
 
-        String message = request.toString();
+        request.updateRouteRecord();
 
+        String message = request.toString();
         JdpTbTradeDO tradeDO = new JdpTbTradeDO();
         tradeDO.setJdpResponse(message);
         tradeDO.setSellerNick(request.getSellerNick());

@@ -14,6 +14,9 @@ public class RpcBenchmarkImpl implements RpcBenchmark {
 
     @Override
     public Response request(Request request) {
+
+        request.updateRouteRecord();
+
         logger.info("received request " + request);
         return rpcBenchmarkReply.request(request);
     }
