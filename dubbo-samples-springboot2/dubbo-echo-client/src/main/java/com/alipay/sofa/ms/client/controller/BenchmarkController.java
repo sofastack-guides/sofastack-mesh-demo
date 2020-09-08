@@ -60,9 +60,10 @@ public class BenchmarkController {
                         try {
                             request.sent++;
                             Thread.sleep(random.nextInt(50)); // random sleep [0-49] ms
-                            Response response = benchmark.request(
-                                    new Request(request.pressureId, sellerNick, skuId, tradeId));
-                            logger.info("received response: " + response + ", id: " + i);
+                            Request req = new Request(request.pressureId, sellerNick, skuId, tradeId);
+                            logger.info("request" + req + ", id: " + i);
+                            Response response = benchmark.request(req);
+                            logger.info("request" + req + "received response: " + response + ", id: " + i);
                             if (response.getThrowable() != null) {
                                 request.throwable = response.getThrowable();
                             }
