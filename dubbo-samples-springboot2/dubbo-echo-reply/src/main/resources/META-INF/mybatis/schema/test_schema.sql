@@ -1,7 +1,7 @@
 CREATE SCHEMA `test_sys_info` ;
 
 CREATE TABLE `jdp_tb_trade` (
-  `tid` bigint(20) NOT NULL,
+  `tid` bigint(20)  NOT NULL AUTO_INCREMENT,
   `status` varchar(64) NOT NULL,
   `type` varchar(64) DEFAULT NULL,
   `seller_nick` varchar(32) DEFAULT NULL,

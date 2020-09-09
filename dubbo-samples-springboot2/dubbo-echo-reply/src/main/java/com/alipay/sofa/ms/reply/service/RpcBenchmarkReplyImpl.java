@@ -31,7 +31,7 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
         tradeDO.setJdpResponse(message);
         tradeDO.setSellerNick(request.getSellerNick());
         tradeDO.setStatus(request.getPressureId());
-        tradeDO.setTid(request.getTid());
+        // tradeDO.setTid(request.getTid());
 
         Date now = new Date();
         tradeDO.setCreated(now);
@@ -58,7 +58,7 @@ public class RpcBenchmarkReplyImpl implements RpcBenchmarkReply {
 
             logger.info("received request " + request + ", isTest: " + isTest);
 
-            jdpTbTradeDOMapperExt.insert(tradeDO);
+            jdpTbTradeDOMapperExt.insertSelective(tradeDO);
             response.setSuccess(true);
         } catch (Exception e) {
             response.setSuccess(false);
