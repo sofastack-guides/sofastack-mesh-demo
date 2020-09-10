@@ -76,6 +76,7 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
           logger.error(">>>>>>> get reservations: : " + e.getMessage());
         }
       }
-    }).start();
+    });
+//            .start();
   }
 }

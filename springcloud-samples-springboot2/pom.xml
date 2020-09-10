@@ -20,6 +20,7 @@
         <module>springcloud-hystrix-dashboard</module>
         <module>springcloud-turbine</module>
         <module>spring-cloud-reservation-gateway</module>
+        <module>springcloud-reservation-reply</module>
     </modules>
 
     <properties>
