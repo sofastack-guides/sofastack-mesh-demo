@@ -7,8 +7,12 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: benchmark_route
+          uri: lb://springcloud-reservation-service
+          predicates:
+            - Path=/benchmark/**
         - id: dingtalk_route
-          uri: lb://reservation-service
+          uri: lb://springcloud-reservation-service
           # 对应跟钉钉对接不需要验证的部分，现在同样是在手机端，与 /pro/v1/mobile/** 相同
           # uri: http://localhost:2005
           predicates:

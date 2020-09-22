@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
  * <br />
  *
  * Try the following urls to access reservation service directly, i.e. as zuul proxy
- * http://localhost:9999/reservation-service/reservations
+ * http://localhost:9999/springcloud-reservation-service/reservations
  *
  * @author yiji@apache.org
  */
@@ -32,7 +32,7 @@ public class ReservationClientApplication {
   @Bean
   CommandLineRunner runner(DiscoveryClient dc) {
     return args -> {
-      dc.getInstances("reservation-service")
+      dc.getInstances("springcloud-reservation-service")
               .forEach(si -> System.out.println(String.format(
                       "Found %s %s:%s", si.getServiceId(), si.getHost(), si.getPort())));
     };

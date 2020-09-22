@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * http://localhost:7799/reservations/hello 转发到reservation-service应用8080端口
+ * http://localhost:7799/reservations/hello 转发到springcloud-reservation-service应用8080端口
  * http://localhost:8080/reservations/hello
  *
  * @author yiji@apache.org
