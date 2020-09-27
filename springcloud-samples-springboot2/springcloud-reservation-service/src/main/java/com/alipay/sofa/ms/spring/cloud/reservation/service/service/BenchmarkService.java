@@ -14,7 +14,6 @@ import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.hal.Jackson2HalModule;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;

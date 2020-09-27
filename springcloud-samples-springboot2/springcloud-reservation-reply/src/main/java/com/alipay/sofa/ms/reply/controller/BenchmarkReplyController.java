@@ -7,7 +7,6 @@ package com.alipay.sofa.ms.reply.controller;
 import com.alipay.sofa.ms.reply.service.RpcBenchmarkReplyImpl;
 import com.alipay.sofa.ms.service.Request;
 import com.alipay.sofa.ms.service.Response;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

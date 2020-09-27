@@ -2,10 +2,7 @@ package com.alipay.sofa.ms.spring.cloud.reservation.service.service;
 
 import com.alipay.sofa.ms.service.Request;
 import com.alipay.sofa.ms.service.Response;
-import org.springframework.hateoas.Resources;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 /**
  * @author zxy
