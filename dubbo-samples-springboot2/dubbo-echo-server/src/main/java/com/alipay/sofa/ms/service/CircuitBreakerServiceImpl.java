@@ -36,7 +36,7 @@ public class CircuitBreakerServiceImpl implements CircuitBreakerService {
         } catch (InterruptedException interruptedException) {
             logger.warn("被唤醒");
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+            logger.error("UnknownHostException",e);
         }
         return res;
     }

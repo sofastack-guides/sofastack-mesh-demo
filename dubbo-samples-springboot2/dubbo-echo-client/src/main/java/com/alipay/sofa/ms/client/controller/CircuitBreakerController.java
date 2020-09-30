@@ -1,6 +1,5 @@
 package com.alipay.sofa.ms.client.controller;
 
-import co.paralleluniverse.fibers.Fiber;
 import com.alipay.sofa.ms.client.domain.CircuitBreakerModel;
 import com.alipay.sofa.ms.client.domain.CircuitBreakerResponse;
 import com.alipay.sofa.ms.client.domain.CircuitBreakerResponseType;
@@ -13,13 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
 /**
  * @author zxy
@@ -35,7 +29,7 @@ public class CircuitBreakerController {
     private CircuitBreakerService service;
 
     @GetMapping(path = "getServiceInfo")
-    public CircuitBreakerResponse getServiceInfo(CircuitBreakerModel model) throws InterruptedException, TimeoutException, ExecutionException {
+    public CircuitBreakerResponse getServiceInfo(CircuitBreakerModel model) throws Exception {
         boolean breakFlag = false;
         if (model.getErrorPercent() != null) {
             breakFlag = triggerErrorPercentBreaker(model);
@@ -53,29 +47,32 @@ public class CircuitBreakerController {
         return new CircuitBreakerResponse().setCode(res.getCode()).setMessage(res.getMessage());
     }
 
-    private boolean triggerAverageRtBreaker(CircuitBreakerModel model) throws InterruptedException, TimeoutException, ExecutionException {
+    private boolean triggerAverageRtBreaker(CircuitBreakerModel model) throws InterruptedException, ExecutionException {
         Long requestCount = model.getRequestCount();
         AtomicBoolean breakFlag = new AtomicBoolean(false);
-        Fiber<Object> fiber = null;
-        //多请求几次，触发熔断
-        requestCount = requestCount + 3;
+        ThreadPoolExecutor pool = new ThreadPoolExecutor(20, 40,
+                0L, TimeUnit.MILLISECONDS,
+                new SynchronousQueue());
+        Future future = null;
         for (int i = 0; i < requestCount; i++) {
             if (breakFlag.get()) {
+                pool.shutdown();
                 return true;
             }
-            fiber = new Fiber<>(() -> {
+            future = pool.submit(() -> {
                 try {
                     service.getServiceInfo(model.getAverageRt(), false);
                 } catch (RuntimeException e) {
                     logger.info("发生了熔断", e);
                     breakFlag.set(true);
                 }
-            }).start();
+            });
         }
+        future.get();
         //阻塞
-        fiber.get();
         return breakFlag.get();
     }
+
 
     private boolean triggerErrorPercentBreaker(CircuitBreakerModel model) {
         Long requestCount = model.getRequestCount();
@@ -88,7 +85,7 @@ public class CircuitBreakerController {
         }
         boolean breakFlag = false;
         //多请求，触发熔断
-        error ++;
+        error++;
         for (int i = 0; i < error; i++) {
             try {
                 service.getServiceInfo(0L, true);

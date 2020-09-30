@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="echo-consumer"/>
+    <dubbo:application name="echo-consumer-zxy"/>
 
    <!-- <dubbo:consumer check="false" />-->
 
