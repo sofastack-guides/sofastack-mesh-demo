@@ -135,6 +135,7 @@
     </springProfile>
 
     <logger name="com.alipay.sofa.ms" level="${logging.level}" additivity="false">
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="ROOT-APPENDER"/>
         <appender-ref ref="ERROR-APPENDER"/>
     </logger>

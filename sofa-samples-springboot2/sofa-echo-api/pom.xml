@@ -11,5 +11,13 @@
 
     <artifactId>sofa-echo-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>rest-enterprise-sofa-boot-starter</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

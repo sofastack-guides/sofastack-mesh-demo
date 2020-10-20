@@ -59,10 +59,19 @@ public class CircuitBreakerController {
                 pool.shutdown();
                 return true;
             }
+            int finalI = i;
             future = pool.submit(() -> {
                 try {
+                    if ((requestCount - 1) == finalI) {
+                        Thread.sleep(model.getTotalMetricWindow() * 1000);
+                    }
                     service.getServiceInfo(model.getAverageRt(), false);
-                } catch (RuntimeException e) {
+                } catch (InterruptedException interruptedException) {
+                    logger.info("中断异常", interruptedException);
+                } catch (Exception e) {
+                    if (!checkCircuitBreakerException(e)) {
+                        throw e;
+                    }
                     logger.info("发生了熔断", e);
                     breakFlag.set(true);
                 }
@@ -71,6 +80,10 @@ public class CircuitBreakerController {
         future.get();
         //阻塞
         return breakFlag.get();
+    }
+
+    private boolean checkCircuitBreakerException(Exception e) {
+        return e.getMessage() != null && e.getMessage().contains("mosn limit excepiton");
     }
 
 
@@ -84,15 +97,22 @@ public class CircuitBreakerController {
             service.getServiceInfo(0L, false);
         }
         boolean breakFlag = false;
-        //多请求，触发熔断
-        error++;
+        //多请求几次，触发熔断
+        error = error == 0 ? 0 : error + 2;
         for (int i = 0; i < error; i++) {
             try {
+                if (error - 1 == i) {
+                    Thread.sleep(model.getTotalMetricWindow() * 1000);
+                }
                 service.getServiceInfo(0L, true);
+            } catch (InterruptedException interruptedException) {
+                logger.info("中断异常", interruptedException);
             } catch (RequestException e) {
                 logger.info("异常调用");
-            } catch (RuntimeException e) {
-                //假设这里发生了熔断
+            } catch (Exception e) {
+                if (!checkCircuitBreakerException(e)) {
+                    throw e;
+                }
                 logger.info("发生了熔断", e);
                 breakFlag = true;
                 break;
@@ -103,33 +123,45 @@ public class CircuitBreakerController {
 
     private CircuitBreakerResponseType testAwaken(CircuitBreakerModel model) throws InterruptedException {
         //等待熔断恢复期
+        logger.info("等待熔断恢复期");
         Thread.sleep(model.getSleepWindow());
         //根据类型发送请求
         CircuitBreakerResponseType res = null;
         try {
-            res = sendRequestByModel(model);
-        } catch (RuntimeException e) {
-            //熔断打开状态
-            logger.info("发生了熔断", e);
-            String type = model.getAwakenRequestType();
-            switch (type) {
-                case "1":
-                    res = CircuitBreakerResponseType.BREAKER_NORMAL_OPEN;
-                    break;
-                case "2":
-                    res = CircuitBreakerResponseType.BREAKER_EXCEPTION_OPEN;
-                    break;
-                case "3":
-                    res = CircuitBreakerResponseType.BREAKER_TIMEOUT_OPEN;
-                    break;
-                default:
-                    break;
+            logger.info("发送请求测试熔断状态");
+            for (int i = 0; i < 3; i++) {
+                res = sendRequestAndGetType(model);
             }
+        } catch (Exception e) {
+            if (!checkCircuitBreakerException(e)) {
+                throw e;
+            }
+            //熔断打开状态
+            logger.info("熔断依旧处于打开状态", e);
+            res = setResponseTypeByFault(model, res);
         }
         return res;
     }
 
-    private CircuitBreakerResponseType sendRequestByModel(CircuitBreakerModel model) {
+    private CircuitBreakerResponseType setResponseTypeByFault(CircuitBreakerModel model, CircuitBreakerResponseType res) {
+        String type = model.getAwakenRequestType();
+        switch (type) {
+            case "1":
+                res = CircuitBreakerResponseType.BREAKER_NORMAL_OPEN;
+                break;
+            case "2":
+                res = CircuitBreakerResponseType.BREAKER_EXCEPTION_OPEN;
+                break;
+            case "3":
+                res = CircuitBreakerResponseType.BREAKER_TIMEOUT_OPEN;
+                break;
+            default:
+                break;
+        }
+        return res;
+    }
+
+    private CircuitBreakerResponseType sendRequestAndGetType(CircuitBreakerModel model) {
         String type = model.getAwakenRequestType();
         CircuitBreakerResponseType res = null;
         switch (type) {

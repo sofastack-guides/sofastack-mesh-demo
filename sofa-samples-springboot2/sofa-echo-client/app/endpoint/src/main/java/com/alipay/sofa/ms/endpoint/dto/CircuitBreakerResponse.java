@@ -1,4 +1,4 @@
-package com.alipay.sofa.ms.client.domain;
+package com.alipay.sofa.ms.endpoint.dto;
 
 /**
  * @author zxy

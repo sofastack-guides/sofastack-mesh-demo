@@ -24,7 +24,12 @@
 
     <!-- sofa rpc service -->
     <bean id="sofaEchoService" class="com.alipay.sofa.ms.endpoint.impl.SofaEchoServiceImpl"/>
-    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService">
+<!--    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService">-->
+<!--        <sofa:binding.bolt/>-->
+<!--    </sofa:service>-->
+
+    <bean id="circuitBreakerRestFacadeImpl" class="com.alipay.sofa.ms.endpoint.impl.CircuitBreakerRestFacadeImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.CircuitBreakerRestFacade" ref="circuitBreakerRestFacadeImpl">
         <sofa:binding.bolt/>
     </sofa:service>
 

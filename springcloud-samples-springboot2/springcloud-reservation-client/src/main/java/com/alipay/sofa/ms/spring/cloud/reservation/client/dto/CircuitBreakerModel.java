@@ -1,4 +1,4 @@
-package com.alipay.sofa.ms.client.domain;
+package com.alipay.sofa.ms.spring.cloud.reservation.client.dto;
 
 /**
  * @author zxy
@@ -31,11 +31,6 @@ public class CircuitBreakerModel {
     private Integer sleepWindow;
 
     /**
-     * rpc超时时间
-     */
-    private Long rpcTimeout;
-
-    /**
      * 唤醒请求的类型
      * (1-正常2-异常3-超时)
      */
@@ -63,14 +58,6 @@ public class CircuitBreakerModel {
 
     public void setSleepWindow(Integer sleepWindow) {
         this.sleepWindow = sleepWindow;
-    }
-
-    public Long getRpcTimeout() {
-        return rpcTimeout;
-    }
-
-    public void setRpcTimeout(Long rpcTimeout) {
-        this.rpcTimeout = rpcTimeout;
     }
 
     public String getAwakenRequestType() {

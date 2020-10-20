@@ -49,7 +49,7 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
             };
 
     ResponseEntity<Resources<Reservation>> exchange = rt.exchange(
-            "http://reservation-service/reservations",
+            "http://reservation-service-zxy/reservations",
             HttpMethod.GET, null, parameterizedTypeReference);
 
     return exchange.getBody().getContent().stream().map(Reservation::getReservationName).collect(Collectors.toList());
@@ -76,6 +76,7 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
           logger.error(">>>>>>> get reservations: : " + e.getMessage());
         }
       }
-    }).start();
+    });
+//            .start();
   }
 }
