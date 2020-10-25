@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~
+  ~   Licensed to the Apache Software Foundation (ASF) under one or more
+  ~   contributor license agreements.  See the NOTICE file distributed with
+  ~   this work for additional information regarding copyright ownership.
+  ~   The ASF licenses this file to You under the Apache License, Version 2.0
+  ~   (the "License"); you may not use this file except in compliance with
+  ~   the License.  You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~   Unless required by applicable law or agreed to in writing, software
+  ~   distributed under the License is distributed on an "AS IS" BASIS,
+  ~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~   See the License for the specific language governing permissions and
+  ~   limitations under the License.
+  ~
+  -->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
+    <dubbo:application name="reservation-service"/>
+
+    <!-- 使用本地dsr作为注册中心 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
+
+    <!-- 只用Dubbo协议并且指定监听端口 20880 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
+    <bean id="echoService" class="com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service.EchoServiceImpl"/>
+    <!-- 声明服务暴露的接口，并暴露服务 -->
+    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoService"/>
+
+    <bean id="tomService" class="com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service.TomServiceImpl"/>
+    <bean id="tomCallService" class="com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service.TomCallServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" ref="tomService"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" version="tom-version" ref="tomCallService"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" version="tom-version" ref="tomService"/>
+
+    <!--<dubbo:reference id="echoServiceRef" interface="com.alipay.sofa.ms.service.EchoService"/>-->
+</beans>

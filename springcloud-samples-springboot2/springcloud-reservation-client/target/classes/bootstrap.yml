@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: reservation-client
+
+#eureka:
+#  client:
+logging:
+  path: ./logs
+#    enabled: false

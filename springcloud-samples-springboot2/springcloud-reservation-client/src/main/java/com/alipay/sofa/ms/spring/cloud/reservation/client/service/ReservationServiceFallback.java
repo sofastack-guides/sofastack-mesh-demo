@@ -13,4 +13,24 @@ public class ReservationServiceFallback implements ReservationService {
     return new Resources<>(Collections.emptyList());
   }
 
+    @Override
+    public String echoAll() {
+        return null;
+    }
+
+    @Override
+    public String echoPath(String name) {
+        return null;
+    }
+
+    @Override
+    public String echoParam(String name) {
+        return null;
+    }
+
+    @Override
+    public String echoPost(TestBean testBean) {
+        return null;
+    }
+
 }
