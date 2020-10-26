@@ -74,16 +74,8 @@ public class TestController {
 
     @RequestMapping("/rt/http/{ip}/{port}")
     public String getRtHttpMsg(@PathVariable String ip, @PathVariable String port) {
-
-        ParameterizedTypeReference<String> parameterizedTypeReference =
-                new ParameterizedTypeReference<String>() {
-                };
-
-        ResponseEntity<String> exchange = rt.exchange(
-                "http://" + ip + ":" + port + "/echo/name/aaa",
-                HttpMethod.GET, null, parameterizedTypeReference);
-
-        return exchange.getBody();
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("http://" + ip + ":" + port + "/echo/name/aaa", String.class);
     }
 
     @RequestMapping("/feign")
