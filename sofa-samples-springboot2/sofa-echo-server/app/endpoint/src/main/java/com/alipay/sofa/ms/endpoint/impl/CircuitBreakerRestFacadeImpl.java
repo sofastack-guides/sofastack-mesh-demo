@@ -19,10 +19,10 @@ public class CircuitBreakerRestFacadeImpl implements CircuitBreakerRestFacade {
     private final Logger logger = LoggerFactory.getLogger(CircuitBreakerRestFacadeImpl.class);
 
     @Override
-    public String getServiceInfo(Long executionTime, String type,Integer timeout) throws RemotingException {
+    public String getServiceInfo(Long executionTime, String type,Integer timeout) {
         logger.info("被调用,执行时间:{}ms,类型为:{}", executionTime, type);
         if (Objects.equals(type, RequestType.EXCEPTION.getType())) {
-            throw new RemotingException("异常调用");
+            throw new IllegalArgumentException("异常调用");
         } else if (Objects.equals(type, RequestType.TIMEOUT.getType())) {
             try {
                 Thread.sleep(executionTime);

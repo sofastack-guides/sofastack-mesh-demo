@@ -18,5 +18,5 @@ public interface CircuitBreakerRestFacade {
 
     @GET
     @Path("/getServiceInfo")
-    String getServiceInfo(@QueryParam("executionTime") Long executionTime, @QueryParam("type") String type,@QueryParam("timeout")Integer timeout) throws RemotingException;
+    String getServiceInfo(@QueryParam("executionTime") Long executionTime, @QueryParam("type") String type,@QueryParam("timeout")Integer timeout) ;
 }

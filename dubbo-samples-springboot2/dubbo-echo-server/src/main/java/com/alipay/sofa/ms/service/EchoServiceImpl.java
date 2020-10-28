@@ -20,6 +20,11 @@ public class EchoServiceImpl implements EchoService {
     private static final Logger LOGGER = LoggerFactory.getLogger(EchoServiceImpl.class);
 
     public String echo(String message) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException interruptedException) {
+            interruptedException.printStackTrace();
+        }
         String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
         LOGGER.info("[" + now + "] Hello " + message
                 + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());

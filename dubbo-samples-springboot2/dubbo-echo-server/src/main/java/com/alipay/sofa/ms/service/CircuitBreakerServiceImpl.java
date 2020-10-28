@@ -1,6 +1,8 @@
 package com.alipay.sofa.ms.service;
 
+import com.alipay.sofa.ms.dto.RequestType;
 import com.alipay.sofa.ms.exception.RequestException;
+import org.apache.dubbo.rpc.RpcContext;
 import org.apache.http.HttpException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,24 +21,32 @@ public class CircuitBreakerServiceImpl implements CircuitBreakerService {
 
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerServiceImpl.class);
 
+
     @Override
-    public String getServiceInfo(Long sleepTime,Boolean exception) throws RequestException{
-        logger.info("被调用,sleep:{}ms,异常状态为:{}",sleepTime,exception);
-        if(Objects.equals(exception,true)){
-            throw new RequestException("异常调用");
+    public String getServiceInfo(Long executionTime, String type,Integer timeout) {
+        logger.info("被调用,执行时间:{}ms,类型为:{}", executionTime, type);
+        if (Objects.equals(type, RequestType.EXCEPTION.getType())) {
+            throw new IllegalArgumentException("异常调用");
+        } else if (Objects.equals(type, RequestType.TIMEOUT.getType())) {
+            try {
+                Thread.sleep(executionTime);
+            } catch (InterruptedException interruptedException) {
+                logger.warn("被唤醒");
+            }
+            return "timeout:504";
         }
         long start = System.currentTimeMillis();
         String res = "";
         try {
             InetAddress localHost = InetAddress.getLocalHost();
-            res=String.format("熔断请求服务,ip地址:%s", localHost.getHostAddress());
-            Thread.sleep(sleepTime);
-            res += String.format(",执行时间ms:%d",System.currentTimeMillis()-start);
+            res = String.format("熔断请求服务,ip地址:%s", localHost.getHostAddress());
+            Thread.sleep(executionTime);
+            res += String.format(",执行时间ms:%d", System.currentTimeMillis() - start);
             return res;
         } catch (InterruptedException interruptedException) {
             logger.warn("被唤醒");
         } catch (UnknownHostException e) {
-            logger.error("UnknownHostException",e);
+            logger.error("UnknownHostException", e);
         }
         return res;
     }

@@ -1,11 +1,11 @@
 package com.alipay.sofa.ms.endpoint.reference;
 
 import com.alipay.sofa.ms.dto.RequestType;
-import com.alipay.sofa.ms.endpoint.dto.*;
+import com.alipay.sofa.ms.endpoint.dto.CircuitBreakerModel;
+import com.alipay.sofa.ms.endpoint.dto.CircuitBreakerResponse;
+import com.alipay.sofa.ms.endpoint.dto.CircuitBreakerResponseType;
+import com.alipay.sofa.ms.endpoint.dto.ResponseType;
 import com.alipay.sofa.ms.service.CircuitBreakerRestFacade;
-import com.alipay.sofa.runtime.api.annotation.SofaReference;
-import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
-import com.taobao.remoting.RemotingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -183,6 +183,10 @@ public class CircuitBreakerController {
     private ResponseType sendRequest(Long executionTime, RequestType requestType) {
         ResponseType res = ResponseType.NORMAL;
         Integer timeout = null;
+        if (requestType == RequestType.EXCEPTION) {
+            //sofa暂时不支持抛出异常来进行熔断统计
+            requestType = RequestType.TIMEOUT;
+        }
         if (requestType == RequestType.TIMEOUT) {
             timeout = 200;
             executionTime = 250L;
@@ -190,13 +194,7 @@ public class CircuitBreakerController {
         try {
             circuitBreakerService.getServiceInfo(executionTime, requestType.getType(), timeout);
             logger.info("正常调用");
-        } catch (RemotingException e) {
-            if (checkNormalException(e)) {
-                res = ResponseType.EXCEPTION;
-                logger.info("异常调用");
-            }
         } catch (Exception e) {
-            logger.info("发生了异常", e);
             if (checkNormalException(e)) {
                 res = ResponseType.EXCEPTION;
                 logger.info("异常调用");

@@ -33,8 +33,10 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
 
     <!-- 指定要消费的服务 -->
-    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService"/>
+    <dubbo:reference id="echoService"  interface="com.alipay.sofa.ms.service.EchoService" group="zxy"  timeout="2000"/>
 
-    <dubbo:reference id="circuitBreakerService" timeout="9999999" interface="com.alipay.sofa.ms.service.CircuitBreakerService"/>
+    <dubbo:reference id="circuitBreakerService" timeout="1000" interface="com.alipay.sofa.ms.service.CircuitBreakerService"/>
+
+    <dubbo:reference id="faultToleranceService" timeout="1000" interface="com.alipay.sofa.ms.service.FaultToleranceService"/>
 
 </beans>
