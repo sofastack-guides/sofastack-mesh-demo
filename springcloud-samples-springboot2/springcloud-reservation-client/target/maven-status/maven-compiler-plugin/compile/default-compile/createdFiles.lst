@@ -1,0 +1,14 @@
+com/alipay/sofa/ms/spring/cloud/reservation/client/service/TomServiceImpl.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/controller/TestController$2.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/controller/TestController$1.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/controller/ReservationApiGatewayRestController$1.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/dto/Reservation.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/service/ReservationService$CustomerClientConfiguration.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/grpc/JavaGrpcClient.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/service/TestBean.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/service/ReservationServiceFallback.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/controller/TestController.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/grpc/Functional.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/ReservationClientApplication.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/controller/ReservationApiGatewayRestController.class
+com/alipay/sofa/ms/spring/cloud/reservation/client/service/ReservationService.class

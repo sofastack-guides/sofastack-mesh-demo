@@ -1,0 +1,9 @@
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/target/generated-sources/protobuf/java/com/alipay/sofa/ms/pb/HelloWorldProto.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/target/generated-sources/protobuf/java/com/alipay/sofa/ms/pb/HelloRequest.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/src/main/java/com/alipay/sofa/ms/service/TomService.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/target/generated-sources/protobuf/java/com/alipay/sofa/ms/pb/HelloReplyOrBuilder.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/target/generated-sources/protobuf/java/com/alipay/sofa/ms/pb/HelloReply.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/target/generated-sources/protobuf/grpc-java/com/alipay/sofa/ms/pb/GreeterGrpc.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/src/main/java/com/alipay/sofa/ms/service/TestTom.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/src/main/java/com/alipay/sofa/ms/service/EchoService.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/dubbo-samples-springboot2/dubbo-echo-api/target/generated-sources/protobuf/java/com/alipay/sofa/ms/pb/HelloRequestOrBuilder.java

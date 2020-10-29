@@ -1,0 +1,14 @@
+com/alipay/sofa/ms/spring/cloud/reservation/service/ReservationRepository.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/controller/EchoController.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/controller/MethodConfigBean.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/dubbo/service/TomCallServiceImpl.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/grpc/GrpcServer.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/controller/ConfigController.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/controller/TestBean.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/dubbo/service/TomServiceImpl.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/dubbo/service/EchoServiceImpl.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/entity/Reservation.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/utils/NetworkUtils.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/controller/ConfigBean.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/controller/HelloWorldController.class
+com/alipay/sofa/ms/spring/cloud/reservation/service/ReservationServiceApplication.class

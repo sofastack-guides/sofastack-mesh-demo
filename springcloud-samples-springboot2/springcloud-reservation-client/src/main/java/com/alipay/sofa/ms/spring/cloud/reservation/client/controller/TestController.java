@@ -21,6 +21,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -74,8 +75,16 @@ public class TestController {
 
     @RequestMapping("/rt/http/{ip}/{port}")
     public String getRtHttpMsg(@PathVariable String ip, @PathVariable String port) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://" + ip + ":" + port + "/echo/name/aaa", String.class);
+        try {
+            SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+            requestFactory.setConnectTimeout(5000);
+            requestFactory.setReadTimeout(3000);
+            RestTemplate restTemplate = new RestTemplate(requestFactory);
+            return restTemplate.getForObject("http://" + ip + ":" + port + "/echo/name/aaa", String.class);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 
     @RequestMapping("/feign")
@@ -134,6 +143,16 @@ public class TestController {
         HelloRequest request = HelloRequest.newBuilder().setName("grpc").build();
         HelloReply result = javaGrpcClient.run(channel, o -> o.sayHello(request));
         return result.getMessage();
+    }
+
+    @RequestMapping("/dubbo/echo/{msg}")
+    public String getDubboEcho(@PathVariable String msg) {
+        try {
+            return echoService.echo(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 
 }

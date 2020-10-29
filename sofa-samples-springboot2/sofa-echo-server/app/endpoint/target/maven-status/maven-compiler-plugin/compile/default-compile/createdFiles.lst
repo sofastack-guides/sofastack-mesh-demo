@@ -1,0 +1,11 @@
+com/alipay/sofa/ms/endpoint/exception/CommonException.class
+com/alipay/sofa/ms/endpoint/impl/SampleRestFacadeRestImpl.class
+com/alipay/sofa/ms/endpoint/response/RestSampleFacadeResp.class
+com/alipay/sofa/ms/endpoint/model/DemoUserModel.class
+com/alipay/sofa/ms/endpoint/facade/SampleRestFacade.class
+com/alipay/sofa/ms/endpoint/constants/URLConstants.class
+com/alipay/sofa/ms/endpoint/exception/SofaRestExceptionHandler.class
+com/alipay/sofa/ms/endpoint/response/AbstractFacadeResp.class
+com/alipay/sofa/ms/endpoint/constants/RestConstants.class
+com/alipay/sofa/ms/endpoint/filter/CommonContainerResponseFilter.class
+com/alipay/sofa/ms/endpoint/impl/SofaEchoServiceImpl.class

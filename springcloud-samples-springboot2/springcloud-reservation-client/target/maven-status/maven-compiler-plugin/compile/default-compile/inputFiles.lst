@@ -1,0 +1,10 @@
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/grpc/JavaGrpcClient.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/service/ReservationServiceFallback.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/ReservationClientApplication.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/dto/Reservation.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/service/TomServiceImpl.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/controller/ReservationApiGatewayRestController.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/grpc/Functional.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/service/ReservationService.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/controller/TestController.java
+/Users/xingqi/IdeaProjects/sofastack-mesh-demo/springcloud-samples-springboot2/springcloud-reservation-client/src/main/java/com/alipay/sofa/ms/spring/cloud/reservation/client/service/TestBean.java
