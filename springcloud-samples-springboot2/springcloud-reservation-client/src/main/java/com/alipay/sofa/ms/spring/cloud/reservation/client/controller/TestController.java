@@ -61,16 +61,20 @@ public class TestController {
 
     @RequestMapping("/rt")
     public String getRtMsg() {
+        try {
+            ParameterizedTypeReference<String> parameterizedTypeReference =
+                    new ParameterizedTypeReference<String>() {
+                    };
 
-        ParameterizedTypeReference<String> parameterizedTypeReference =
-                new ParameterizedTypeReference<String>() {
-                };
+            ResponseEntity<String> exchange = rt.exchange(
+                    "http://reservation-service-xq/echo/name/aaa",
+                    HttpMethod.GET, null, parameterizedTypeReference);
 
-        ResponseEntity<String> exchange = rt.exchange(
-                "http://reservation-service/echo/name/aaa",
-                HttpMethod.GET, null, parameterizedTypeReference);
-
-        return exchange.getBody();
+            return exchange.getBody();
+        } catch (Exception e) {
+            logger.error("reservation-service/echo/name/aaa error", e);
+            return e.getMessage();
+        }
     }
 
     @RequestMapping("/rt/http/{ip}/{port}")
@@ -100,7 +104,7 @@ public class TestController {
                 };
 
         ResponseEntity<String> exchange = rt.exchange(
-                "http://reservation-service/echo/name/aaa",
+                "http://reservation-service-xq/echo/name/aaa",
                 HttpMethod.GET, null, parameterizedTypeReference);
 
         String msg = exchange.getBody();
@@ -114,6 +118,11 @@ public class TestController {
         msg = tomGroupService.tom(new TestTom().setName(msg));
         tomVersionService.tom(new TestTom().setName(msg));
         return tomGroupVersionService.tom(new TestTom().setName(msg));
+    }
+
+    @RequestMapping("/dubbo/tomGroupService")
+    public String getReservationNamesViaFeign222() {
+        return tomGroupService.tom(new TestTom().setName("tomGroupService"));
     }
 
     @Autowired
