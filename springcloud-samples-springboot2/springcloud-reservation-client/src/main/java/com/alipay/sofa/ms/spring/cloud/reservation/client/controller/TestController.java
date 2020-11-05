@@ -67,7 +67,7 @@ public class TestController {
                     };
 
             ResponseEntity<String> exchange = rt.exchange(
-                    "http://reservation-service-xq/echo/name/aaa",
+                    "http://reservation-service/echo/name/aaa",
                     HttpMethod.GET, null, parameterizedTypeReference);
 
             return exchange.getBody();
@@ -104,7 +104,7 @@ public class TestController {
                 };
 
         ResponseEntity<String> exchange = rt.exchange(
-                "http://reservation-service-xq/echo/name/aaa",
+                "http://reservation-service/echo/name/aaa",
                 HttpMethod.GET, null, parameterizedTypeReference);
 
         String msg = exchange.getBody();
