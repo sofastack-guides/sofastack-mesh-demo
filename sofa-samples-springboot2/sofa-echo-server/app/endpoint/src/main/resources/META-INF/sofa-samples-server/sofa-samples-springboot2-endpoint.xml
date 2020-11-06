@@ -24,7 +24,7 @@
 
     <!-- sofa rpc service -->
     <bean id="sofaEchoService" class="com.alipay.sofa.ms.endpoint.impl.SofaEchoServiceImpl"/>
-    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService">
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService" unique-id="test-zxy">
         <sofa:binding.bolt/>
     </sofa:service>
 

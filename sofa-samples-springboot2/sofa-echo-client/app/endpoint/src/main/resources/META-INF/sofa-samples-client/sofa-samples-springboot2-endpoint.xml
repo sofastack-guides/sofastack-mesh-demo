@@ -7,7 +7,7 @@
        default-autowire="byName">
 
     <!-- sofa rpc reference -->
-    <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService">
+    <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService" unique-id="test-zxy">
         <sofa:binding.bolt/>
     </sofa:reference>
 
