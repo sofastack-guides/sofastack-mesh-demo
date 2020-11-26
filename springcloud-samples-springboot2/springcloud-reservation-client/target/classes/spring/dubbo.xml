@@ -30,17 +30,17 @@
     <dubbo:consumer check="false"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
+    <dubbo:registry address="zookeeper://meshzookeeper.inc.alipay.net:2181" use-as-config-center="false"/>
 
-    <dubbo:protocol name="dubbo" port="20990"/>
+    <!--<dubbo:protocol name="dubbo" port="20990"/>-->
 
     <!-- 指定要消费的服务 -->
-    <dubbo:reference check="false" id="echoService" interface="com.alipay.sofa.ms.service.EchoService"/>
-    <dubbo:reference check="false" id="tomGroupService" interface="com.alipay.sofa.ms.service.TomService" group="tom-group"/>
-    <dubbo:reference check="false" id="tomVersionService" interface="com.alipay.sofa.ms.service.TomService" version="tom-version"/>
-    <dubbo:reference check="false" id="tomGroupVersionService" interface="com.alipay.sofa.ms.service.TomService" group="tom-group"
-                     version="tom-version"/>
+    <dubbo:reference check="false" id="echoService" interface="com.alipay.sofa.ms.service.ShuPianEchoService"/>
+    <dubbo:reference check="false" id="tomGroupService" interface="com.alipay.sofa.ms.service.TomService" group="tom-group-sp"/>
+    <dubbo:reference check="false" id="tomVersionService" interface="com.alipay.sofa.ms.service.TomService" version="tom-version-sp"/>
+    <dubbo:reference check="false" id="tomGroupVersionService" interface="com.alipay.sofa.ms.service.TomService" group="tom-group-sp"
+                     version="tom-version-sp"/>
 
-    <bean id="tomService" class="com.alipay.sofa.ms.spring.cloud.reservation.client.service.TomServiceImpl"/>
-    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" ref="tomService"/>
+    <!--<bean id="tomService" class="com.alipay.sofa.ms.spring.cloud.reservation.client.service.TomServiceImpl"/>-->
+    <!--<dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" ref="tomService"/>-->
 </beans>

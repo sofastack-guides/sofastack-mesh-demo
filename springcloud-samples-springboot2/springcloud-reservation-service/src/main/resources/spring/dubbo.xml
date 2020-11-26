@@ -25,10 +25,10 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="reservation-service"/>
+    <dubbo:application name="reservation-service-shupian"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
+    <dubbo:registry address="zookeeper://meshzookeeper.inc.alipay.net:2181" use-as-config-center="false"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
@@ -36,13 +36,13 @@
     <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
     <bean id="echoService" class="com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service.EchoServiceImpl"/>
     <!-- 声明服务暴露的接口，并暴露服务 -->
-    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoService"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.ShuPianEchoService" ref="echoService"/>
 
     <bean id="tomService" class="com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service.TomServiceImpl"/>
     <bean id="tomCallService" class="com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service.TomCallServiceImpl"/>
-    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" ref="tomService"/>
-    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" version="tom-version" ref="tomCallService"/>
-    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" version="tom-version" ref="tomService"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group-sp" ref="tomService"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" version="tom-version-sp" ref="tomCallService"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group-sp" version="tom-version-sp" ref="tomService"/>
 
     <!--<dubbo:reference id="echoServiceRef" interface="com.alipay.sofa.ms.service.EchoService"/>-->
 </beans>

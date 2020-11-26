@@ -4,7 +4,7 @@
  */
 package com.alipay.sofa.ms.spring.cloud.reservation.service.dubbo.service;
 
-import com.alipay.sofa.ms.service.EchoService;
+import com.alipay.sofa.ms.service.ShuPianEchoService;
 import com.alipay.sofa.ms.spring.cloud.reservation.service.controller.ConfigController;
 import com.alipay.sofa.ms.spring.cloud.reservation.service.utils.NetworkUtils;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.util.Date;
  * @author yiji@apache.org
  * @version : EchoServiceImpl.java, v 0.1 2020年02月24日 2:47 下午 yiji Exp $
  */
-public class EchoServiceImpl implements EchoService {
+public class EchoServiceImpl implements ShuPianEchoService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EchoServiceImpl.class);
 

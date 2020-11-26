@@ -6,7 +6,7 @@ package com.alipay.sofa.ms.spring.cloud.reservation.client.controller;
 
 import com.alipay.sofa.ms.pb.HelloReply;
 import com.alipay.sofa.ms.pb.HelloRequest;
-import com.alipay.sofa.ms.service.EchoService;
+import com.alipay.sofa.ms.service.ShuPianEchoService;
 import com.alipay.sofa.ms.service.TestTom;
 import com.alipay.sofa.ms.service.TomService;
 import com.alipay.sofa.ms.spring.cloud.reservation.client.grpc.JavaGrpcClient;
@@ -48,7 +48,7 @@ public class TestController {
     private ReservationService reservationService;
 
     @Autowired
-    private EchoService echoService;
+    private ShuPianEchoService echoService;
 
     @Resource(name = "tomGroupService")
     private TomService tomGroupService;
@@ -156,12 +156,31 @@ public class TestController {
 
     @RequestMapping("/dubbo/echo/{msg}")
     public String getDubboEcho(@PathVariable String msg) {
+        String result = "";
         try {
-            return echoService.echo(msg);
+            result += "echoService:" + echoService.echo(msg) + "\n";
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getMessage();
         }
+
+        try {
+            result += "tomGroupService:" + tomGroupService.tom(new TestTom().setName("xxx")) + "\n";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            result += "tomVersionService:" + tomVersionService.tom(new TestTom().setName("xxx")) + "\n";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            result += "tomGroupVersionService:" + tomGroupVersionService.tom(new TestTom().setName("xxx")) + "\n";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

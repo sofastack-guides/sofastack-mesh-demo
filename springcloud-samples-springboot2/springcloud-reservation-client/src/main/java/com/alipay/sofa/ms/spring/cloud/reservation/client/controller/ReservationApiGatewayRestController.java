@@ -20,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -72,68 +71,68 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         Random random = new Random();
-        new Thread(() -> {
-            for (; ; ) {
-                try {
-                    int sleep = random.nextInt(5);
-                    if (sleep > 0) {
-                        TimeUnit.SECONDS.sleep(sleep);
-                    }
-                    testController.getRtMsg();
-                } catch (Exception e) {
-                    logger.error(">>>>>>> testController.getRtMsg : " + e.getMessage());
-                }
-
-                try {
-                    int sleep = random.nextInt(5);
-                    if (sleep > 0) {
-                        TimeUnit.SECONDS.sleep(sleep);
-                    }
-                    testController.getFeignMsg();
-                } catch (Exception e) {
-                    logger.error(">>>>>>> testController.getFeignMsg() : " + e.getMessage());
-                }
-
-                try {
-                    int sleep = random.nextInt(5);
-                    if (sleep > 0) {
-                        TimeUnit.SECONDS.sleep(sleep);
-                    }
-                    testController.getRtMsgDubbo();
-                } catch (Exception e) {
-                    logger.error(">>>>>>> testController.getRtMsgDubbo : " + e.getMessage());
-                }
-
-                try {
-                    int sleep = random.nextInt(5);
-                    if (sleep > 0) {
-                        TimeUnit.SECONDS.sleep(sleep);
-                    }
-                    testController.getReservationNamesViaFeign();
-                } catch (Exception e) {
-                    logger.error(">>>>>>> testController.getReservationNamesViaFeign : " + e.getMessage());
-                }
-
-                try {
-                    int sleep = random.nextInt(5);
-                    if (sleep > 0) {
-                        TimeUnit.SECONDS.sleep(sleep);
-                    }
-                    testController.getReservationNamesViaFeign222();
-                } catch (Exception e) {
-                    logger.error(">>>>>>> testController.getReservationNamesViaFeign222 : " + e.getMessage());
-                }
-
-                try {
-                    int sleep = random.nextInt(5);
-                    if (sleep > 0) {
-                        TimeUnit.SECONDS.sleep(sleep);
-                    }
-                    testController.getDubboEcho("test echo");
-                } catch (Exception e) {
-                    logger.error(">>>>>>> testController.getDubboEcho : " + e.getMessage());
-                }
-            }
-        }).start();
+        //new Thread(() -> {
+        //    for (; ; ) {
+        //        try {
+        //            int sleep = random.nextInt(5);
+        //            if (sleep > 0) {
+        //                TimeUnit.SECONDS.sleep(sleep);
+        //            }
+        //            testController.getRtMsg();
+        //        } catch (Exception e) {
+        //            logger.error(">>>>>>> testController.getRtMsg : " + e.getMessage());
+        //        }
+        //
+        //        try {
+        //            int sleep = random.nextInt(5);
+        //            if (sleep > 0) {
+        //                TimeUnit.SECONDS.sleep(sleep);
+        //            }
+        //            testController.getFeignMsg();
+        //        } catch (Exception e) {
+        //            logger.error(">>>>>>> testController.getFeignMsg() : " + e.getMessage());
+        //        }
+        //
+        //        try {
+        //            int sleep = random.nextInt(5);
+        //            if (sleep > 0) {
+        //                TimeUnit.SECONDS.sleep(sleep);
+        //            }
+        //            testController.getRtMsgDubbo();
+        //        } catch (Exception e) {
+        //            logger.error(">>>>>>> testController.getRtMsgDubbo : " + e.getMessage());
+        //        }
+        //
+        //        try {
+        //            int sleep = random.nextInt(5);
+        //            if (sleep > 0) {
+        //                TimeUnit.SECONDS.sleep(sleep);
+        //            }
+        //            testController.getReservationNamesViaFeign();
+        //        } catch (Exception e) {
+        //            logger.error(">>>>>>> testController.getReservationNamesViaFeign : " + e.getMessage());
+        //        }
+        //
+        //        try {
+        //            int sleep = random.nextInt(5);
+        //            if (sleep > 0) {
+        //                TimeUnit.SECONDS.sleep(sleep);
+        //            }
+        //            testController.getReservationNamesViaFeign222();
+        //        } catch (Exception e) {
+        //            logger.error(">>>>>>> testController.getReservationNamesViaFeign222 : " + e.getMessage());
+        //        }
+        //
+        //        try {
+        //            int sleep = random.nextInt(5);
+        //            if (sleep > 0) {
+        //                TimeUnit.SECONDS.sleep(sleep);
+        //            }
+        //            testController.getDubboEcho("test echo");
+        //        } catch (Exception e) {
+        //            logger.error(">>>>>>> testController.getDubboEcho : " + e.getMessage());
+        //        }
+        //    }
+        //}).start();
     }
 }

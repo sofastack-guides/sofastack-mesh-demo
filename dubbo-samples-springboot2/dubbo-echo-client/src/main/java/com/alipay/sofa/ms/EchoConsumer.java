@@ -4,7 +4,7 @@
  */
 package com.alipay.sofa.ms;
 
-import com.alipay.sofa.ms.service.EchoService;
+import com.alipay.sofa.ms.service.ShuPianEchoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -32,7 +32,7 @@ public class EchoConsumer implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
+        ShuPianEchoService echoService = (ShuPianEchoService) applicationContext.getBean("echoService"); // get remote service proxy
         new Thread(() -> {
             for (; ; ) {
                 try {
