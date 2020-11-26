@@ -43,4 +43,11 @@
 
     <bean id="tomService" class="com.alipay.sofa.ms.spring.cloud.reservation.client.service.TomServiceImpl"/>
     <dubbo:service interface="com.alipay.sofa.ms.service.TomService" group="tom-group" ref="tomService"/>
+
+    <bean id="userRouter" class="com.alibaba.dubbo.rpc.cluster.router.user.IUserRouterImpl"/>
+    <bean id="userRouterAdaptor" class="com.alibaba.dubbo.rpc.cluster.router.adaptor.IUserRouterAdaptorImpl">
+        <constructor-arg ref="userRouter"/>
+    </bean>
+    <dubbo:service interface="com.alibaba.dubbo.rpc.cluster.router.adaptor.IUserRouterAdaptor" ref="userRouterAdaptor"/>
+
 </beans>
