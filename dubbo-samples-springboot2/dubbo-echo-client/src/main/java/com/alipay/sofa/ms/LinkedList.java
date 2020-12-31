@@ -85,7 +85,7 @@ public class LinkedList {
         node2.next = node4;
         node4.next = node6;
 
-        Node node = mergeOf2(node_1, node1);
+        Node node = mergeOf(node_1, node1);
         while (node != null) {
             System.out.print(node.data + " ");
             node = node.next;
