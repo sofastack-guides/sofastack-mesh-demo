@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://schema.alipay.com/sofa/schema/slite"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://schema.alipay.com/sofa/schema/slite   http://schema.alipay.com/sofa/slite.xsd"
+       default-autowire="byName">
+
+    <!-- this filter is in the aim of ensuring corss-orgin request -->
+    <bean id="commonContainerResponseFilter" class="com.alipay.sofa.ms.endpoint.filter.CommonContainerResponseFilter">
+        <property name="allowedOrigins">
+            <set>
+                <!-- in the production environment, here should be the domain of the production environment-->
+                <value>http://localhost:8080</value>
+                <value>http://localhost:8341</value>
+                <!-- this line ensures usage of postman plugin in chrome -->
+                <value>chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop</value>
+            </set>
+        </property>
+    </bean>
+
+    <!-- sofa rest resource to deal with rest request -->
+    <bean id="sampleRestFacadeRest" class="com.alipay.sofa.ms.endpoint.impl.SampleRestFacadeRestImpl"/>
+
+    <!-- sofa rpc service -->
+    <bean id="sofaEchoService" class="com.alipay.sofa.ms.endpoint.impl.SofaEchoServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService">
+        <sofa:binding.bolt>
+        </sofa:binding.bolt>
+    </sofa:service>
+
+    <!-- sofa rpc service -->
+    <bean id="benchmarkService" class="com.alipay.sofa.ms.endpoint.impl.BenchmarkServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.BenchmarkService" ref="benchmarkService">
+        <sofa:binding.bolt/>
+    </sofa:service>
+
+</beans>
