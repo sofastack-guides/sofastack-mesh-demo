@@ -32,4 +32,6 @@
 
     <dubbo:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.BenchmarkService" />
 
+    <dubbo:reference id="helloService" interface="com.alipay.sofa.ms.service.HelloService" />
+
 </beans>

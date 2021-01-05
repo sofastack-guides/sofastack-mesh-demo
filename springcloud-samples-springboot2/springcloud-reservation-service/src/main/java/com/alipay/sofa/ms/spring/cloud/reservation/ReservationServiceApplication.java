@@ -1,6 +1,6 @@
-package com.alipay.sofa.ms.spring.cloud.reservation.service;
+package com.alipay.sofa.ms.spring.cloud.reservation;
 
-import com.alipay.sofa.ms.spring.cloud.reservation.service.entity.Reservation;
+import com.alipay.sofa.ms.spring.cloud.reservation.entity.Reservation;
 import com.google.common.base.Splitter;
 
 import org.springframework.boot.CommandLineRunner;

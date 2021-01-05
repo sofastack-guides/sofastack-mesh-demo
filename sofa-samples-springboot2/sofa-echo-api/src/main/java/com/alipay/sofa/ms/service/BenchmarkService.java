@@ -20,7 +20,8 @@ public interface BenchmarkService {
     String send_4k(String content);
 
     String send_8k(String content);
-    
+
+    String send();
     //String sendBytes(String content);
 
 }

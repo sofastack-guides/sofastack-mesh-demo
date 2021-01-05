@@ -23,10 +23,9 @@
     <bean id="sampleRestFacadeRest" class="com.alipay.sofa.ms.endpoint.impl.SampleRestFacadeRestImpl"/>
 
     <!-- sofa rpc service -->
-    <bean id="sofaEchoService" class="com.alipay.sofa.ms.endpoint.impl.SofaEchoServiceImpl"/>
-    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService">
-        <sofa:binding.bolt>
-        </sofa:binding.bolt>
+    <bean id="helloService" class="com.alipay.sofa.ms.endpoint.impl.HelloServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.HelloService" ref="helloService">
+        <sofa:binding.bolt/>
     </sofa:service>
 
     <!-- sofa rpc service -->

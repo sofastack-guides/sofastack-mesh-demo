@@ -10,14 +10,13 @@ import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author yiji@apache.org
- * @version : EchoProvider.java, v 0.1 2020年02月24日 2:49 下午 yiji Exp $
+ * @version : EchoConsumer.java, v 0.1 2020年02月24日 4:23 下午 yiji Exp $
  */
 @SpringBootApplication
-@ImportResource("spring/echo-provider.xml")
-public class EchoProvider {
+@ImportResource("spring/echo-consumer.xml")
+public class DubboConsumer {
 
     public static void main(String[] args) {
-        SpringApplication.run(EchoProvider.class, args);
+        SpringApplication.run(DubboConsumer.class, args);
     }
-
 }

@@ -8,6 +8,6 @@ package com.alipay.sofa.ms.service;
  * @author yiji@apache.org
  * @version : EchoService.java, v 0.1 2020年02月24日 2:47 下午 yiji Exp $
  */
-public interface EchoService {
-    String echo(String message);
+public interface HelloService {
+    String sayHi(String message, int sleep, boolean throwException);
 }

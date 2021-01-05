@@ -1,4 +1,4 @@
-package com.alipay.sofa.ms.spring.cloud.reservation.service.entity;
+package com.alipay.sofa.ms.spring.cloud.reservation.entity;
 
 import com.google.common.base.MoreObjects;
 

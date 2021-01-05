@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.alipay.sofa.ms.service;
+package com.alipay.sofa.ms.spring.cloud.reservation.service;
 
 /**
  * @author yiji

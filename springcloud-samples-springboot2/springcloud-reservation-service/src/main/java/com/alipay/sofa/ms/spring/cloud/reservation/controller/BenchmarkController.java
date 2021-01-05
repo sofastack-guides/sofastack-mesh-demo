@@ -2,29 +2,34 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.alipay.sofa.ms.controller;
+package com.alipay.sofa.ms.spring.cloud.reservation.controller;
 
-import com.alipay.sofa.ms.service.BenchmarkService;
+import com.alipay.sofa.ms.spring.cloud.reservation.service.BenchmarkService;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 /**
- * @author yiji
- * @version : BenchmarkController.java, v 0.1 2020年04月01日 10:09 下午 yiji Exp $
+ * @author yiji@apache.org
+ * @version : HelloWorldController.java, v 0.1 2020年02月26日 8:32 下午 yiji Exp $
  */
 @RestController
+@RequestMapping("/reservations")
 public class BenchmarkController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BenchmarkController.class);
-
-    @Resource
+    @Autowired
     private BenchmarkService benchmarkService;
+
+    @RequestMapping("/hello")
+    public String helloWorld() {
+        return "hello world!";
+    }
+
 
     @GetMapping("/send")
     public String send() {
@@ -86,19 +91,6 @@ public class BenchmarkController {
         }
     }
 
-    @GetMapping("/warm_up_random")
-    public String warm_up_random(@RequestParam(name = "loop", required = false) Integer loops,
-                                 @RequestParam(name = "bytes", required = false) Integer bytes) {
-        int len = bytes == null || bytes <= 0 ? 512 : bytes;
-        int loop = loops == null || loops <= 0 ? 10000 : loops;
-        String lastLoop = "null";
-        for (int i = 0; i <= loop; i++) {
-            lastLoop = randomString(len);
-        }
-
-        return lastLoop;
-    }
-
     static char[] chars = new char[] {
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -112,5 +104,4 @@ public class BenchmarkController {
     static String randomString(int len) {
         return RandomStringUtils.random(len, 0, chars.length, true, true, chars);
     }
-
 }

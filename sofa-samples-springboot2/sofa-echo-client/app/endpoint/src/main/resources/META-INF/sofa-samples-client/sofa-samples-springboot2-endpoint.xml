@@ -7,17 +7,18 @@
        default-autowire="byName">
 
     <!-- sofa rpc reference -->
-    <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService">
+    <sofa:reference id="helloService" interface="com.alipay.sofa.ms.service.HelloService">
         <sofa:binding.bolt>
-            <sofa:route target-url="127.0.0.1:12200"/>
+        <!-- 本地直连调试时，需要打开 -->
+        <!-- <sofa:route target-url="127.0.0.1:12200"/>-->
         </sofa:binding.bolt>
     </sofa:reference>
 
     <sofa:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.BenchmarkService">
         <sofa:binding.bolt>
-            <sofa:route target-url="127.0.0.1:12200"/>
+        <!--  本地直连调试时，需要打开 -->
+        <!-- <sofa:route target-url="127.0.0.1:12200"/>-->
         </sofa:binding.bolt>
     </sofa:reference>
 
-    <bean class="com.alipay.sofa.ms.endpoint.reference.SofaEchoConsumer" />
 </beans>

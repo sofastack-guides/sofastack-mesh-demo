@@ -17,6 +17,11 @@ public class BenchmarkServiceImpl implements BenchmarkService {
     private static final Logger LOGGER = LoggerFactory.getLogger(BenchmarkServiceImpl.class);
 
     @Override
+    public String send() {
+        return "ok";
+    }
+
+    @Override
     public String send_512_byte(String content) {
         //String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
         //LOGGER.info("[" + now + "] send_512_byte, request from consumer: " + RpcContext.getContext().getRemoteAddress());

@@ -1,6 +1,6 @@
-package com.alipay.sofa.ms.spring.cloud.reservation.service;
+package com.alipay.sofa.ms.spring.cloud.reservation;
 
-import com.alipay.sofa.ms.spring.cloud.reservation.service.entity.Reservation;
+import com.alipay.sofa.ms.spring.cloud.reservation.entity.Reservation;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
