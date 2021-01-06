@@ -13,8 +13,8 @@ fi
 cd dubbo-samples-springboot2
 sh ./build.sh $version
 
-cd sofa-samples-springboot2
+cd ../sofa-samples-springboot2
 sh ./build.sh $version
 
-cd springcloud-samples-springboot2
+cd ../springcloud-samples-springboot2
 sh ./build.sh $version
