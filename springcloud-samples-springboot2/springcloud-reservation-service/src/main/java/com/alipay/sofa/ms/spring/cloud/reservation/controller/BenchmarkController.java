@@ -5,13 +5,12 @@
 package com.alipay.sofa.ms.spring.cloud.reservation.controller;
 
 import com.alipay.sofa.ms.spring.cloud.reservation.service.BenchmarkService;
+import com.alipay.sofa.ms.spring.cloud.reservation.service.HelloService;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author yiji@apache.org
@@ -25,11 +24,19 @@ public class BenchmarkController {
     @Autowired
     private BenchmarkService benchmarkService;
 
+    @Autowired
+    private HelloService helloService;
+
     @RequestMapping("/hello")
     public String helloWorld() {
         return "hello world!";
     }
 
+
+    @RequestMapping(value = "/hi2", method = RequestMethod.GET)
+    public String sayHi(@RequestParam(value = "name", required = false)String name) {
+        return helloService.sayHi(name) ;
+    }
 
     @GetMapping("/send")
     public String send() {

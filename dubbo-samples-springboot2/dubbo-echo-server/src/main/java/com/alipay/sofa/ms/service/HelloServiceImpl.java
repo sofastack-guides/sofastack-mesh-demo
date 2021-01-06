@@ -16,7 +16,11 @@ public class HelloServiceImpl implements HelloService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloServiceImpl.class);
 
-    public String sayHi(String message, int sleep, boolean throwException) {
+    public int sleep = 0;
+
+    public boolean throwException = false;
+
+    public String sayHi(String message) {
         System.err.println("Hi " + message);
 
         if (throwException) {

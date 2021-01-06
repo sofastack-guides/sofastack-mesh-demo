@@ -1,0 +1,1 @@
+rpcExceptionFilter=com.alipay.sofa.ms.filter.RpcExceptionFilter

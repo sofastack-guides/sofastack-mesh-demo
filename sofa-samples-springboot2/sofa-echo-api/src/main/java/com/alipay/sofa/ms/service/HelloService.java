@@ -9,5 +9,5 @@ package com.alipay.sofa.ms.service;
  * @version : EchoService.java, v 0.1 2020年02月24日 2:47 下午 yiji Exp $
  */
 public interface HelloService {
-    String sayHi(String message, int sleep, boolean throwException);
+    String sayHi(String message);
 }

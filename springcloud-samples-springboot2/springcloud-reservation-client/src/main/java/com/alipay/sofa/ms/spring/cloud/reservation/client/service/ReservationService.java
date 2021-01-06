@@ -21,11 +21,16 @@ import org.springframework.hateoas.hal.Jackson2HalModule;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value = "reservation-service", configuration = CustomerClientConfiguration.class)
 public interface ReservationService {
   @RequestMapping(value = "/reservations", method = RequestMethod.GET)
   Resources<Reservation> queryReservations();
+
+  @RequestMapping(value = "/reservations/hi2", method = RequestMethod.GET)
+  String sayHi(@RequestParam(value = "name", required = false) String name);
+
 
   @Configuration
   @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)

@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 public class ReservationServiceFallback implements ReservationService {
 
   @Override
+  public String sayHi(String name) {
+    return "DOWNGRADE";
+  }
+
+  @Override
   public Resources<Reservation> queryReservations() {
     return new Resources<>(Collections.emptyList());
   }

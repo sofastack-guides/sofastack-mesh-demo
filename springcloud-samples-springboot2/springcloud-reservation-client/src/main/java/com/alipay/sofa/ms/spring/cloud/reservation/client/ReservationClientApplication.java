@@ -38,24 +38,6 @@ public class ReservationClientApplication {
     };
   }
 
-  /**
-   * The load balanced rest template, it will be customized with load balancer interceptors
-   * @see LoadBalancerAutoConfiguration
-   */
-  @LoadBalanced
-  @Bean
-  RestTemplate loadBalanced() {
-    return new RestTemplate();
-  }
-
-  /**
-   * The normal rest template
-   */
-  @Primary
-  @Bean
-  RestTemplate restTemplate() {
-    return new RestTemplate();
-  }
 
   public static void main(String[] args) {
     SpringApplication.run(ReservationClientApplication.class, args);

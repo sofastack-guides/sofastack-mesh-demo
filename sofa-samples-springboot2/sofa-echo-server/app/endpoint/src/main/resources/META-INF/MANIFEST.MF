@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: sofa-rpc-enterprise-all
+Implementation-Version: 5.7.1
+Built-By: admin
+Implementation-Build: 2020-04-01T04:20:39Z
+Specification-Title: sofa-rpc-enterprise-all
+Implementation-Vendor-Id: com.alipay.sofa
+Created-By: Apache Maven 3.2.5
+Build-Jdk: 1.8.0_172
+Specification-Version: 5.7
+

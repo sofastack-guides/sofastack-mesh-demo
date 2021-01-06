@@ -55,7 +55,6 @@ public class HelloController {
     public String sayHi(@RequestParam(value = "name", required = false) String name,
                         @RequestParam(value = "count", required = false, defaultValue = "1") int count,
                         @RequestParam(value = "sleep", required = false, defaultValue = "0") int sleep,
-                        @RequestParam(value = "throwException", required = false, defaultValue = "false") boolean throwException,
                         @RequestParam(value = "concurrent", required = false, defaultValue = "1") int concurrent,
                         @RequestParam(value = "metricSplit", required = false, defaultValue = "-1") int metricSplit,
                         @RequestParam(value = "metricHintRate", required = false, defaultValue = "1") double metricHintRate,
@@ -75,7 +74,7 @@ public class HelloController {
         Map<String, Integer> metrics = Maps.newConcurrentMap();
 
         for (int i = 0; i < concurrent; i++) {
-            runOneThread(name, count, sleep, results, metrics, countMetric, totalCallTimes, sampleRate, throwException, latch);
+            runOneThread(name, count, sleep, results, metrics, countMetric, totalCallTimes, sampleRate, latch);
         }
 
         latch.await();
@@ -106,15 +105,17 @@ public class HelloController {
                               boolean countMetric,
                               AtomicLong totalCallTimes,
                               int sampleRate,
-                              boolean throwException,
                               CountDownLatch latch) {
         new Thread(() -> {
             StringBuilder result = new StringBuilder();
             for (int i = 1; i <= count; i++) {
                 long startTime = System.currentTimeMillis();
                 try {
+                    if (sleep > 0) {
+                        Thread.sleep(sleep);
+                    }
                     //3. 服务调用
-                    String response = helloService.sayHi(name, sleep, throwException);
+                    String response = helloService.sayHi(name);
 
                     //4. 统计结果
                     long duration = System.currentTimeMillis() - startTime;

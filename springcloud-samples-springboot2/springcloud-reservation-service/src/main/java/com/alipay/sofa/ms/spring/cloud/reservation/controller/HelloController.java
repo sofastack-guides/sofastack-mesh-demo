@@ -1,18 +1,17 @@
 package com.alipay.sofa.ms.spring.cloud.reservation.controller;
 
 
+
 import com.alipay.sofa.ms.spring.cloud.reservation.service.HelloService;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -33,9 +32,8 @@ public class HelloController {
     private ExecutorService metricExecutor;
 
 
-    @Resource
+    @Autowired
     private HelloService helloService;
-
 
     @PostConstruct
     public void init() {
@@ -64,7 +62,7 @@ public class HelloController {
             throws InterruptedException {
 
         if (StringUtils.isEmpty(name)) {
-            name = " dubbo";
+            name = " cloud";
         }
 
         long startTime = System.currentTimeMillis();
@@ -76,7 +74,7 @@ public class HelloController {
         Map<String, Integer> metrics = Maps.newConcurrentMap();
 
         for (int i = 0; i < concurrent; i++) {
-            runOneThread(name, count, sleep, results, metrics, countMetric, totalCallTimes, sampleRate, throwException, latch);
+            runOneThread(name, count, sleep, results, metrics, countMetric, totalCallTimes, sampleRate, latch);
         }
 
         latch.await();
@@ -107,15 +105,17 @@ public class HelloController {
                               boolean countMetric,
                               AtomicLong totalCallTimes,
                               int sampleRate,
-                              boolean throwException,
                               CountDownLatch latch) {
         new Thread(() -> {
             StringBuilder result = new StringBuilder();
             for (int i = 1; i <= count; i++) {
                 long startTime = System.currentTimeMillis();
                 try {
+                    if (sleep > 0) {
+                        Thread.sleep(sleep);
+                    }
                     //3. 服务调用
-                    String response = helloService.sayHi(name, sleep, throwException);
+                    String response = helloService.sayHi(name);
 
                     //4. 统计结果
                     long duration = System.currentTimeMillis() - startTime;
