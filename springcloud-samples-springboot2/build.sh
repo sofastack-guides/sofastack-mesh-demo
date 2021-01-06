@@ -16,14 +16,14 @@ cd springcloud-reservation-client
 
 docker build -t springcloudreservationclient:${version} .
 
-docker tag springcloudreservationclient:${version} reg.docker.alibaba-inc.com/lxd/springcloud-server:${version}
+docker tag springcloudreservationclient:${version} reg.docker.alibaba-inc.com/lxd/springcloud-client:${version}
 
-docker push reg.docker.alibaba-inc.com/lxd/springcloud-server:${version}
+docker push reg.docker.alibaba-inc.com/lxd/springcloud-client:${version}
 
 cd ../springcloud-reservation-service/
 
 docker build -t springcloudreservationservice:${version} .
 
-docker tag springcloudreservationservice:${version} reg.docker.alibaba-inc.com/lxd/springcloud-client:${version}
+docker tag springcloudreservationservice:${version} reg.docker.alibaba-inc.com/lxd/springcloud-server:${version}
 
-docker push reg.docker.alibaba-inc.com/lxd/springcloud-client:${version}
+docker push reg.docker.alibaba-inc.com/lxd/springcloud-server:${version}
