@@ -18,8 +18,12 @@ docker build -t dubbo-echo-client:${version} .
 
 docker tag dubbo-echo-client:${version} reg.docker.alibaba-inc.com/lxd/dubbo-echo-client:${version}
 
+docker push reg.docker.alibaba-inc.com/lxd/dubbo-echo-client:${version}
+
 cd ../dubbo-echo-server/
 
 docker build -t dubbo-echo-server:${version} .
 
 docker tag dubbo-echo-server:${version} reg.docker.alibaba-inc.com/lxd/dubbo-echo-server:${version}
+
+docker push reg.docker.alibaba-inc.com/lxd/dubbo-echo-server:${version}
