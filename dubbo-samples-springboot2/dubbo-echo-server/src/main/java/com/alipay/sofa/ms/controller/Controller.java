@@ -30,15 +30,9 @@ public class Controller {
                             @RequestParam(required = false, defaultValue = "false")boolean throwException) {
         helloService.sleep = sleep;
         helloService.throwException = throwException;
-
-        return "success";
-    }
-
-
-    @GetMapping("/rpcException/set")
-    public String setRpcExceptionStatus(@RequestParam(required = false, defaultValue = "false") boolean throwException) {
         RpcExceptionFilter.exception = throwException;
         return "success";
     }
+
 
 }

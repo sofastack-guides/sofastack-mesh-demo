@@ -21,16 +21,12 @@ public class Controller {
     }
 
     @GetMapping("/status/set")
-    public String setStatus(int sleep, boolean throwException) {
+    public String setStatus(@RequestParam(required = false, defaultValue = "0") int sleep,
+                            @RequestParam(required = false, defaultValue = "false")boolean throwException) {
         helloService.sleep = sleep;
         helloService.throwException = throwException;
-
-        return "success";
-    }
-
-    @GetMapping("/rpcException/set")
-    public String setRpcExceptionStatus(@RequestParam(required = false, defaultValue = "false") boolean throwException) {
         RpcExceptionFilter.exception = throwException;
         return "success";
     }
+
 }

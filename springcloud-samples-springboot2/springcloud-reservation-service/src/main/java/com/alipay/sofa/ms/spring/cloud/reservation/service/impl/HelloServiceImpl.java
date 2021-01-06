@@ -15,9 +15,9 @@ public class HelloServiceImpl implements HelloService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloServiceImpl.class);
 
-    private int sleep = 0;
+    public int sleep = 0;
 
-    private boolean throwException = false;
+    public boolean throwException = false;
 
     public String sayHi(String message) {
         System.err.println("Hi " + message);
@@ -59,19 +59,4 @@ public class HelloServiceImpl implements HelloService {
         return "";
     }
 
-    public int getSleep() {
-        return sleep;
-    }
-
-    public void setSleep(int sleep) {
-        this.sleep = sleep;
-    }
-
-    public boolean isThrowException() {
-        return throwException;
-    }
-
-    public void setThrowException(boolean throwException) {
-        this.throwException = throwException;
-    }
 }

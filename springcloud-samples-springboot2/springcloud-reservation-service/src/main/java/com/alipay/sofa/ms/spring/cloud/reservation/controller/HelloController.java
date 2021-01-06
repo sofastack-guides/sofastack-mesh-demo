@@ -3,6 +3,7 @@ package com.alipay.sofa.ms.spring.cloud.reservation.controller;
 
 
 import com.alipay.sofa.ms.spring.cloud.reservation.service.HelloService;
+import com.alipay.sofa.ms.spring.cloud.reservation.service.impl.HelloServiceImpl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -33,11 +34,25 @@ public class HelloController {
 
 
     @Autowired
-    private HelloService helloService;
+    private HelloServiceImpl helloService;
 
     @PostConstruct
     public void init() {
         metricExecutor = Executors.newSingleThreadExecutor();
+    }
+
+    @GetMapping("/status")
+    public HelloServiceImpl callCnt() {
+        return helloService;
+    }
+
+    @GetMapping("/status/set")
+    public String setStatus(@RequestParam(required = false, defaultValue = "0") int sleep,
+                            @RequestParam(required = false, defaultValue = "false")boolean throwException) {
+        helloService.sleep = sleep;
+        helloService.throwException = throwException;
+
+        return "success";
     }
 
     /**

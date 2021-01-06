@@ -62,7 +62,6 @@ public class ReservationApiGatewayRestController {
   public String sayHi(@RequestParam(value = "name", required = false) String name,
                       @RequestParam(value = "count", required = false, defaultValue = "1") int count,
                       @RequestParam(value = "sleep", required = false, defaultValue = "0") int sleep,
-                      @RequestParam(value = "throwException", required = false, defaultValue = "false") boolean throwException,
                       @RequestParam(value = "concurrent", required = false, defaultValue = "1") int concurrent,
                       @RequestParam(value = "metricSplit", required = false, defaultValue = "-1") int metricSplit,
                       @RequestParam(value = "metricHintRate", required = false, defaultValue = "1") double metricHintRate,
