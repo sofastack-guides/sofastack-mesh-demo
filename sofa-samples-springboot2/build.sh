@@ -20,7 +20,7 @@ docker tag sofa-echo-client:${version} reg.docker.alibaba-inc.com/lxd/sofa-echo-
 
 docker push reg.docker.alibaba-inc.com/lxd/sofa-echo-client:${version}
 
-cd ../dubbo-echo-server/
+cd ../sofa-echo-server/
 
 docker build -t sofa-echo-server:${version} .
 
