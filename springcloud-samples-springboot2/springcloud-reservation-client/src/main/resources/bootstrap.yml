@@ -1,6 +1,6 @@
 spring:
   application:
-    name: reservation-client
+    name: sp-cgo-client
 
 #eureka:
 #  client:

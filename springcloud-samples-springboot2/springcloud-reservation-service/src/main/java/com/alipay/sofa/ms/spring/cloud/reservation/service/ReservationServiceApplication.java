@@ -8,12 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author yiji@apache.org
  */
 @EnableDiscoveryClient
 @SpringBootApplication
+@ImportResource("spring/sp-cgo-server.xml")
 public class ReservationServiceApplication {
   @Bean
   CommandLineRunner runner(ReservationRepository rr) {

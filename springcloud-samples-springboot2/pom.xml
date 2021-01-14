@@ -26,6 +26,10 @@
         <guava_version>20.0</guava_version>
         <spring_cloud_version>Finchley.SR3</spring_cloud_version>
         <springboot_version>2.0.9.RELEASE</springboot_version>
+
+        <!-- 每个模块独立使用依赖版本 -->
+        <dubbo.version>2.7.5</dubbo.version>
+        <curator.version>2.12.0</curator.version>
     </properties>
 
     <dependencyManagement>
@@ -51,6 +55,24 @@
                 <artifactId>guava</artifactId>
                 <version>${guava_version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!-- curator for dubbo -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
