@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="benchmark-provider"/>
+    <dubbo:application name="dubbo-echo-server"/>
 
     <!-- 使用本地dsr作为注册中心 -->
     <dubbo:registry address="zookeeper://${zookeeper.address}"/>

@@ -83,14 +83,14 @@ public class HelloController {
 
         StringBuilder renderResult = new StringBuilder();
 
-        renderResult.append("总请求数 : ").append(concurrent * count).append("</br>");
-        renderResult.append("总响应耗时 : ").append(totalDuration).append(" 毫秒</br>");
+        renderResult.append("总请求数 : ").append(concurrent * count).append("\r\n");
+        renderResult.append("总响应耗时 : ").append(totalDuration).append(" 毫秒\n");
         double avgDuration = totalDuration * 1.0 / (concurrent * count);
         double singleCallAvgDuration = totalCallTimes.get() * 1.0 / (concurrent * count);
-        renderResult.append("总平均耗时 : ").append(avgDuration).append(" 毫秒</br>");
-        renderResult.append("单个请求平均耗时 : ").append(singleCallAvgDuration).append(" 毫秒</br>");
+        renderResult.append("总平均耗时 : ").append(avgDuration).append(" 毫秒\n");
+        renderResult.append("单个请求平均耗时 : ").append(singleCallAvgDuration).append(" 毫秒\n");
         int qps = new Double(1000 / avgDuration).intValue();
-        renderResult.append("QPS : ").append(qps).append(" </br>");
+        renderResult.append("QPS : ").append(qps).append(" \n");
 
         if (countMetric) {
             renderMetric(renderResult, metrics, qps, metricSplit, metricHintRate);
@@ -125,7 +125,7 @@ public class HelloController {
                     if (shouldSample(sampleRate)) {
                         result.append("第 ").append(i).append("次调用，sleep ").append(sleep).append(" 毫秒，耗时 ").append(duration).append(
                                 " 毫秒, 结果：")
-                                .append(response).append("<br>");
+                                .append(response).append("\r\n");
                     }
 
                     logger.info(response);
@@ -138,7 +138,7 @@ public class HelloController {
                     long duration = System.currentTimeMillis() - startTime;
                     result.append("第 ").append(i).append("次调用，sleep ").append(sleep).append(" 毫秒，耗时 ").append(duration).append(" 毫秒, 结果：")
                             .append(e.getMessage()).append(
-                            "<br>");
+                            "\r\n");
                 }
             }
 
@@ -187,7 +187,7 @@ public class HelloController {
             }
 
             if (count % metricSplit == 0) {
-                sb.append("<br>");
+                sb.append("\n");
             }
             count++;
         }
@@ -197,8 +197,8 @@ public class HelloController {
 
     private String renderResult(StringBuilder sb, Map<String, String> results) {
         for (Map.Entry<String, String> entry : results.entrySet()) {
-            sb.append("<h5>").append(entry.getKey()).append("</h5>");
-            sb.append("<div> ").append(entry.getValue()).append("</div>");
+            sb.append(entry.getKey()).append("\r\n");
+            sb.append(entry.getValue()).append("\r\n");
         }
         return sb.toString();
     }
