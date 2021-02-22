@@ -27,6 +27,7 @@ public class EchoConsumer implements ApplicationContextAware {
     private static final Logger LOGGER = LoggerFactory.getLogger(EchoConsumer.class);
 
     public static void main(String[] args) {
+        System.out.println("wash hash: " + Integer.toHexString("wasm".hashCode()));
         SpringApplication.run(EchoConsumer.class, args);
     }
 

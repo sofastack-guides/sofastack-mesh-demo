@@ -11,6 +11,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -24,11 +26,13 @@ public class SofaEchoConsumer implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         SofaEchoService echoService = (SofaEchoService) applicationContext.getBean("echoService"); // get remote service proxy
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         new Thread(() -> {
             for (; ; ) {
                 try {
                     TimeUnit.SECONDS.sleep(1L);
                     String status1 = echoService.echo("Hello world!");
+                    System.out.println(">>>>>>>> " + fmt.format(new Date())  + " echo result: " + status1);
                     logger.info(">>>>>>>> echo result: " + status1);
                 } catch (Exception e) {
                     logger.error(">>>>>>>> echo result: " + e.getMessage());
