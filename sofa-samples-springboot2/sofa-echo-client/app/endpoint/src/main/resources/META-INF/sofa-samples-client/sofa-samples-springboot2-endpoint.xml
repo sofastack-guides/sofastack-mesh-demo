@@ -8,8 +8,10 @@
 
     <!-- sofa rpc reference -->
     <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService">
-        <sofa:binding.bolt/>
+        <sofa:binding.bolt>
+            <sofa:route target-url="bolt://127.0.0.1:2045"/>
+        </sofa:binding.bolt>
     </sofa:reference>
 
-    <bean class="com.alipay.sofa.ms.endpoint.reference.SofaEchoConsumer" />
+    <bean class="com.alipay.sofa.ms.endpoint.reference.SofaEchoConsumer"/>
 </beans>
