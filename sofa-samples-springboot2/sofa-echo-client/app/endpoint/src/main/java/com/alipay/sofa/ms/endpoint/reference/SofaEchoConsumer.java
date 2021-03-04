@@ -24,18 +24,21 @@ public class SofaEchoConsumer implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         BenchmarkService echoService = (BenchmarkService) applicationContext.getBean("benchmarkService"); // get remote service proxy
-        new Thread(() -> {
-            for (; ; ) {
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                    String status1 = echoService.send_256_byte("Hello world!");
-                    logger.info(">>>>>>>> echo result: " + status1);
-                    System.out.println(">>>>>>>> echo result: " + status1);
-                } catch (Exception e) {
-                    logger.error(">>>>>>>> echo result: " + e.getMessage());
-                    System.err.println(">>>>>>>> echo result: " + e.getMessage());
+        for (int i = 0; i < 2; i++){
+            new Thread(() -> {
+                for (; ; ) {
+                    try {
+                        TimeUnit.SECONDS.sleep(1L);
+                        String status1 = echoService.send_256_byte("Hello world!");
+                        logger.info(">>>>>>>> echo result: " + status1);
+                        System.out.println(">>>>>>>> echo result: " + status1);
+                    } catch (Exception e) {
+                        logger.error(">>>>>>>> echo result: " + e.getMessage());
+                        System.err.println(">>>>>>>> echo result: " + e.getMessage());
+                    }
                 }
-            }
-        }).start();
+            }).start();
+        }
+
     }
 }
