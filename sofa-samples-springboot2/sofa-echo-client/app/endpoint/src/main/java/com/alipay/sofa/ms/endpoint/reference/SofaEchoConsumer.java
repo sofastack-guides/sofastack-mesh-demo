@@ -4,7 +4,7 @@
  */
 package com.alipay.sofa.ms.endpoint.reference;
 
-import com.alipay.sofa.ms.service.SofaEchoService;
+import com.alipay.sofa.ms.service.BenchmarkService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -23,15 +23,17 @@ public class SofaEchoConsumer implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SofaEchoService echoService = (SofaEchoService) applicationContext.getBean("echoService"); // get remote service proxy
+        BenchmarkService echoService = (BenchmarkService) applicationContext.getBean("benchmarkService"); // get remote service proxy
         new Thread(() -> {
             for (; ; ) {
                 try {
                     TimeUnit.SECONDS.sleep(1L);
-                    String status1 = echoService.echo("Hello world!");
+                    String status1 = echoService.send_256_byte("Hello world!");
                     logger.info(">>>>>>>> echo result: " + status1);
+                    System.out.println(">>>>>>>> echo result: " + status1);
                 } catch (Exception e) {
                     logger.error(">>>>>>>> echo result: " + e.getMessage());
+                    System.err.println(">>>>>>>> echo result: " + e.getMessage());
                 }
             }
         }).start();
