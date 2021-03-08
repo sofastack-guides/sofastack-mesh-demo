@@ -11,6 +11,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -24,16 +26,23 @@ public class SofaEchoConsumer implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         BenchmarkService echoService = (BenchmarkService) applicationContext.getBean("benchmarkService"); // get remote service proxy
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < 1; i++){
             new Thread(() -> {
+                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                int count = 1;
                 for (; ; ) {
                     try {
-                        TimeUnit.SECONDS.sleep(1L);
+                        long start = System.currentTimeMillis();
                         String status1 = echoService.send_256_byte("Hello world!");
-                        logger.info(">>>>>>>> echo result: " + status1);
-                        System.out.println(">>>>>>>> echo result: " + status1);
+
+                        long elapsed = System.currentTimeMillis() -start;
+                        Thread thread = Thread.currentThread();
+                        System.out.println(
+                                ">>>>>>>> [" + thread.getId() + "," + (count++) + "," + elapsed + "ms]" + fmt.format(new Date()) + " echo result: " + status1);
+
+                        TimeUnit.SECONDS.sleep(1L);
                     } catch (Exception e) {
-                        logger.error(">>>>>>>> echo result: " + e.getMessage());
+                        //logger.error(">>>>>>>> echo result: " + e.getMessage());
                         System.err.println(">>>>>>>> echo result: " + e.getMessage());
                     }
                 }
