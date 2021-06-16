@@ -11,7 +11,7 @@
 <!--        <sofa:binding.bolt/>-->
 <!--    </sofa:reference>-->
 
-    <sofa:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.BenchmarkService">
+    <sofa:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.YijiBenchmarkService">
         <sofa:binding.bolt/>
     </sofa:reference>
 

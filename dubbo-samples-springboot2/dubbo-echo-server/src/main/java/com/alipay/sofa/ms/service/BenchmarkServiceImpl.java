@@ -4,18 +4,14 @@
  */
 package com.alipay.sofa.ms.service;
 
-import com.alibaba.dubbo.rpc.RpcContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * @author yiji
  * @version : BenchmarkService.java, v 0.1 2020年04月01日 4:47 下午 yiji Exp $
  */
-public class BenchmarkServiceImpl implements BenchmarkService {
+public class BenchmarkServiceImpl implements YijiBenchmarkService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BenchmarkServiceImpl.class);
 

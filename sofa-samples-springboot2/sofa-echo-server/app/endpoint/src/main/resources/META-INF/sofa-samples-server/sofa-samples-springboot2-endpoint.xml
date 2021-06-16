@@ -30,7 +30,7 @@
 
 
     <bean id="benchmarkService" class="com.alipay.sofa.ms.endpoint.impl.BenchmarkServiceImpl"/>
-    <sofa:service interface="com.alipay.sofa.ms.service.BenchmarkService" ref="benchmarkService">
+    <sofa:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">
         <sofa:binding.bolt/>
     </sofa:service>
 

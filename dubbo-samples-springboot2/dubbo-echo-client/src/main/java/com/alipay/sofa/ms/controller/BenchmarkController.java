@@ -4,7 +4,11 @@
  */
 package com.alipay.sofa.ms.controller;
 
-import com.alipay.sofa.ms.service.BenchmarkService;
+import com.alibaba.dubbo.common.URL;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+import com.alibaba.dubbo.rpc.cluster.Router;
+import com.alibaba.dubbo.rpc.cluster.RouterFactory;
+import com.alipay.sofa.ms.service.YijiBenchmarkService;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +27,20 @@ public class BenchmarkController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BenchmarkController.class);
 
+    void init() {
+        // 加载扩展实现
+        RouterFactory factory = ExtensionLoader.getExtensionLoader(RouterFactory.class).getExtension("customRouter");
+        URL url = URL.valueOf("route://0.0.0.0?interface=com.alipay.sofa.ms.service.YijiBenchmarkService&router=customRouter");
+        Router router = factory.getRouter(url);
+    }
+
     @Resource
-    private BenchmarkService benchmarkService;
+    private YijiBenchmarkService benchmarkService;
 
     @GetMapping("/send_512_byte")
     public String send_512_byte() {
         try {
+//            init();
             return benchmarkService.send_512_byte(randomString(512));
         } catch (Exception e) {
             LOGGER.error("Failed to invoke send_512_byte, cause: " + e);
@@ -89,7 +101,7 @@ public class BenchmarkController {
         return lastLoop;
     }
 
-    static char[] chars = new char[] {
+    static char[] chars = new char[]{
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
