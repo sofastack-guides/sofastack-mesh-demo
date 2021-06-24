@@ -1,11 +1,14 @@
 spring:
   application:
     name: config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/nobodyiam/config-repo.git
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/nobodyiam/config-repo.git
+#  cloud:
+#    config:
+#
 
 server:
   port: 8888
