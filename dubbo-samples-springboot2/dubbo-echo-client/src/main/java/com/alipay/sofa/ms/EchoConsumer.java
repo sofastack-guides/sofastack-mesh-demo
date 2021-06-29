@@ -43,6 +43,7 @@ public class EchoConsumer implements ApplicationContextAware {
                     LOGGER.error(">>>>>>>> echo result: " + e.getMessage());
                 }
             }
-        }).start();
+        });
+//                .start();
     }
 }

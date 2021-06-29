@@ -34,7 +34,6 @@ public class SofaEchoConsumer implements ApplicationContextAware {
                     logger.error(">>>>>>>> echo result: " + e.getMessage());
                 }
             }
-        });
-//                .start();
+        }).start();
     }
 }

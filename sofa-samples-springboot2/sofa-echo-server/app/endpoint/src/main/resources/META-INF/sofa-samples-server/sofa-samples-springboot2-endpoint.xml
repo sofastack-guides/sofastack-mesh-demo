@@ -24,7 +24,49 @@
 
     <!-- sofa rpc service -->
     <bean id="sofaEchoService" class="com.alipay.sofa.ms.endpoint.impl.SofaEchoServiceImpl"/>
-    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService" unique-id="test-zxy">
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaEchoService" ref="sofaEchoService">
+        <sofa:binding.bolt/>
+    </sofa:service>
+
+    <!-- sofa rpc service -->
+    <bean id="sofaCircuitBreakerServiceImpl" class="com.alipay.sofa.ms.endpoint.impl.SofaCircuitBreakerServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaCircuitBreakerService" ref="sofaCircuitBreakerServiceImpl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+
+    <!--服务降级-->
+    <bean id="sofaDowngradeServiceImpl" class="com.alipay.sofa.ms.endpoint.impl.SofaDowngradeServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaDowngradeService" ref="sofaDowngradeServiceImpl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+    <bean id="sofaDowngradeService1Impl" class="com.alipay.sofa.ms.endpoint.impl.SofaDowngradeService1Impl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaDowngradeService1" ref="sofaDowngradeService1Impl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+
+    <!--服务限流-->
+    <bean id="sofaRateLimitServiceImpl" class="com.alipay.sofa.ms.endpoint.impl.SofaRateLimitServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaRateLimitService" ref="sofaRateLimitServiceImpl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+    <bean id="sofaRateLimitService1Impl" class="com.alipay.sofa.ms.endpoint.impl.SofaRateLimitService1Impl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaRateLimitService1" ref="sofaRateLimitService1Impl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+
+    <!--服务路由-->
+    <bean id="sofaRouterServiceImpl" class="com.alipay.sofa.ms.endpoint.impl.SofaRouterServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaRouterService" ref="sofaRouterServiceImpl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+    <bean id="sofaRouterService1Impl" class="com.alipay.sofa.ms.endpoint.impl.SofaRouterService1Impl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaRouterService1" ref="sofaRouterService1Impl">
+        <sofa:binding.bolt/>
+    </sofa:service>
+
+    <!--故障隔离-->
+    <bean id="sofaFaultToleranceServiceImpl" class="com.alipay.sofa.ms.endpoint.impl.SofaFaultToleranceServiceImpl"/>
+    <sofa:service interface="com.alipay.sofa.ms.service.SofaFaultToleranceService" ref="sofaFaultToleranceServiceImpl">
         <sofa:binding.bolt/>
     </sofa:service>
 

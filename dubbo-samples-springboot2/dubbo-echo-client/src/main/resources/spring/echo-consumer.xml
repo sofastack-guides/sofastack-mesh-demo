@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="echo-consumer"/>
+    <dubbo:application name="dubbo-client-zxy"/>
 
    <!-- <dubbo:consumer check="false" />-->
 
@@ -35,5 +35,53 @@
     <!-- 指定要消费的服务 -->
     <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService"/>
 
+    <dubbo:reference id="dubboCircuitBreakerService"
+                     interface="com.alipay.sofa.ms.service.DubboCircuitBreakerService">
+    </dubbo:reference>
 
+    <!--服务降级-->
+    <dubbo:reference id="downgradeService"
+                     interface="com.alipay.sofa.ms.service.DubboDowngradeService">
+    </dubbo:reference>
+
+    <dubbo:reference id="downgradeService1"
+                     interface="com.alipay.sofa.ms.service.DubboDowngradeService1">
+    </dubbo:reference>
+
+
+    <!--服务限流-->
+    <dubbo:reference id="rateLimitService"
+                     interface="com.alipay.sofa.ms.service.DubboRateLimitService">
+    </dubbo:reference>
+
+    <dubbo:reference id="rateLimitService1"
+                     interface="com.alipay.sofa.ms.service.DubboRateLimitService1">
+    </dubbo:reference>
+
+    <!--服务路由-->
+    <dubbo:reference id="routerService"
+                     interface="com.alipay.sofa.ms.service.DubboRouterService">
+    </dubbo:reference>
+
+    <dubbo:reference id="routerService1"
+                     interface="com.alipay.sofa.ms.service.DubboRouterService1">
+    </dubbo:reference>
+
+    <!--故障隔离-->
+    <dubbo:reference id="faultToleranceService"
+                     interface="com.alipay.sofa.ms.service.DubboFaultToleranceService">
+    </dubbo:reference>
+
+    <!--服务鉴权-->
+    <dubbo:reference id="authService"
+                     interface="com.alipay.sofa.ms.service.DubboAuthService">
+    </dubbo:reference>
+
+    <!--故障注入-->
+    <dubbo:reference id="faultInjectService"
+                     interface="com.alipay.sofa.ms.service.DubboFaultInjectService">
+    </dubbo:reference>
+    <dubbo:reference id="faultInjectService1"
+                     interface="com.alipay.sofa.ms.service.DubboFaultInjectService1">
+    </dubbo:reference>
 </beans>

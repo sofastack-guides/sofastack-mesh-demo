@@ -29,7 +29,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @SpringBootApplication
 public class ReservationClientApplication {
-  @Bean
+  //@Bean
   CommandLineRunner runner(DiscoveryClient dc) {
     return args -> {
       dc.getInstances("reservation-service")

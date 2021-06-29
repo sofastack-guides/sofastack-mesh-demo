@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="echo-provider"/>
+    <dubbo:application name="dubbo-server-zxy"/>
 
     <!-- 使用本地dsr作为注册中心 -->
     <dubbo:registry address="zookeeper://127.0.0.1:2181" use-as-config-center="false"/>
@@ -39,4 +39,54 @@
     <!-- 声明服务暴露的接口，并暴露服务 -->
     <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoService"/>
 
+    <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
+    <bean id="dubboCircuitBreakerServiceImpl" class="com.alipay.sofa.ms.service.DubboCircuitBreakerServiceImpl"/>
+
+    <!-- 声明服务暴露的接口，并暴露服务 -->
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboCircuitBreakerService"
+                   ref="dubboCircuitBreakerServiceImpl" timeout="1000"/>
+
+
+    <!-- 服务降级接口-->
+    <bean id="dubboDowngradeServiceImpl" class="com.alipay.sofa.ms.service.DubboDowngradeServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboDowngradeService"
+                   ref="dubboDowngradeServiceImpl" timeout="1000"/>
+    <bean id="dubboDowngradeService1Impl" class="com.alipay.sofa.ms.service.DubboDowngradeService1Impl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboDowngradeService1"
+                   ref="dubboDowngradeService1Impl" timeout="1000"/>
+
+
+    <!-- 服务限流接口-->
+    <bean id="dubboRateLimitServiceImpl" class="com.alipay.sofa.ms.service.DubboRateLimitServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboRateLimitService"
+                   ref="dubboRateLimitServiceImpl" timeout="1000"/>
+    <bean id="dubboRateLimitService1Impl" class="com.alipay.sofa.ms.service.DubboRateLimitService1Impl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboRateLimitService1"
+                   ref="dubboRateLimitService1Impl" timeout="1000"/>
+
+
+    <!--服务路由接口-->
+    <bean id="dubboRouterServiceImpl" class="com.alipay.sofa.ms.service.DubboRouterServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboRouterService"
+                   ref="dubboRouterServiceImpl" timeout="1000"/>
+    <bean id="dubboRouterService1Impl" class="com.alipay.sofa.ms.service.DubboRouterService1Impl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboRouterService1"
+                   ref="dubboRouterService1Impl" timeout="1000"/>
+
+    <!--故障隔离-->
+    <bean id="dubboFaultToleranceServiceImpl" class="com.alipay.sofa.ms.service.DubboFaultToleranceServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboFaultToleranceService"
+                   ref="dubboFaultToleranceServiceImpl" timeout="1000"/>
+
+    <!--服务鉴权-->
+    <bean id="dubboAuthServiceImpl" class="com.alipay.sofa.ms.service.DubboAuthServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboAuthService"
+                   ref="dubboAuthServiceImpl" timeout="1000"/>
+    <!--故障注入-->
+    <bean id="dubboFaultInjectServiceImpl" class="com.alipay.sofa.ms.service.DubboFaultInjectServiceImpl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboFaultInjectService"
+                   ref="dubboFaultInjectServiceImpl" timeout="1000"/>
+    <bean id="dubboFaultInjectService1Impl" class="com.alipay.sofa.ms.service.DubboFaultInjectService1Impl"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.DubboFaultInjectService1"
+                   ref="dubboFaultInjectService1Impl" timeout="1000"/>
 </beans>

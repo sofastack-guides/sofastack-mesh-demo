@@ -50,6 +50,12 @@
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>rpc-enterprise-sofa-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>sofa-middleware-log</artifactId>
+                    <groupId>com.alipay.sofa.common.log</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>

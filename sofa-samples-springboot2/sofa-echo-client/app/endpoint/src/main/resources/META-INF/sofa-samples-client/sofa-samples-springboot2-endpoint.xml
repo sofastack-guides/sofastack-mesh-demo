@@ -7,7 +7,47 @@
        default-autowire="byName">
 
     <!-- sofa rpc reference -->
-    <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService" unique-id="test-zxy">
+    <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService">
+        <sofa:binding.bolt>
+            <sofa:method name="echo" timeout="20000"/>
+        </sofa:binding.bolt>
+    </sofa:reference>
+
+    <sofa:reference id="sofaCircuitBreakerService" interface="com.alipay.sofa.ms.service.SofaCircuitBreakerService">
+        <sofa:binding.bolt>
+            <sofa:method name="echo" timeout="40000"/>
+        </sofa:binding.bolt>
+    </sofa:reference>
+
+    <bean class="com.alipay.sofa.ms.endpoint.reference.SofaEchoConsumer" />
+
+
+    <!--服务降级-->
+    <sofa:reference id="downgradeService" interface="com.alipay.sofa.ms.service.SofaDowngradeService">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+    <sofa:reference id="downgradeService1" interface="com.alipay.sofa.ms.service.SofaDowngradeService1">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+
+    <!--服务限流-->
+    <sofa:reference id="rateLimitService" interface="com.alipay.sofa.ms.service.SofaRateLimitService">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+    <sofa:reference id="rateLimitService1" interface="com.alipay.sofa.ms.service.SofaRateLimitService1">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+
+    <!--服务路由-->
+    <sofa:reference id="routerService" interface="com.alipay.sofa.ms.service.SofaRouterService">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+    <sofa:reference id="routerService1" interface="com.alipay.sofa.ms.service.SofaRouterService1">
+        <sofa:binding.bolt/>
+    </sofa:reference>
+
+    <!--故障隔离-->
+    <sofa:reference id="faultToleranceService" interface="com.alipay.sofa.ms.service.SofaFaultToleranceService">
         <sofa:binding.bolt/>
     </sofa:reference>
 
