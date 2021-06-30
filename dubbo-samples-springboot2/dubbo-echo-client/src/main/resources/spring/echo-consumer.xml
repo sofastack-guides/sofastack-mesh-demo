@@ -28,9 +28,7 @@
     <dubbo:application name="benchmark-consumer"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181">
-        <dubbo:parameter key="router" value="customRouter"/>
-    </dubbo:registry>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
 
     <dubbo:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.YijiBenchmarkService">
     </dubbo:reference>

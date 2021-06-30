@@ -18,10 +18,10 @@
         </dependency>
 
         <!-- service mesh sdk -->
-<!--        <dependency>-->
-<!--            <groupId>com.alipay.sofa</groupId>-->
-<!--            <artifactId>sofa-registry-cloud-all</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>sofa-registry-cloud-all</artifactId>
+        </dependency>
 
         <!-- tracer -->
 <!--        <dependency>-->
@@ -36,6 +36,11 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
         </dependency>
 
         <dependency>
