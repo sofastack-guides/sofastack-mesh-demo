@@ -28,7 +28,7 @@
     <dubbo:application name="benchmark-provider"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="zookeeper://localhost:2181"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20881"/>
@@ -38,36 +38,40 @@
     <bean id="benchmarkService" class="com.alipay.sofa.ms.service.BenchmarkServiceImpl"/>
 
     <!-- 声明服务暴露的接口，并暴露服务 -->
-    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">
-        <dubbo:parameter key="region" value="a"/>
-        <dubbo:parameter key="dc" value="1"/>
-        <dubbo:parameter key="tag" value="gray"/>
-        <dubbo:parameter key="router" value="xxxImpl"/>
-    </dubbo:service>
-
 <!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
 <!--        <dubbo:parameter key="region" value="a"/>-->
 <!--        <dubbo:parameter key="dc" value="1"/>-->
-<!--        <dubbo:parameter key="tag" value="red,blue"/>-->
-<!--    </dubbo:service>-->
-
-
-<!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
-<!--        <dubbo:parameter key="region" value="b"/>-->
-<!--        <dubbo:parameter key="dc" value="3"/>-->
 <!--        <dubbo:parameter key="tag" value="gray"/>-->
+<!--        <dubbo:parameter key="router" value="xxxImpl"/>-->
 <!--    </dubbo:service>-->
 
-<!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
-<!--        <dubbo:parameter key="region" value="b"/>-->
-<!--        <dubbo:parameter key="dc" value="3"/>-->
-<!--    </dubbo:service>-->
+    <bean id="simpleMonitorService" class="com.alipay.sofa.ms.service.SimpleMonitorService"/>
 
-<!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
-<!--        <dubbo:parameter key="region" value="a"/>-->
-<!--        <dubbo:parameter key="dc" value="1"/>-->
-<!--        <dubbo:parameter key="tag" value="blue"/>-->
-<!--    </dubbo:service>-->
+    <dubbo:service interface="com.alibaba.dubbo.monitor.MonitorService" ref="simpleMonitorService"/>
+
+    <!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
+    <!--        <dubbo:parameter key="region" value="a"/>-->
+    <!--        <dubbo:parameter key="dc" value="1"/>-->
+    <!--        <dubbo:parameter key="tag" value="red,blue"/>-->
+    <!--    </dubbo:service>-->
+
+
+    <!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
+    <!--        <dubbo:parameter key="region" value="b"/>-->
+    <!--        <dubbo:parameter key="dc" value="3"/>-->
+    <!--        <dubbo:parameter key="tag" value="gray"/>-->
+    <!--    </dubbo:service>-->
+
+    <!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
+    <!--        <dubbo:parameter key="region" value="b"/>-->
+    <!--        <dubbo:parameter key="dc" value="3"/>-->
+    <!--    </dubbo:service>-->
+
+    <!--    <dubbo:service interface="com.alipay.sofa.ms.service.YijiBenchmarkService" ref="benchmarkService">-->
+    <!--        <dubbo:parameter key="region" value="a"/>-->
+    <!--        <dubbo:parameter key="dc" value="1"/>-->
+    <!--        <dubbo:parameter key="tag" value="blue"/>-->
+    <!--    </dubbo:service>-->
 
 
 </beans>

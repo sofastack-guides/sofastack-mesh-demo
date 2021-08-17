@@ -36,7 +36,7 @@ public class CustomRouter implements Router, UserRouter {
         return invokers;
     }
 
-    @Override
+//    @Override
     public int getPriority() {
         return 0;
     }

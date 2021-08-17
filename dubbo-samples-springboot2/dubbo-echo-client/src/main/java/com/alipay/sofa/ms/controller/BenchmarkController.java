@@ -6,6 +6,7 @@ package com.alipay.sofa.ms.controller;
 
 import com.alibaba.dubbo.common.URL;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
+import com.alibaba.dubbo.monitor.MonitorService;
 import com.alibaba.dubbo.rpc.cluster.Router;
 import com.alibaba.dubbo.rpc.cluster.RouterFactory;
 import com.alipay.sofa.ms.service.YijiBenchmarkService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author yiji
@@ -34,8 +36,11 @@ public class BenchmarkController {
         Router router = factory.getRouter(url);
     }
 
-    @Resource
+//    @Resource
     private YijiBenchmarkService benchmarkService;
+
+    @Resource
+    private MonitorService monitorService;
 
     @GetMapping("/send_512_byte")
     public String send_512_byte() {
@@ -44,6 +49,17 @@ public class BenchmarkController {
             return benchmarkService.send_512_byte(randomString(512));
         } catch (Exception e) {
             LOGGER.error("Failed to invoke send_512_byte, cause: " + e);
+            return "ERROR:" + e.getMessage();
+        }
+    }
+
+    @GetMapping("/monitor")
+    public String monitor() {
+        try {
+            List<URL> urls = monitorService.lookup(new URL("xxx", "xxx", 100));
+            return "xxx";
+        } catch (Exception e) {
+            LOGGER.error("Failed to invoke monitor, cause: " + e);
             return "ERROR:" + e.getMessage();
         }
     }
