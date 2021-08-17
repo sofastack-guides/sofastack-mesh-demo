@@ -22,6 +22,7 @@
         <module>dubbo-echo-api</module>
         <module>dubbo-echo-client</module>
         <module>dubbo-echo-server</module>
+        <module>dubbo-webservice</module>
     </modules>
 
     <dependencyManagement>
