@@ -16,7 +16,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.util.concurrent.DefaultThreadFactory;
-
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -25,6 +24,7 @@ public class SocketServerBootstrap {
     public static void main(String[] args) throws InterruptedException {
         startSocketService(9999);
     }
+
 
     public static void startSocketService(int port) throws InterruptedException {
 
@@ -50,7 +50,7 @@ public class SocketServerBootstrap {
                     }
                 });
         // bind
-        ChannelFuture channelFuture = bootstrap.bind("127.0.0.1", port);
+        ChannelFuture channelFuture = bootstrap.bind("0.0.0.0", port);
         channelFuture.syncUninterruptibly();
         Channel channel = channelFuture.channel();
 
@@ -158,8 +158,12 @@ public class SocketServerBootstrap {
             // 把</Request> 转成</Response>
             String body = String.valueOf(msg);
 
+            body = body.replaceAll("<RequestType>0</RequestType>", "<RequestType>1</RequestType>");
+
             body = body.replaceAll("<Request>", "<Response>");
             body = body.replaceAll("</Request>", "</Response>");
+
+            System.out.println("ready response: " + body);
 
             ctx.channel().writeAndFlush(body);
         }
