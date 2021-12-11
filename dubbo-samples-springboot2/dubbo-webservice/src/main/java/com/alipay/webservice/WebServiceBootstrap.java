@@ -15,6 +15,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebServiceBootstrap {
 
     public static void main(String[] args) {
+
+        // start netty server
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SocketServerBootstrap.main(args);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
         SpringApplication.run(WebServiceBootstrap.class, args);
     }
 
