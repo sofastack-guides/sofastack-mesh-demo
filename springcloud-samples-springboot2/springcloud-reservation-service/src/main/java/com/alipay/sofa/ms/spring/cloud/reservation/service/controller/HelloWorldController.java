@@ -4,9 +4,9 @@
  */
 package com.alipay.sofa.ms.spring.cloud.reservation.service.controller;
 
-import com.alipay.sofa.ms.model.SubReq;
 import com.alipay.sofa.ms.spring.cloud.reservation.service.entity.Model;
 import com.alipay.sofa.ms.spring.cloud.reservation.service.entity.RequestModel;
+import com.alipay.sofa.ms.spring.cloud.reservation.service.entity.SubReq;
 import org.springframework.web.bind.annotation.*;
 
 /**
