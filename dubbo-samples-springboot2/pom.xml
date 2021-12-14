@@ -23,6 +23,7 @@
         <module>dubbo-echo-client</module>
         <module>dubbo-echo-server</module>
         <module>dubbo-webservice</module>
+        <module>dubbo-springcloud</module>
     </modules>
 
     <dependencyManagement>
