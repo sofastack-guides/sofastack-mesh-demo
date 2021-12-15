@@ -22,11 +22,17 @@ public class HelloWorldController {
         return "hello world!";
     }
 
-    @RequestMapping("/echo")
+    @RequestMapping("/model")
     @ResponseBody
-    public Model echo(@RequestBody RequestModel model){
+    public Model model(@RequestBody RequestModel model){
         System.out.println(model.toString());
         return new Model().setValue("hello world!");
+    }
+
+    @RequestMapping("/echo")
+    public String echo(String message){
+        System.out.println(message);
+        return "hello " + message + "!";
     }
 
     @RequestMapping("/add")
