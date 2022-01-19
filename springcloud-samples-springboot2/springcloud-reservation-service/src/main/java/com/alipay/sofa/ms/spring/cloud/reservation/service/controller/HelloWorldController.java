@@ -32,7 +32,13 @@ public class HelloWorldController {
     @RequestMapping("/echo")
     public String echo(String message){
         System.out.println(message);
-        return "hello " + message + "!";
+        return "[spring cloud] hello " + message + "!";
+    }
+
+    @RequestMapping("/{message}/echo")
+    public String echo2(@PathVariable String message){
+        System.out.println(message);
+        return "[spring cloud] hello " + message + "!";
     }
 
     @RequestMapping("/add")
