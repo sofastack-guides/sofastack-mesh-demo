@@ -40,11 +40,6 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
     return Collections.emptyList();
   }
 
-  @RequestMapping("/echo")
-  public  String echo(){
-    return "Hello W";
-  }
-
   @RequestMapping("/names")
   public Collection<String> getReservationNames() {
     logger.debug("Get reservation names via rest template!");
