@@ -12,10 +12,4 @@ public class ReservationServiceFallback implements ReservationService {
   public Resources<Reservation> queryReservations() {
     return new Resources<>(Collections.emptyList());
   }
-
-  @Override
-  public String hello() {
-    return "h";
-  }
-
 }
