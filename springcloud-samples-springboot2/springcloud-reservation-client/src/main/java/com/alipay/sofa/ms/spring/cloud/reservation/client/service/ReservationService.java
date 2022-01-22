@@ -27,9 +27,6 @@ public interface ReservationService {
   @RequestMapping(value = "/reservations", method = RequestMethod.GET)
   Resources<Reservation> queryReservations();
 
-  @RequestMapping(value="reservations/hello",method = RequestMethod.GET)
-  String hello();
-
   @Configuration
   @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
   public static class CustomerClientConfiguration {
