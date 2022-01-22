@@ -40,7 +40,7 @@ public class EchoConsumer implements ApplicationContextAware {
                     String status1 = echoService.echo("Hello world!");
                     LOGGER.info(">>>>>>>> echo result: " + status1);
                 } catch (Exception e) {
-                   LOGGER.error(">>>>>>>> echo result: " + e.getMessage());
+                    LOGGER.error(">>>>>>>> echo result: " + e.getMessage());
                 }
             }
         }).start();
