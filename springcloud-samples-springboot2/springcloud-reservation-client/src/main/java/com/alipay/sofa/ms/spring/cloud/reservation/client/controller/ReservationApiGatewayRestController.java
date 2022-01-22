@@ -40,6 +40,11 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
     return Collections.emptyList();
   }
 
+  @RequestMapping("/echo")
+  public  String echo(){
+    return "Hello W";
+  }
+
   @RequestMapping("/names")
   public Collection<String> getReservationNames() {
     logger.debug("Get reservation names via rest template!");
@@ -70,7 +75,8 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
       for (; ; ) {
         try {
           TimeUnit.SECONDS.sleep(1L);
-          logger.info(">>>>>>> get reservations via feign: " + getReservationNamesViaFeign());
+          Collection<String> result = getReservationNamesViaFeign();
+          logger.info(">>>>>>> get reservations via feign: " + result);
           logger.info(">>>>>>> get reservations via rt: " + getReservationNames());
         } catch (Exception e) {
           logger.error(">>>>>>> get reservations: : " + e.getMessage());

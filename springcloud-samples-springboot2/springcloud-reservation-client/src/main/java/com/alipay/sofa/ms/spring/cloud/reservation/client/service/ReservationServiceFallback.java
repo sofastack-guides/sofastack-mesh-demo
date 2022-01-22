@@ -13,4 +13,9 @@ public class ReservationServiceFallback implements ReservationService {
     return new Resources<>(Collections.emptyList());
   }
 
+  @Override
+  public String hello() {
+    return "h";
+  }
+
 }
