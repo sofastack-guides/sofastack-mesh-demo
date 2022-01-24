@@ -12,5 +12,5 @@ public class ReservationServiceFallback implements ReservationService {
   public Resources<Reservation> queryReservations() {
     return new Resources<>(Collections.emptyList());
   }
-
+  
 }
