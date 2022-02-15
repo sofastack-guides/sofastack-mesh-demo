@@ -105,7 +105,8 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
       for (; ; ) {
         try {
           TimeUnit.SECONDS.sleep(1L);
-          logger.info(">>>>>>> get reservations via feign: " + getReservationNamesViaFeign());
+          Collection<String> result = getReservationNamesViaFeign();
+          logger.info(">>>>>>> get reservations via feign: " + result);
           logger.info(">>>>>>> get reservations via rt: " + getReservationNames());
         } catch (Exception e) {
           logger.error(">>>>>>> get reservations: : " + e.getMessage());
