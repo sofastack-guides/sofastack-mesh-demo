@@ -3,14 +3,19 @@ package com.alipay.webservice;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
-import io.netty.channel.*;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelDuplexHandler;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.util.concurrent.DefaultThreadFactory;
-
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -150,6 +155,17 @@ public class CDServerBootstrap {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
+            String req = (String) msg;
+            String id = "";
+
+            String idHeader = "<data name=\"SERVICE_REQUEST_ID\">\r\n";
+            String offset = "<field length=\"19\" scale=\"0\" type=\"string\">";
+            int index = req.indexOf(idHeader);
+            if (index >= 0) {
+                id = req.substring(index + idHeader.length() + offset.length(),
+                        index + idHeader.length() + offset.length() + 19);
+            }
+
             // 把<Request> 转成<Response>
             // 把</Request> 转成</Response>
             String body = String.valueOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
@@ -179,7 +195,13 @@ public class CDServerBootstrap {
                     "<field length=\"4\" scale=\"0\" type=\"string\">9527</field>" +
                     "</data>" +
                     "<data name=\"SERVICE_CODE\">" +
-                    "<field length=\"14\" scale=\"0\" type=\"string\">BRNC1200952700</field>" +
+                    "<field length=\"14\" scale=\"0\" type=\"string\">ECIF1200003000</field>" +
+                    "</data>" +
+                    "<data name=\"SERVICE_SCENE\">" +  // append scene
+                    "<field length=\"2\" scale=\"0\" type=\"string\">03</field>" +
+                    "</data>" +
+                    "<data name=\"SERVICE_REQUEST_ID\">" +
+                    "<field length=\"19\" scale=\"0\" type=\"string\">" + id + "</field>" +
                     "</data>" +
                     "<data name=\"MESSAGE_TYPE\">" +
                     "<field length=\"4\" scale=\"0\" type=\"string\">1210</field>" +
