@@ -78,7 +78,7 @@ public class SocketServerBootstrap {
             protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
                 // 构造socket协议响应报文
                 String packet = String.valueOf(msg);
-                String lenOfPacket = String.valueOf(packet.length());
+                String lenOfPacket = String.valueOf(packet.getBytes().length);
                 if (lenOfPacket.length() < 8) {
                     int remain = 8 - lenOfPacket.length();
                     String prefix = "";

@@ -3,14 +3,19 @@ package com.alipay.webservice;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
-import io.netty.channel.*;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelDuplexHandler;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.util.concurrent.DefaultThreadFactory;
-
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -95,7 +100,7 @@ public class BEISServerBootstrap {
                     String header = new String(headerBytes);
                     // 解析socket头部长度
                     // 8字节长度，不足前缀是0
-                    String length = header.substring(18,26);
+                    String length = header.substring(18, 26);
                     while (length.startsWith("0")) {
                         if (length.length() > 1) {
                             length = length.substring(1);
@@ -143,11 +148,40 @@ public class BEISServerBootstrap {
 
             // 把<Request> 转成<Response>
             // 把</Request> 转成</Response>
-            String body = String.valueOf("{BOBXML:CBT001    000006401000000000000001                                        {BOBXML:                                     }DQ1LWVkWQV1DQVpbWwsVCR8CERRQWFRXVVtdUwgUYmx3HwsWCgg9BHVdUEFYU1lMEUpeWFtFChpWV11YGwcFCAEcAwQFBxkIARwDBRcIPQRiS0B8UFdTBjsOYVFBdEJLWHZSQFAIBQgDAAMFBAcLF2NXR3ZARV58UEZWCj8KZV1FYUpHcVdDXQ8AAwYHBgYJAA4cZlBCZEFCdlJAUAg9BGNXR2dMRWNRXFcNBQAGBgwHAQ8bZ1NDa0hBZ11YUwkyDWBWQGZTRnZeDHJ6fGMHCAACAwQFBgcJBwcFDQUKGGpURmBRRHhYBjsOYVFBCD0EY1dHd1pSUgZzBwMFCRllXUVxXFBQCD0EY1dHeUZRCQ8BAlBbWBhETV9LUkZRGFJAUldDQFxZWRZiR11xdntyQFJXQ0BcWVkCEdW5gtO2tt6Rtdubs9mLonQCAwcZ0Li32Y2D24ms0bGI1J+V0YmW3rCd14y/0ouY1JaC3IGTG920hdeJptOxvdScituJrN+XlNS6jdOalt2GgNeMv9KLmNScv9K9ptiEvdqcg9C9iNG2v9aQuNChiNSQrQgaZFJMfEFUCj8KGGpURg0+CRlkQUJ6VlVRCD0EcEJDfFBXUxcPOA8bcVlUTVxXXUALPA==");
+            String body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                    + "<Document xmlns=\"brnc.1410.3028.00.01\">\n"
+                    + "<SysHead>\n"
+                    + "<Ret>\n"
+                    + "<RetMsg>[DFDK_BRNC140030280001#ESBOUT1_0570_E007]:[BOBITSAdapter]IO异常！</RetMsg>\n"
+                    + "<RetCode>E007</RetCode>\n"
+                    + "</Ret>\n"
+                    + "<MessageType>1410</MessageType>\n"
+                    + "<MessageCode>3028</MessageCode>\n"
+                    + "<RetStatus>1</RetStatus>\n"
+                    + "<ServiceScene>01</ServiceScene>\n"
+                    + "<ServiceCode>BRNC1400302800</ServiceCode>\n"
+                    + "</SysHead>\n"
+                    + "<LOCAL_HEAD/>\n"
+                    + "<AppHead/>\n"
+                    + "</Document>";
 
-            System.out.println("ready response: " + body);
+            String lenOfPacket = String.valueOf(body.getBytes().length);
+            if (lenOfPacket.length() < 8) {
+                int remain = 8 - lenOfPacket.length();
+                String prefix = "";
+                for (int i = 0; i < remain; i++) {
+                    prefix += "0";
+                }
+                lenOfPacket = prefix + lenOfPacket;
+            }
 
-            ctx.channel().writeAndFlush(body);
+            String header = "{BOBXML:PUBKEY    " + lenOfPacket
+                    + "0234567800000001                                        {BOBXML:                              "
+                    + "       }";
+
+            System.out.println("ready response: " + header + body);
+
+            ctx.channel().writeAndFlush(header + body);
         }
     }
 }
