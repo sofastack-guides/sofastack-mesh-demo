@@ -156,101 +156,88 @@ public class CDServerBootstrap {
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
             String req = (String) msg;
-            String id = "";
 
-            String idHeader = "<data name=\"SERVICE_REQUEST_ID\">\r\n";
-            String offset = "<field length=\"19\" scale=\"0\" type=\"string\">";
-            int index = req.indexOf(idHeader);
-            if (index >= 0) {
-                id = req.substring(index + idHeader.length() + offset.length(),
-                        index + idHeader.length() + offset.length() + 19);
-            }
+            System.out.println("receive request:\n" + req);
 
             // 把<Request> 转成<Response>
             // 把</Request> 转成</Response>
-            String body = String.valueOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-                    "<service>" +
-                    "<sys-header>" +
-                    "<data name=\"SYS_HEAD\">" +
-                    "<struct>" +
-                    "<data name=\"RET\">" +
-                    "<array>" +
-                    "<struct>" +
-                    "<data name=\"RET_CODE\">" +
-                    "<field length=\"6\" scale=\"0\" type=\"string\">999999</field>" +
-                    "</data>" +
-                    "<data name=\"RET_MSG\">" +
-                    "<field length=\"9\" scale=\"0\" type=\"string\">JDBC调用失败!</field>" +
-                    "</data>" +
-                    "</struct>" +
-                    "</array>" +
-                    "</data>" +
-                    "<data name=\"DEST_BRANCH_NO\">" +
-                    "<field length=\"0\" scale=\"0\" type=\"string\"/>" +
-                    "</data>" +
-                    "<data name=\"SEQ_NO\">" +
-                    "<field length=\"19\" scale=\"0\" type=\"string\">ANIU001000000218782</field>" +
-                    "</data>" +
-                    "<data name=\"MESSAGE_CODE\">" +
-                    "<field length=\"4\" scale=\"0\" type=\"string\">9527</field>" +
-                    "</data>" +
-                    "<data name=\"SERVICE_CODE\">" +
-                    "<field length=\"14\" scale=\"0\" type=\"string\">ECIF1200003000</field>" +
-                    "</data>" +
-                    "<data name=\"SERVICE_SCENE\">" +  // append scene
-                    "<field length=\"2\" scale=\"0\" type=\"string\">03</field>" +
-                    "</data>" +
-                    "<data name=\"SERVICE_REQUEST_ID\">" +
-                    "<field length=\"19\" scale=\"0\" type=\"string\">" + id + "</field>" +
-                    "</data>" +
-                    "<data name=\"MESSAGE_TYPE\">" +
-                    "<field length=\"4\" scale=\"0\" type=\"string\">1210</field>" +
-                    "</data>" +
-                    "<data name=\"RET_STATUS\">" +
-                    "<field length=\"1\" scale=\"0\" type=\"string\">F</field>" +
-                    "</data>" +
-                    "<data name=\"TRAN_TIMESTAMP\">" +
-                    "<field length=\"6\" scale=\"0\" type=\"string\">135519</field>" +
-                    "</data>" +
-                    "<data name=\"SOURCE_BRANCH_NO\">" +
-                    "<field length=\"10\" scale=\"0\" type=\"string\">EsbBJFront</field>" +
-                    "</data>" +
-                    "<data name=\"FILE_PATH\">" +
-                    "<field length=\"0\" scale=\"0\" type=\"string\"/>" +
-                    "</data>" +
-                    "<data name=\"TRAN_DATE\">" +
-                    "<field length=\"8\" scale=\"0\" type=\"string\">20220113</field>" +
-                    "</data>" +
-                    "<data name=\"BRANCH_ID\">" +
-                    "<field length=\"0\" scale=\"0\" type=\"string\"/>" +
-                    "</data>" +
-                    "</struct>" +
-                    "</data>" +
-                    "</sys-header>" +
-                    "<app-header>" +
-                    "<data name=\"APP_HEAD\">" +
-                    "<struct>" +
-                    "<data name=\"AGENT_BRANCH_ID\">" +
-                    "<field length=\"9\" scale=\"0\" type=\"string\">00301</field>" +
-                    "</data>" +
-                    "<data name=\"USER_ID\">" +
-                    "<field length=\"30\" scale=\"0\" type=\"string\">BOBQZ2</field>" +
-                    "</data>" +
-                    "<data name=\"BRANCH_ID\">" +
-                    "<field length=\"9\" scale=\"0\" type=\"string\">00301</field>" +
-                    "</data>" +
-                    "</struct>" +
-                    "</data>" +
-                    "</app-header>" +
-                    "<local-header>" +
-                    "<data name=\"LOCAL_HEAD\">" +
-                    "<struct/>" +
-                    "</data>" +
-                    "</local-header>" +
-                    "<body/>" +
-                    "</service>");
+            String body = String.valueOf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                    + "<service>\n"
+                    + "<sys-header>\n"
+                    + "<data name=\"SYS_HEAD\">\n"
+                    + "<struct>\n"
+                    + "<data name=\"RET\">\n"
+                    + "<array>\n"
+                    + "<struct>\n"
+                    + "<data name=\"RET_CODE\">\n"
+                    + "<field length=\"6\" scale=\"0\" type=\"string\">999999</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"RET_MSG\">\n"
+                    + "<field length=\"9\" scale=\"0\" type=\"string\">JDBC调用失败!</field>\n"
+                    + "</data>\n"
+                    + "</struct>\n"
+                    + "</array>\n"
+                    + "</data>\n"
+                    + "<data name=\"DEST_BRANCH_NO\">\n"
+                    + "<field length=\"0\" scale=\"0\" type=\"string\"/>\n"
+                    + "</data>\n"
+                    + "<data name=\"SEQ_NO\">\n"
+                    + "<field length=\"19\" scale=\"0\" type=\"string\">ANIU001000000218782</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"MESSAGE_CODE\">\n"
+                    + "<field length=\"4\" scale=\"0\" type=\"string\">9527</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"SERVICE_CODE\">\n"
+                    + "<field length=\"14\" scale=\"0\" type=\"string\">BRNC1200952700</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"MESSAGE_TYPE\">\n"
+                    + "<field length=\"4\" scale=\"0\" type=\"string\">1210</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"RET_STATUS\">\n"
+                    + "<field length=\"1\" scale=\"0\" type=\"string\">F</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"TRAN_TIMESTAMP\">\n"
+                    + "<field length=\"6\" scale=\"0\" type=\"string\">135519</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"SOURCE_BRANCH_NO\">\n"
+                    + "<field length=\"10\" scale=\"0\" type=\"string\">EsbBJFront</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"FILE_PATH\">\n"
+                    + "<field length=\"0\" scale=\"0\" type=\"string\"/>\n"
+                    + "</data>\n"
+                    + "<data name=\"TRAN_DATE\">\n"
+                    + "<field length=\"8\" scale=\"0\" type=\"string\">20220113</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"BRANCH_ID\">\n"
+                    + "<field length=\"0\" scale=\"0\" type=\"string\"/>\n"
+                    + "</data>\n"
+                    + "</struct>\n"
+                    + "</data>\n"
+                    + "</sys-header>\n"
+                    + "<app-header>\n"
+                    + "<data name=\"APP_HEAD\">\n"
+                    + "<struct>\n"
+                    + "<data name=\"AGENT_BRANCH_ID\">\n"
+                    + "<field length=\"9\" scale=\"0\" type=\"string\">00301</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"USER_ID\">\n"
+                    + "<field length=\"30\" scale=\"0\" type=\"string\">BOBQZ2</field>\n"
+                    + "</data>\n"
+                    + "<data name=\"BRANCH_ID\">\n"
+                    + "<field length=\"9\" scale=\"0\" type=\"string\">00301</field>\n"
+                    + "</data>\n"
+                    + "</struct>\n"
+                    + "</data>\n"
+                    + "</app-header>\n"
+                    + "<local-header>\n"
+                    + "<data name=\"LOCAL_HEAD\">\n"
+                    + "<struct/>\n"
+                    + "</data>\n"
+                    + "</local-header>\n"
+                    + "<body/>\n"
+                    + "</service>");
 
-            System.out.println("ready response: " + body);
+            System.out.println("ready response(length: " + body.getBytes(StandardCharsets.UTF_8).length + "): " + body);
 
             ctx.channel().writeAndFlush(body);
         }

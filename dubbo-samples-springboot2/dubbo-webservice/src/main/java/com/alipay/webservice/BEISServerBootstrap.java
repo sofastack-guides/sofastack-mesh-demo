@@ -16,6 +16,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.util.concurrent.DefaultThreadFactory;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -165,7 +166,7 @@ public class BEISServerBootstrap {
                     + "<AppHead/>\n"
                     + "</Document>";
 
-            String lenOfPacket = String.valueOf(body.getBytes().length);
+            String lenOfPacket = String.valueOf(body.getBytes(StandardCharsets.UTF_8).length);
             if (lenOfPacket.length() < 8) {
                 int remain = 8 - lenOfPacket.length();
                 String prefix = "";
