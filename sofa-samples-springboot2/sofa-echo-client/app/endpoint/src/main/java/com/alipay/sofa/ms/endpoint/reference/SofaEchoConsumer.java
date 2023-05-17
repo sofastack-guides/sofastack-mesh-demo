@@ -4,14 +4,14 @@
  */
 package com.alipay.sofa.ms.endpoint.reference;
 
-import com.alipay.sofa.ms.service.SofaEchoService;
+//import com.alipay.sofa.ms.service.SofaEchoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 /**
  * @author yiji
@@ -23,17 +23,17 @@ public class SofaEchoConsumer implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SofaEchoService echoService = (SofaEchoService) applicationContext.getBean("echoService"); // get remote service proxy
-        new Thread(() -> {
-            for (; ; ) {
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                    String status1 = echoService.echo("Hello world!");
-                    logger.info(">>>>>>>> echo result: " + status1);
-                } catch (Exception e) {
-                    logger.error(">>>>>>>> echo result: " + e.getMessage());
-                }
-            }
-        }).start();
+//        SofaEchoService echoService = (SofaEchoService) applicationContext.getBean("echoService"); // get remote service proxy
+//        new Thread(() -> {
+//            for (; ; ) {
+//                try {
+//                    TimeUnit.SECONDS.sleep(1L);
+//                    String status1 = echoService.echo("Hello world!");
+//                    logger.info(">>>>>>>> echo result: " + status1);
+//                } catch (Exception e) {
+//                    logger.error(">>>>>>>> echo result: " + e.getMessage());
+//                }
+//            }
+//        }).start();
     }
 }
