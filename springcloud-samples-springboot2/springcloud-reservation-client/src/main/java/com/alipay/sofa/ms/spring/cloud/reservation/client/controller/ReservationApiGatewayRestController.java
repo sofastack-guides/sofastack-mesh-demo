@@ -99,6 +99,16 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
     return result.getBody();
   }
 
+  @RequestMapping("/hello")
+  public String hello(){
+    HttpHeaders headers = new HttpHeaders();
+    HttpEntity<String> entity = new HttpEntity<>(headers);
+    ResponseEntity<String> result = rt.exchange(
+            "http://127.0.0.1:10088/reservations/hello",
+            HttpMethod.GET, entity, String.class);
+    return result.getBody();
+  }
+
   @Override
   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
     new Thread(() -> {

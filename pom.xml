@@ -41,6 +41,12 @@
                 <artifactId>sofa-common-tools</artifactId>
                 <version>1.0.17</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.toolkit.common</groupId>
+                <artifactId>toolkit-common-lang</artifactId>
+                <version>1.0-jdk11</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
