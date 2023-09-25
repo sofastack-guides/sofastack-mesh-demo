@@ -28,6 +28,7 @@
 <!--            <groupId>com.alipay.sofa</groupId>-->
 <!--            <artifactId>tracer-enterprise-sofa-boot-starter</artifactId>-->
 <!--        </dependency>-->
+
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>

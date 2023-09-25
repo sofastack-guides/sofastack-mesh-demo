@@ -28,13 +28,7 @@
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>tracer-enterprise-sofa-boot-starter</artifactId>
-                <version>3.2.3.JST.1</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>sofa-common-tools</artifactId>
-                        <groupId>com.alipay.sofa.common</groupId>
-                    </exclusion>
-                </exclusions>
+                <version>3.4.17</version>
             </dependency>
 
             <dependency>
