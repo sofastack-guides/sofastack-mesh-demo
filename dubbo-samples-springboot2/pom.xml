@@ -14,8 +14,7 @@
 
     <properties>
         <!-- 每个模块独立使用依赖版本 -->
-        <dubbo.version>2.7.5</dubbo.version>
-        <curator.version>2.12.0</curator.version>
+        <dubbo.version>3.2.6</dubbo.version>
     </properties>
 
     <modules>
@@ -43,28 +42,45 @@
             </dependency>
 
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>2.0.1.Final</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
-            <!-- curator for dubbo -->
+
             <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>${curator.version}</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-api</artifactId>
+                <version>${dubbo.version}</version>
             </dependency>
+
             <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>${curator.version}</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-zookeeper</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-core</artifactId>
+                <version>1.11.3</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>sofa-registry-cloud-all</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
