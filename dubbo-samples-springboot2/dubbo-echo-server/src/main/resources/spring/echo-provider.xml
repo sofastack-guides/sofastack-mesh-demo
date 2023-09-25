@@ -27,8 +27,6 @@
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
     <dubbo:application name="echo-provider"/>
 
-    <dubbo:metrics export-metrics-service="false"  port="9935"/>
-
     <!-- 使用本地nacos作为注册中心 -->
     <dubbo:registry address="nacos://127.0.0.1:8848"/>
 

@@ -27,8 +27,6 @@
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
     <dubbo:application name="echo-consumer"/>
 
-    <dubbo:metrics export-metrics-service="false" port="9935"/>
-
    <!-- <dubbo:consumer check="false" />-->
 
     <!-- 使用本地nacos作为注册中心 -->
