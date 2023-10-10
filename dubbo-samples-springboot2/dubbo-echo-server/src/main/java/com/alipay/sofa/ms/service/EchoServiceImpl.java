@@ -5,6 +5,7 @@
 package com.alipay.sofa.ms.service;
 
 import com.alipay.sofa.ms.service.model.SubReq;
+import org.apache.dubbo.common.utils.NetUtils;
 import org.apache.dubbo.rpc.RpcContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class EchoServiceImpl implements EchoService {
         String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
         LOGGER.info("[" + now + "] Hello " + message
                 + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return "[dubbo] hello " + message + "!";
+        return "[dubbo] reply " + message  + "from " + RpcContext.getContext().getLocalAddressString();
     }
 
     @Override
