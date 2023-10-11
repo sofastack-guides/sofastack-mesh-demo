@@ -33,7 +33,7 @@
     <dubbo:registry address="nacos://nacos-service.sofamesh:8848"/>
 
     <!-- 指定要消费的服务 -->
-    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService"/>
+    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0"/>
 
 
 </beans>

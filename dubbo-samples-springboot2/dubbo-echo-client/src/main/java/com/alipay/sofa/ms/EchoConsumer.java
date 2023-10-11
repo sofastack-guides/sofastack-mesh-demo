@@ -36,7 +36,13 @@ public class EchoConsumer implements ApplicationContextAware {
         new Thread(() -> {
             for (; ; ) {
                 try {
-                    TimeUnit.SECONDS.sleep(5L);
+                    String seconds = System.getenv("INVOKE_SLEEP_SECONDS");
+
+                    if (seconds == null || seconds.length() == 0) {
+                        seconds = "1";
+                    }
+
+                    TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
                     String status1 = echoService.echo("Hello world!");
                     LOGGER.info(">>>>>>>> echo result: " + status1);
                 } catch (Exception e) {
