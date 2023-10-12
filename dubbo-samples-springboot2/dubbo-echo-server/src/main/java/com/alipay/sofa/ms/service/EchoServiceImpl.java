@@ -19,13 +19,13 @@ import java.util.Date;
  */
 public class EchoServiceImpl implements EchoService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EchoServiceImpl.class);
+    protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     public String echo(String message) {
         String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
         LOGGER.info("[" + now + "] Hello " + message
                 + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return "[dubbo] reply " + message  + "from " + RpcContext.getContext().getLocalAddressString();
+        return "[dubbo] echo " + message  + "from " + RpcContext.getContext().getLocalAddressString();
     }
 
     @Override

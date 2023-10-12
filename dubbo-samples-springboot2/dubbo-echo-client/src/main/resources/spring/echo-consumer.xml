@@ -25,15 +25,20 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="echo-consumer"/>
+    <dubbo:application name="echo-consumer" metadata-type="remote">
+        <dubbo:parameter key="mapping-type" value="metadata"/>
+    </dubbo:application>
 
-   <!-- <dubbo:consumer check="false" />-->
+    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>
+    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>
 
     <!-- 使用本地nacos作为注册中心 -->
-    <dubbo:registry address="nacos://nacos-service.sofamesh:8848"/>
+    <dubbo:registry address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
 
     <!-- 指定要消费的服务 -->
-    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0"/>
+<!--    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0"/>-->
+
+    <dubbo:reference id="triService" interface="com.alipay.sofa.ms.service.TriEchoService" retries="0"/>
 
 
 </beans>

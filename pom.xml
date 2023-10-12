@@ -16,13 +16,21 @@
     </modules>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <!-- 每个模块独立使用依赖版本 -->
+        <dubbo.version>3.2.6</dubbo.version>
+
+        <netty.version>4.1.97.Final</netty.version>
+    </properties>
+
+
     <dependencyManagement>
         <dependencies>
             <!-- 支持spring cloud mesh sdk -->
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofa-registry-cloud-all</artifactId>
-                <version>1.5.0</version>
+                <version>1.6.0-SNAPSHOT</version>
             </dependency>
             <!-- 支持tracer -->
             <dependency>
@@ -36,6 +44,7 @@
                 <artifactId>toolkit-common-lang</artifactId>
                 <version>1.0-jdk11</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

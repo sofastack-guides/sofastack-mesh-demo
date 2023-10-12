@@ -5,6 +5,7 @@
 package com.alipay.sofa.ms;
 
 import com.alipay.sofa.ms.service.EchoService;
+import com.alipay.sofa.ms.service.TriEchoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -32,7 +33,26 @@ public class EchoConsumer implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
+//        EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
+//        new Thread(() -> {
+//            for (; ; ) {
+//                try {
+//                    String seconds = System.getenv("INVOKE_SLEEP_SECONDS");
+//
+//                    if (seconds == null || seconds.length() == 0) {
+//                        seconds = "1";
+//                    }
+//
+//                    TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
+//                    String status1 = echoService.echo("Hello world!");
+//                    LOGGER.info(">>>>>>>> dubbo result: " + status1);
+//                } catch (Exception e) {
+//                    LOGGER.error(">>>>>>>> dubbo result: " + e.getMessage());
+//                }
+//            }
+//        }).start();
+
+        TriEchoService triService = (TriEchoService) applicationContext.getBean("triService"); // get remote service proxy
         new Thread(() -> {
             for (; ; ) {
                 try {
@@ -43,10 +63,10 @@ public class EchoConsumer implements ApplicationContextAware {
                     }
 
                     TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
-                    String status1 = echoService.echo("Hello world!");
-                    LOGGER.info(">>>>>>>> echo result: " + status1);
+                    String status1 = triService.echo("Hello world!");
+                    LOGGER.info(">>>>>>>> tri result: " + status1);
                 } catch (Exception e) {
-                    LOGGER.error(">>>>>>>> echo result: " + e.getMessage());
+                    LOGGER.error(">>>>>>>> tri result: " + e.getMessage());
                 }
             }
         }).start();

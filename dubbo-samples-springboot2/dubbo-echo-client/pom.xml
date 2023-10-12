@@ -11,6 +11,10 @@
 
     <artifactId>dubbo-echo-client</artifactId>
 
+    <properties>
+        <netty.version>4.1.97.Final</netty.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.alipay.sofa.ms</groupId>
