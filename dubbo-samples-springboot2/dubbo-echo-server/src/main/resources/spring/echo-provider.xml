@@ -33,7 +33,8 @@
     <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>
 
     <!-- 使用本地nacos作为注册中心 -->
-    <dubbo:registry address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
+    <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
+    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
@@ -45,8 +46,8 @@
     <bean id="triServiceImpl" class="com.alipay.sofa.ms.service.TriServiceImpl"/>
 
     <!-- 声明服务暴露的接口，并暴露服务 -->
-<!--    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" protocol="dubbo"/>-->
+    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" protocol="dubbo" registry="interfaceRegistry"/>
 
-    <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" protocol="dubbo"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" protocol="tri" version="1.0" group="default" registry="appRegistry"/>
 
 </beans>

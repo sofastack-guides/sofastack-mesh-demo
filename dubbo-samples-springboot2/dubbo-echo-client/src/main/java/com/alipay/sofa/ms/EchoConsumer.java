@@ -33,24 +33,24 @@ public class EchoConsumer implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-//        EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
-//        new Thread(() -> {
-//            for (; ; ) {
-//                try {
-//                    String seconds = System.getenv("INVOKE_SLEEP_SECONDS");
-//
-//                    if (seconds == null || seconds.length() == 0) {
-//                        seconds = "1";
-//                    }
-//
-//                    TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
-//                    String status1 = echoService.echo("Hello world!");
-//                    LOGGER.info(">>>>>>>> dubbo result: " + status1);
-//                } catch (Exception e) {
-//                    LOGGER.error(">>>>>>>> dubbo result: " + e.getMessage());
-//                }
-//            }
-//        }).start();
+        EchoService echoService = (EchoService) applicationContext.getBean("echoService"); // get remote service proxy
+        new Thread(() -> {
+            for (; ; ) {
+                try {
+                    String seconds = System.getenv("INVOKE_SLEEP_SECONDS");
+
+                    if (seconds == null || seconds.length() == 0) {
+                        seconds = "1";
+                    }
+
+                    TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
+                    String status1 = echoService.echo("Hello world!");
+                    LOGGER.info(">>>>>>>> dubbo result: " + status1);
+                } catch (Exception e) {
+                    LOGGER.error(">>>>>>>> dubbo result: " + e.getMessage());
+                }
+            }
+        }).start();
 
         TriEchoService triService = (TriEchoService) applicationContext.getBean("triService"); // get remote service proxy
         new Thread(() -> {

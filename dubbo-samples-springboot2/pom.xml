@@ -14,7 +14,7 @@
 
     <properties>
         <!-- 每个模块独立使用依赖版本 -->
-        <dubbo.version>3.2.6</dubbo.version>
+        <dubbo.version>3.0.10</dubbo.version>
 
         <netty.version>4.1.97.Final</netty.version>
     </properties>
@@ -248,6 +248,12 @@
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>sofa-registry-cloud-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.11.0</version>
         </dependency>
 
     </dependencies>
