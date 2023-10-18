@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="echo-provider" metadata-type="remote">
+    <dubbo:application name="dubbo-server" metadata-type="remote">
         <dubbo:parameter key="mapping-type" value="metadata"/>
     </dubbo:application>
 
@@ -48,6 +48,6 @@
     <!-- 声明服务暴露的接口，并暴露服务 -->
     <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" protocol="dubbo" registry="interfaceRegistry"/>
 
-    <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" protocol="tri" version="1.0" group="default" registry="appRegistry"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" protocol="tri,dubbo" version="1.0" group="default" registry="appRegistry"/>
 
 </beans>
