@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="echo-provider" metadata-type="remote">
+    <dubbo:application name="dubbo-server" metadata-type="remote">
         <dubbo:parameter key="mapping-type" value="metadata"/>
     </dubbo:application>
 
