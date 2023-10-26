@@ -29,8 +29,8 @@
         <dubbo:parameter key="mapping-type" value="metadata"/>
     </dubbo:application>
 
-    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>
-    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>
+    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"  username="nacos" password="nacos"/>
+    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"  username="nacos" password="nacos"/>
 
     <!-- 使用本地nacos作为注册中心 -->
     <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
