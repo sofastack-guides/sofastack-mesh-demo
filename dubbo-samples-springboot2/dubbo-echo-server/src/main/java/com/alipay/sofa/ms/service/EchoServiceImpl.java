@@ -21,17 +21,31 @@ public class EchoServiceImpl implements EchoService {
 
     protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
+    protected String zone = "";
+    protected String env = "";
+
+    public EchoServiceImpl() {
+        String tag = System.getProperty("dubbo.provider.tag");
+        if (tag != null && !tag.isEmpty()) {
+            String[] items = tag.split("-");
+            if (items.length >= 2) {
+                this.env = items[0];
+                this.zone = items[1];
+            }
+        }
+    }
+
     public String echo(String message) {
         String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
         LOGGER.info("[" + now + "] Hello " + message
                 + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return "[dubbo] echo " + message  + "from " + RpcContext.getContext().getLocalAddressString();
+        return "[dubbo] echo " + message + " from " + RpcContext.getContext().getLocalAddressString() + " zone " + this.zone + " env " + this.env;
     }
 
     @Override
     public Integer add(Integer a, Integer b) {
         String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] add (" + a + "+" + b + ") =" + (a+b)
+        LOGGER.info("[" + now + "] add (" + a + "+" + b + ") =" + (a + b)
                 + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return a + b;
     }
@@ -39,8 +53,8 @@ public class EchoServiceImpl implements EchoService {
     @Override
     public Integer sub(SubReq subReq) {
         String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
-        LOGGER.info("[" + now + "] add (" + subReq.a + "-" + subReq.b + ") =" + (subReq.a+subReq.b)
+        LOGGER.info("[" + now + "] add (" + subReq.a + "-" + subReq.b + ") =" + (subReq.a + subReq.b)
                 + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return subReq.a+subReq.b;
+        return subReq.a + subReq.b;
     }
 }

@@ -4,8 +4,10 @@
  */
 package com.alipay.sofa.ms;
 
+import com.alibaba.dubbo.common.Constants;
 import com.alipay.sofa.ms.service.EchoService;
 import com.alipay.sofa.ms.service.TriEchoService;
+import org.apache.dubbo.rpc.RpcContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -47,6 +49,13 @@ public class EchoConsumer implements ApplicationContextAware {
                         }
 
                         TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
+
+                        RpcContext.getContext().setAttachment(Constants.TAG_KEY,"DEV-R211");
+                        RpcContext.getContext().setAttachment("product", "");
+                        RpcContext.getContext().setAttachment("zoneType", "R");
+                        RpcContext.getContext().setAttachment("shardingId", "00");
+                        RpcContext.getContext().setAttachment("originEnv", "DEV");
+
                         String status1 = echoService.echo("Hello world!");
                         LOGGER.info(">>>>>>>> dubbo result: " + status1);
                     } catch (Exception e) {
@@ -69,6 +78,12 @@ public class EchoConsumer implements ApplicationContextAware {
                         }
 
                         TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
+                        RpcContext.getContext().setAttachment(Constants.TAG_KEY,"DEV-R211");
+                        RpcContext.getContext().setAttachment("product", "");
+                        RpcContext.getContext().setAttachment("zoneType", "R");
+                        RpcContext.getContext().setAttachment("shardingId", "00");
+                        RpcContext.getContext().setAttachment("originEnv", "DEV");
+
                         String status1 = triService.echo("Hello world!");
                         LOGGER.info(">>>>>>>> tri result: " + status1);
                     } catch (Exception e) {
