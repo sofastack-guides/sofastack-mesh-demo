@@ -7,22 +7,18 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * 本接口用于演示RPC服务调用
- */
-//curl http://localhost:8777/ldc/invoke
+
 @RestController
-//@RequestMapping("/ldc")
 public class AdaptiveController {
 
 
-    @DubboReference
+    @DubboReference(retries = 0)
     private InvokeService invokeService;
 
 
     @ResponseBody
     /**
-     * curl <a href="http://localhost:8777/ldc/invoke">http://localhost:8777/ldc/invoke</a>
+     * curl <a href="http://localhost:8777/invoke">http://localhost:8777/invoke</a>
      */
     @GetMapping(value = "/invoke")
     public String request(@RequestParam(name = "shardingId", required = false) String shardingId,
@@ -52,7 +48,7 @@ public class AdaptiveController {
     }
 
     @ResponseBody
-    // http://localhost:8777/ldc/hello
+    // http://localhost:8777/hello
     @GetMapping(value = "/hello")
     public String hello() {
         return "hello world!";

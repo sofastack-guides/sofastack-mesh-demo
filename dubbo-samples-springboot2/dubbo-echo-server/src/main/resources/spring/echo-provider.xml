@@ -29,8 +29,8 @@
         <dubbo:parameter key="mapping-type" value="metadata"/>
     </dubbo:application>
 
-    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"  username="nacos" password="nacos"/>
-    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848" username="nacos" password="nacos" />
+    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>
+    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>
 
     <!-- 使用本地nacos作为注册中心 -->
     <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
@@ -52,7 +52,6 @@
 
     <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" protocol="tri" version="1.0" group="default" registry="appRegistry"/>
 
-
-    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeServiceImpl" protocol="dubbo" registry="appRegistry"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeServiceImpl" protocol="tri" registry="appRegistry"/>
 
 </beans>

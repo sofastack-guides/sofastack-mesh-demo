@@ -246,11 +246,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.alipay.sofa</groupId>
-            <artifactId>sofa-registry-cloud-all</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>3.11.0</version>
