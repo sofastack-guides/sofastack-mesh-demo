@@ -25,13 +25,15 @@ public class AdaptiveController {
                           @RequestParam(name = "product", required = false) String product,
                           @RequestParam(name = "zoneType") String zoneType,
                           @RequestParam(name = "originEnv") String originEnv,
-                          @RequestParam(name = "tag") String tag) {
+                          @RequestParam(name = "tag", required = false) String tag) {
         try {
 
             if (product == null) product = "";
             if (shardingId == null) shardingId = "00";
 
-            RpcContext.getContext().setAttachment(Constants.TAG_KEY, tag);
+            if (tag != null && tag.length() > 0) {
+                RpcContext.getContext().setAttachment(Constants.TAG_KEY, tag);
+            }
 
             RpcContext.getContext().setAttachment("product", product);
             RpcContext.getContext().setAttachment("zoneType", zoneType.toUpperCase());

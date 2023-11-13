@@ -50,11 +50,11 @@ public class EchoConsumer implements ApplicationContextAware {
 
                         TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
 
-                        RpcContext.getContext().setAttachment(Constants.TAG_KEY,"DEV-R211");
-                        RpcContext.getContext().setAttachment("product", "");
-                        RpcContext.getContext().setAttachment("zoneType", "R");
-                        RpcContext.getContext().setAttachment("shardingId", "00");
-                        RpcContext.getContext().setAttachment("originEnv", "DEV");
+//                        RpcContext.getContext().setAttachment(Constants.TAG_KEY,"DEV-R211");
+//                        RpcContext.getContext().setAttachment("product", "");
+//                        RpcContext.getContext().setAttachment("zoneType", "R");
+//                        RpcContext.getContext().setAttachment("shardingId", "00");
+//                        RpcContext.getContext().setAttachment("originEnv", "DEV");
 
                         String status1 = echoService.echo("Hello world!");
                         LOGGER.info(">>>>>>>> dubbo result: " + status1);
@@ -78,11 +78,12 @@ public class EchoConsumer implements ApplicationContextAware {
                         }
 
                         TimeUnit.SECONDS.sleep(Long.parseLong(seconds));
-                        RpcContext.getContext().setAttachment(Constants.TAG_KEY,"DEV-R211");
-                        RpcContext.getContext().setAttachment("product", "");
-                        RpcContext.getContext().setAttachment("zoneType", "R");
-                        RpcContext.getContext().setAttachment("shardingId", "00");
-                        RpcContext.getContext().setAttachment("originEnv", "DEV");
+
+//                        RpcContext.getContext().setAttachment(Constants.TAG_KEY,"DEV-R211");
+//                        RpcContext.getContext().setAttachment("product", "");
+//                        RpcContext.getContext().setAttachment("zoneType", "R");
+//                        RpcContext.getContext().setAttachment("shardingId", "00");
+//                        RpcContext.getContext().setAttachment("originEnv", "DEV");
 
                         String status1 = triService.echo("Hello world!");
                         LOGGER.info(">>>>>>>> tri result: " + status1);
