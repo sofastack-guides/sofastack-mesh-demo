@@ -5,6 +5,8 @@ import com.alibaba.dubbo.common.Constants;
 import com.alipay.sofa.ms.service.InvokeService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,6 +16,8 @@ public class AdaptiveController {
 
     @DubboReference(retries = 0)
     private InvokeService invokeService;
+
+    static final Logger LOGGER = LoggerFactory.getLogger(com.alipay.sofa.ms.AdaptiveController.class);
 
 
     @ResponseBody
@@ -41,8 +45,11 @@ public class AdaptiveController {
                 RpcContext.getContext().setAttachment("shardingId", shardingId);
             }
 
-            return invokeService.echo("ldc invoke zoneType '" + zoneType + "' originEnv '" + originEnv + "' product '" + product + "'");
+            String result = this.invokeService.echo("ldc invoke zoneType '" + zoneType + "' originEnv '" + originEnv + "' product '" + product + "'");
+            LOGGER.info(">>>>>>>> ldc result: " + result);
+            return result;
         } catch (Exception e) {
+            LOGGER.info(">>>>>>>> ldc fatal: " + e.getMessage());
             return "Failed to invoke request, cause: " + e.getMessage();
         }
     }
