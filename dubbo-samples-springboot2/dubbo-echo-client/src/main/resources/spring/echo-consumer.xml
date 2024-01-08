@@ -25,20 +25,22 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="dubbo-client" metadata-type="remote">
-        <dubbo:parameter key="mapping-type" value="metadata"/>
-    </dubbo:application>
+    <dubbo:application name="dubbo-client"/>
 
-    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>
-    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>
+<!--    <dubbo:application name="dubbo-client" metadata-type="remote">-->
+<!--        <dubbo:parameter key="mapping-type" value="metadata"/>-->
+<!--    </dubbo:application>-->
+
+<!--    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>-->
+<!--    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>-->
 
     <!-- 使用本地nacos作为注册中心 -->
     <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
-    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
+<!--    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>-->
 
     <!-- 指定要消费的服务 -->
     <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0" registry="interfaceRegistry"/>
 
-    <dubbo:reference id="triService" interface="com.alipay.sofa.ms.service.TriEchoService" retries="0"  protocol="tri" version="1.0" group="default" registry="appRegistry"/>
+    <dubbo:reference id="triService" interface="com.alipay.sofa.ms.service.TriEchoService" retries="0" version="1.0" group="default" registry="interfaceRegistry"/>
 
 </beans>

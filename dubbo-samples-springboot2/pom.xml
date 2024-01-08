@@ -14,7 +14,7 @@
 
     <properties>
         <!-- 每个模块独立使用依赖版本 -->
-        <dubbo.version>3.2.6</dubbo.version>
+        <dubbo.version>2.7.23</dubbo.version>
 
         <netty.version>4.1.97.Final</netty.version>
     </properties>
