@@ -3,10 +3,12 @@ package com.alipay.sofa.ms;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alipay.sofa.ms.service.InvokeService;
-import org.apache.dubbo.config.annotation.DubboReference;
+//import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.rpc.RpcContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class AdaptiveController {
 
 
-    @DubboReference(retries = 0)
+//    @DubboReference(retries = 0)
+//    @Reference
+    @Autowired
     private InvokeService invokeService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(com.alipay.sofa.ms.AdaptiveController.class);

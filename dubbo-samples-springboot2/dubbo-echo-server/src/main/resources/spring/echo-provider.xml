@@ -35,8 +35,8 @@
 <!--    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>-->
 
     <!-- 使用本地nacos作为注册中心 -->
-    <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
-<!--    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>-->
+    <dubbo:registry id="interfaceRegistry" address="zookeeper://127.0.0.1:2181"/>
+    <!--<dubbo:registry id="appRegistry" address="zookeeper://127.0.0.1:2181?registry-type=service"/>-->
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
