@@ -25,18 +25,17 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="dubbo-server"/>
 
-<!--    <dubbo:application name="dubbo-server" metadata-type="remote">-->
-<!--        <dubbo:parameter key="mapping-type" value="metadata"/>-->
-<!--    </dubbo:application>-->
+    <dubbo:application name="dubbo-server" metadata-type="remote">
+        <dubbo:parameter key="mapping-type" value="metadata"/>
+    </dubbo:application>
 
-<!--    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>-->
-<!--    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>-->
+    <dubbo:config-center address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:metadata-report address="zookeeper://127.0.0.1:2181"/>
 
     <!-- 使用本地nacos作为注册中心 -->
-    <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
-<!--    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>-->
+    <dubbo:registry id="interfaceRegistry" address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry id="appRegistry" address="zookeeper://127.0.0.1:2181?registry-type=service"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
@@ -50,10 +49,10 @@
     <bean id="invokeServiceImpl" class="com.alipay.sofa.ms.service.InvokeServiceImpl"/>
 
     <!-- 声明服务暴露的接口，并暴露服务 -->
-    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" registry="interfaceRegistry" />
+<!--    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" registry="interfaceRegistry" />-->
 
-    <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" version="1.0" group="default" registry="interfaceRegistry"/>
+<!--    <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" version="1.0" group="default" registry="interfaceRegistry"/>-->
 
-    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeServiceImpl" registry="interfaceRegistry"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeServiceImpl"/>
 
 </beans>

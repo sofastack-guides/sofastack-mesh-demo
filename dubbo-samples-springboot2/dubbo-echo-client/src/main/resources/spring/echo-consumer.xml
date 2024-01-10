@@ -25,18 +25,17 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="dubbo-client"/>
 
-<!--    <dubbo:application name="dubbo-client" metadata-type="remote">-->
-<!--        <dubbo:parameter key="mapping-type" value="metadata"/>-->
-<!--    </dubbo:application>-->
+    <dubbo:application name="dubbo-client" metadata-type="remote">
+        <dubbo:parameter key="mapping-type" value="metadata"/>
+    </dubbo:application>
 
-<!--    <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>-->
-<!--    <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>-->
+    <dubbo:config-center address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:metadata-report address="zookeeper://127.0.0.1:2181"/>
 
     <!-- 使用本地nacos作为注册中心 -->
-    <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
-<!--    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>-->
+    <dubbo:registry id="interfaceRegistry" address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry id="appRegistry" address="zookeeper://127.0.0.1:2181?registry-type=service"/>
 
     <!-- 指定要消费的服务 -->
     <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0" registry="interfaceRegistry"/>
