@@ -24,22 +24,22 @@
                 <version>1.6.3-dubbo3</version>
             </dependency>
 <!--            &lt;!&ndash; 支持tracer &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>com.alipay.sofa</groupId>-->
-<!--                <artifactId>tracer-enterprise-sofa-boot-starter</artifactId>-->
-<!--                <version>3.2.3.JST.1</version>-->
-<!--                <exclusions>-->
-<!--                    <exclusion>-->
-<!--                        <artifactId>sofa-common-tools</artifactId>-->
-<!--                        <groupId>com.alipay.sofa.common</groupId>-->
-<!--                    </exclusion>-->
-<!--                </exclusions>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.alipay.sofa.common</groupId>-->
-<!--                <artifactId>sofa-common-tools</artifactId>-->
-<!--                <version>1.0.17</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>tracer-enterprise-sofa-boot-starter</artifactId>
+                <version>3.2.3.JST.1</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>sofa-common-tools</artifactId>
+                        <groupId>com.alipay.sofa.common</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.alipay.sofa.common</groupId>
+                <artifactId>sofa-common-tools</artifactId>
+                <version>1.0.17</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
