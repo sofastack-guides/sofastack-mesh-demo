@@ -104,7 +104,7 @@ public class Panic2 {
 
         String path = "/Users/yiji/go/src/code.alipay.com/zonghai.szh/go-plugin-quickstart/configs/codecs/xrpc/dubbo-cli.req";
 
-        Files.write(Path.of(path), dubbo);
+//        Files.write(Path.of(path), dubbo);
     }
 
 }

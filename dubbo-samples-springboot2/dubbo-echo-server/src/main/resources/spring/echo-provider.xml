@@ -38,7 +38,7 @@
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
-    <dubbo:protocol name="tri" port="50051"/>
+    <dubbo:protocol name="tri" port="50053"/>
 
     <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
     <bean id="echoServiceImpl" class="com.alipay.sofa.ms.service.EchoServiceImpl"/>
