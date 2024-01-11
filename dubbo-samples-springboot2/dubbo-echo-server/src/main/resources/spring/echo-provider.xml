@@ -25,10 +25,10 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="benchmark-provider"/>
+    <dubbo:application name="dubbo-server"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="nacos://nacos-service.sofamesh:8848"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
@@ -36,7 +36,11 @@
     <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
     <bean id="benchmarkService" class="com.alipay.sofa.ms.service.BenchmarkServiceImpl"/>
 
+    <bean id="invokeService" class="com.alipay.sofa.ms.service.InvokeServiceImpl"/>
+
     <!-- 声明服务暴露的接口，并暴露服务 -->
     <dubbo:service interface="com.alipay.sofa.ms.service.BenchmarkService" ref="benchmarkService"/>
+
+    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeService"/>
 
 </beans>

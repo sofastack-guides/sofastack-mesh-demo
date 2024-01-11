@@ -25,11 +25,13 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务消费方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="benchmark-consumer"/>
+    <dubbo:application name="dubbo-client"/>
 
     <!-- 使用本地dsr作为注册中心 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="nacos://nacos-service.sofamesh:8848"/>
 
-    <dubbo:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.BenchmarkService" />
+    <dubbo:reference id="benchmarkService" interface="com.alipay.sofa.ms.service.BenchmarkService"/>
+
+    <dubbo:reference id="invokeService" interface="com.alipay.sofa.ms.service.InvokeService"/>
 
 </beans>

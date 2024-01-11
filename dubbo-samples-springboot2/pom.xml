@@ -14,8 +14,9 @@
 
     <properties>
         <!-- 每个模块独立使用依赖版本 -->
-        <dubbo.version>2.6.12</dubbo.version>
+        <dubbo.version>2.6.9</dubbo.version>
         <curator.version>2.12.0</curator.version>
+        <nacos.version>0.6.2</nacos.version>
     </properties>
 
     <modules>
@@ -57,6 +58,19 @@
                 <version>${dubbo.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+
             <!-- curator for dubbo -->
             <dependency>
                 <groupId>org.apache.curator</groupId>
@@ -68,6 +82,7 @@
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
