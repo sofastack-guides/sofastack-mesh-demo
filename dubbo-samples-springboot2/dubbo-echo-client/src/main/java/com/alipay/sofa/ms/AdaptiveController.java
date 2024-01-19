@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdaptiveController {
 
 
-    @DubboReference(retries = 0)
+    @DubboReference(retries = 0, check = false)
     private InvokeService invokeService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(com.alipay.sofa.ms.AdaptiveController.class);
