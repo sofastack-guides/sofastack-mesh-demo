@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofa-registry-cloud-all</artifactId>
-                <version>1.6.3-dubbo3</version>
+                <version>1.6.4-dubbo3</version>
             </dependency>
 <!--            &lt;!&ndash; 支持tracer &ndash;&gt;-->
             <dependency>
