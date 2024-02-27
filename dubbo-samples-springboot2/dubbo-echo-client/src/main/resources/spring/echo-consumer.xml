@@ -36,9 +36,10 @@
     <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848"/>
     <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
 
-    <!-- 指定要消费的服务 -->
-    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0" registry="interfaceRegistry"/>
+<!--    &lt;!&ndash; 指定要消费的服务 &ndash;&gt;-->
+<!--    <dubbo:reference id="echoService" interface="com.alipay.sofa.ms.service.EchoService" retries="0" registry="interfaceRegistry"/>-->
 
-    <dubbo:reference id="triService" interface="com.alipay.sofa.ms.service.TriEchoService" retries="0"  protocol="tri" version="1.0" group="default" registry="appRegistry"/>
+<!--    <dubbo:reference id="triService" interface="com.alipay.sofa.ms.service.TriEchoService" retries="0"  protocol="tri" version="1.0" group="default" registry="appRegistry"/>-->
 
+    <dubbo:reference interface="com.alipay.sofa.ms.service.IGreeter" retries="0"  protocol="tri" registry="appRegistry"/>
 </beans>
