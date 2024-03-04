@@ -25,8 +25,10 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="dubbo-server" metadata-type="remote">
+    <dubbo:application name="dubbo-server" metadata-type="local">
         <dubbo:parameter key="mapping-type" value="metadata"/>
+        <dubbo:parameter key="metadata-service-protocol" value="dubbo"/>
+        <dubbo:parameter key="register-mode" value="all"/>
     </dubbo:application>
 
     <dubbo:config-center address="nacos://nacos-service.sofamesh:8848"/>
@@ -37,7 +39,7 @@
     <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->
-    <dubbo:protocol name="dubbo" port="20880"/>
+<!--    <dubbo:protocol name="dubbo" port="20880"/>-->
     <dubbo:protocol name="tri" port="50053"/>
 
     <!-- 通过xml方式配置为bean, 让spring托管和实例化 -->
@@ -48,10 +50,10 @@
     <bean id="invokeServiceImpl" class="com.alipay.sofa.ms.service.InvokeServiceImpl"/>
 
     <!-- 声明服务暴露的接口，并暴露服务 -->
-    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" protocol="dubbo" registry="interfaceRegistry" />
+<!--    <dubbo:service interface="com.alipay.sofa.ms.service.EchoService" ref="echoServiceImpl" protocol="dubbo" registry="interfaceRegistry" />-->
 
     <dubbo:service interface="com.alipay.sofa.ms.service.TriEchoService" ref="triServiceImpl" protocol="tri" version="1.0" group="default" registry="appRegistry"/>
 
-    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeServiceImpl" protocol="tri" registry="appRegistry"/>
+    <dubbo:service interface="com.alipay.sofa.ms.service.InvokeService" ref="invokeServiceImpl" protocol="tri" registry="interfaceRegistry"/>
 
 </beans>
