@@ -7,6 +7,8 @@ import com.alipay.sofa.ms.spring.cloud.reservation.client.service.ReservationSer
 import feign.Logger;
 import feign.codec.Decoder;
 import java.util.Arrays;
+
+import feign.stream.StreamDecoder;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -14,10 +16,10 @@ import org.springframework.cloud.openfeign.support.ResponseEntityDecoder;
 import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
-import org.springframework.hateoas.hal.Jackson2HalModule;
+import org.springframework.hateoas.mediatype.hal.Jackson2HalModule;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "reservation-service", configuration = CustomerClientConfiguration.class)
 public interface ReservationService {
   @RequestMapping(value = "/reservations", method = RequestMethod.GET)
-  Resources<Reservation> queryReservations();
+  CollectionModel<Reservation> queryReservations();
 
   @Configuration
   @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)

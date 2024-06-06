@@ -20,6 +20,12 @@
         <dependency>
             <groupId>com.alipay.sofa.ms</groupId>
             <artifactId>sofa-echo-server-endpoint</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>dubbo</artifactId>
+                    <groupId>com.alibaba</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--spring-boot dependency runtime depended-->

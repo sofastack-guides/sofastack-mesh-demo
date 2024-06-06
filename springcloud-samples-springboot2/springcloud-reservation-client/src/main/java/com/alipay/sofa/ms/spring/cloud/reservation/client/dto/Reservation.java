@@ -1,5 +1,7 @@
 package com.alipay.sofa.ms.spring.cloud.reservation.client.dto;
 
+import org.springframework.hateoas.RepresentationModel;
+
 /**
  * @author yiji@apache.org
  */

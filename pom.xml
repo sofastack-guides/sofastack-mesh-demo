@@ -18,7 +18,7 @@
 
     <properties>
         <!-- 每个模块独立使用依赖版本 -->
-        <dubbo.version>3.2.6</dubbo.version>
+        <dubbo.version>3.1.2</dubbo.version>
 
         <netty.version>4.1.97.Final</netty.version>
     </properties>
@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofa-registry-cloud-all</artifactId>
-                <version>1.6.5-dubbo3</version>
+                <version>1.6.8-dubbo3-poc-v1</version>
             </dependency>
             <!-- 支持tracer -->
             <dependency>
@@ -48,7 +48,7 @@
             <dependency>
                 <groupId>com.alibaba.toolkit.common</groupId>
                 <artifactId>toolkit-common-lang</artifactId>
-                <version>1.0-jdk11</version>
+                <version>1.1.5</version>
             </dependency>
 
         </dependencies>

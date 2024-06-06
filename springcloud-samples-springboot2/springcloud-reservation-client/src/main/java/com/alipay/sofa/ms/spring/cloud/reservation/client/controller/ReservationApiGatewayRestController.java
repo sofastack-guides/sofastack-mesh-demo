@@ -14,7 +14,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.hateoas.Resources;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -46,11 +46,11 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
   public Collection<String> getReservationNames() {
     logger.debug("Get reservation names via rest template!");
 
-    ParameterizedTypeReference<Resources<Reservation>> parameterizedTypeReference =
-            new ParameterizedTypeReference<Resources<Reservation>>() {
+    ParameterizedTypeReference<CollectionModel<Reservation>> parameterizedTypeReference =
+            new ParameterizedTypeReference<CollectionModel<Reservation>>() {
             };
 
-    ResponseEntity<Resources<Reservation>> exchange = rt.exchange(
+    ResponseEntity<CollectionModel<Reservation>> exchange = rt.exchange(
             "http://reservation-service/reservations",
             HttpMethod.GET, null, parameterizedTypeReference);
 
@@ -61,7 +61,7 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
   public Collection<String> getReservationNamesViaFeign() {
     logger.debug("Get reservation names via feign!");
 
-    Resources<Reservation> reservations = reservationService.queryReservations();
+    CollectionModel<Reservation> reservations = reservationService.queryReservations();
 
     return reservations.getContent().stream().map(Reservation::getReservationName).collect(Collectors.toList());
   }
@@ -117,7 +117,7 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
           TimeUnit.SECONDS.sleep(1L);
           Collection<String> result = getReservationNamesViaFeign();
           logger.info(">>>>>>> get reservations via feign: " + result);
-          logger.info(">>>>>>> get reservations via rt: " + getReservationNames());
+//          logger.info(">>>>>>> get reservations via rt: " + getReservationNames());
         } catch (Exception e) {
           logger.error(">>>>>>> get reservations: : " + e.getMessage());
         }
