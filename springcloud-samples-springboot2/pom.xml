@@ -15,23 +15,20 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>springcloud-config-server</module>
+<!--        <module>springcloud-config-server</module>-->
         <module>springcloud-reservation-service</module>
-        <module>springcloud-eureka-server</module>
         <module>springcloud-reservation-client</module>
-        <module>springcloud-hystrix-dashboard</module>
-        <module>springcloud-turbine</module>
-        <module>spring-cloud-reservation-gateway</module>
+<!--        <module>springcloud-eureka-server</module>-->
+<!--        <module>springcloud-hystrix-dashboard</module>-->
+<!--        <module>springcloud-turbine</module>-->
+<!--        <module>spring-cloud-reservation-gateway</module>-->
     </modules>
 
     <properties>
         <guava_version>20.0</guava_version>
-<!--        <spring-boot.version>2.4.4</spring-boot.version>-->
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-<!--        <spring-cloud.version>2020.0.2</spring-cloud.version>-->
-        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
-<!--        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>-->
-        <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot.version>2.4.4</spring-boot.version>
+        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
     </properties>
 
     <dependencyManagement>
