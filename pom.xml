@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofa-registry-cloud-all</artifactId>
-                <version>1.6.8-dubbo3-poc-v1</version>
+                <version>1.6.9-beta1</version>
             </dependency>
             <!-- 支持tracer -->
             <dependency>

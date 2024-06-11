@@ -24,7 +24,7 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author yiji@apache.org
  */
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 @EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication
