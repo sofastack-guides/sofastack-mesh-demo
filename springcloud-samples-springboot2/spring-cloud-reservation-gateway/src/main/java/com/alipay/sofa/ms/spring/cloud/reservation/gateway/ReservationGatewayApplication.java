@@ -6,7 +6,7 @@ package com.alipay.sofa.ms.spring.cloud.reservation.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+//import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -17,7 +17,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author yiji@apache.org
  * @version : ReservationGatewayApplication.java, v 0.1 2020年02月26日 8:10 下午 yiji Exp $
  */
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 @EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication

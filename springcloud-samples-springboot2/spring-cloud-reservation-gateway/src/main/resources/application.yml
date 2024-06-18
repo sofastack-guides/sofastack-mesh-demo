@@ -2,9 +2,16 @@ server:
   port: 7799
 
 spring:
+  config:
+    import: "optional:configserver:"
   application:
     name: reservation-gateway
   cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848
     gateway:
       routes:
         - id: dingtalk_route
@@ -49,9 +56,11 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-## 默认日志等级
+ ## 默认日志等级
 logging:
   level:
     root: info
     io.lettuce.core.protocol.RedisStateMachine: info
-  path: /home/admin/logs
+  file:
+    path: /home/admin/logs
+

@@ -117,7 +117,7 @@ public class ReservationApiGatewayRestController implements ApplicationContextAw
           TimeUnit.SECONDS.sleep(1L);
           Collection<String> result = getReservationNamesViaFeign();
           logger.info(">>>>>>> get reservations via feign: " + result);
-//          logger.info(">>>>>>> get reservations via rt: " + getReservationNames());
+          logger.info(">>>>>>> get reservations via rt: " + getReservationNames());
         } catch (Exception e) {
           logger.error(">>>>>>> get reservations: : " + e.getMessage());
         }
