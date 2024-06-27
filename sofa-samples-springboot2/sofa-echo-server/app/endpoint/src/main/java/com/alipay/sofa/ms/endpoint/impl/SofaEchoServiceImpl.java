@@ -13,7 +13,8 @@ import com.alipay.sofa.ms.service.SofaEchoService;
 public class SofaEchoServiceImpl implements SofaEchoService {
     @Override
     public String echo(String message) {
+        throw new RuntimeException("BAD REQUEST");
         // we don't care about message content.
-        return "success";
+//        return "success";
     }
 }

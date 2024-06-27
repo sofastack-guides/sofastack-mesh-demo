@@ -25,7 +25,7 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 服务提供方应用名称, 方便用于依赖跟踪 -->
-    <dubbo:application name="dubbo-server" metadata-type="local">
+    <dubbo:application name="dubbo-server" metadata-type="remote">
         <dubbo:parameter key="mapping-type" value="metadata"/>
     </dubbo:application>
 
@@ -33,7 +33,7 @@
     <dubbo:metadata-report address="nacos://nacos-service.sofamesh:8848"/>
 
     <!-- 使用本地nacos作为注册中心 -->
-    <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848" register-mode="instance"/>
+    <dubbo:registry id="interfaceRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>
 <!--    <dubbo:registry id="appRegistry" address="nacos://nacos-service.sofamesh:8848?registry-type=service"/>-->
 
     <!-- 只用Dubbo协议并且指定监听端口 20880 -->

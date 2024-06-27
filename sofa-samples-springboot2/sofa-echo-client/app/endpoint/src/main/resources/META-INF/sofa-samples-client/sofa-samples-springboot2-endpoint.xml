@@ -9,7 +9,7 @@
     <!-- sofa rpc reference -->
     <sofa:reference id="echoService" interface="com.alipay.sofa.ms.service.SofaEchoService">
         <sofa:binding.bolt>
-<!--            <sofa:global-attrs serialize-type="json"/>-->
+<!--            <sofa:global-attrs test-url="127.0.0.1:12199"/>-->
         </sofa:binding.bolt>
     </sofa:reference>
 
